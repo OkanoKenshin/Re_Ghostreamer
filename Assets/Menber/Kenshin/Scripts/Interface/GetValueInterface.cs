@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class MoveInterface
+public class GetValueInterface
 {
-    public interface IMovable
+    public interface IGetValue
     {
-        void Move(Vector2 movementValue);
+        void GetValue(Vector2 someValue);
     }
 }

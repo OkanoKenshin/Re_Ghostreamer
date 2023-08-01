@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static MoveInterface;
+using static GetValueInterface;
 
 public class InputSystemWithDictionary : MonoBehaviour
 {
-    IMovable movable;
+    IGetValue getValue;
 
 
     public static InputSystemWithDictionary Instance { get; private set; }
@@ -30,7 +30,7 @@ public class InputSystemWithDictionary : MonoBehaviour
 
     private void Awake()
     {
-        movable = GetComponentInChildren<IMovable>();
+        getValue = GetComponentInChildren<IGetValue>();
 
         #region シングルトンインスタンスを初期化
         if (Instance == null)
@@ -63,13 +63,13 @@ public class InputSystemWithDictionary : MonoBehaviour
                 {"Look",LookAction},
                 {"Move", context =>
                     {
-                        if(movable != null)
+                        if(getValue != null)
                         {
-                            movable.Move(context.ReadValue<Vector2>());
+                            getValue.GetValue(context.ReadValue<Vector2>());
                         }
                         else
                         {
-                            Debug.LogError("movable is null!");
+                            Debug.LogError("getValue is null!");
                         }
                     }
                 },

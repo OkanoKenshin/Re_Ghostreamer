@@ -1,24 +1,23 @@
-//public class MoveControl : MonoBehaviour, IMovable
-//{
-//    [SerializeField] public float ghMoveSpeed;
-//    public void Move(Vector2 direction)
-//    {
-//        transform.Translate(new Vector3(movementVector.x, 0, movementVector.y) * ghMoveSpeed * Time.deltaTime);
-//    }
-//}
-
-
 using UnityEngine;
-using static MoveInterface;
+using static GetValueInterface;
 
-public class MoveControl : MonoBehaviour, IMovable
+public class MoveControl : MonoBehaviour, IGetValue
 {
     [SerializeField] public float ghMoveSpeed;
 
-    public void Move(Vector2 movementVector)
-    {
-        transform.Translate(new Vector3(movementVector.x, 0, movementVector.y) * ghMoveSpeed * Time.deltaTime);
+    float moveX;
+    float moveZ;
 
+
+    public void GetValue(Vector2 someValue)
+    {
+        moveX = someValue.x;
+        moveZ = someValue.y;
+    }
+
+    private void FixedUpdate()
+    {
+        transform.Translate(new Vector3(moveX, 0.0f, moveZ));
     }
 
 }
