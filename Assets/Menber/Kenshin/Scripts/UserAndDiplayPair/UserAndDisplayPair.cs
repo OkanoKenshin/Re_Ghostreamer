@@ -43,7 +43,6 @@ public class UserAndDisplayPair : MonoBehaviour
                 //pairにListを格納。
                 UserDisplayPairs.Add(pair);
                 //UserDisplayPairsというリストに"pair"をAddする。
-
             }
         }
     }
