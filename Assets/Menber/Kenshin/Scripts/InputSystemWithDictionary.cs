@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static GetValueInterface;
@@ -13,6 +14,8 @@ public class InputSystemWithDictionary : MonoBehaviour
     //シングルトンの定義
 
     public InputActionAsset actionAsset;
+
+    //private Re_Ghostreamer ghostReamer;
 
     public enum CharacterType
     {
@@ -44,18 +47,20 @@ public class InputSystemWithDictionary : MonoBehaviour
         }
         #endregion
 
-        InitializeInputActions();
+        //InitializeInputActions();
 
-        foreach(var actionName in inputActionMap.Keys)
+        /*foreach(var actionName in inputActionMap.Keys)
         {
             var action = actionAsset.FindAction(actionName);
             if (action != null)
             {
                 action.performed += context => inputActionMap[actionName].Invoke(context);
             }
-        }
+        }*/
     }
-    #region 共通動作のロード用メソッド
+
+
+    /*#region 共通動作のロード用メソッド
     private void InitializeInputActions()
     {
         inputActionMap = new Dictionary<string, Action<InputAction.CallbackContext>>
@@ -66,6 +71,7 @@ public class InputSystemWithDictionary : MonoBehaviour
                         if(getValue != null)
                         {
                             getValue.GetValue(context.ReadValue<Vector2>());
+                            Debug.Log(context);
                         }
                         else
                         {
@@ -77,7 +83,8 @@ public class InputSystemWithDictionary : MonoBehaviour
                 {"Select",SelectAction}
             };
     }
-    #endregion
+    #endregion*/
+
 
     public void SetCharacterType(CharacterType type)
     //入った引数がStreamerかGhostかによって処理が分岐、適切な入力受付と対応した処理が呼び出し可能になる。
@@ -126,8 +133,8 @@ public class InputSystemWithDictionary : MonoBehaviour
         actionAsset.Disable();
     }
 
-        #region 実行用メソッドの記述欄(最終的にココは置き換えて削除) 
-        private void GhAttackAction(InputAction.CallbackContext context)
+    #region 実行用メソッドの記述欄(最終的にココは置き換えて削除) 
+    private void GhAttackAction(InputAction.CallbackContext context)
         {
             Debug.Log("GhAttack");
         }

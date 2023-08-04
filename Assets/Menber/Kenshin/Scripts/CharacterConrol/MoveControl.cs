@@ -1,13 +1,12 @@
 using UnityEngine;
-using static GetValueInterface;
+using static InputSystemWithDictionary;
 
-public class MoveControl : MonoBehaviour, IGetValue
+public class MoveControl : MonoBehaviour
 {
     [SerializeField] public float ghMoveSpeed;
 
     float moveX;
     float moveZ;
-
 
     public void GetValue(Vector2 someValue)
     {
