@@ -6,7 +6,8 @@ TagManager:
   tags:
   - Ghost
   - Streamer
-  - ManipulativeObject
+  - IRCamera
+  - FloorMap
   layers:
   - Default
   - TransparentFX
@@ -28,7 +29,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - ManipulativeObject
   - 
   - 
   - 
