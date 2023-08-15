@@ -9,9 +9,7 @@ public class Type
         Ghost1,
         Ghost2,
         Ghost3,
-        Streamer
+        Streamer,
+        Player
     }
-
-    
-    //private Vector2 moveValue = charMove.GetMoveValueForPlayer(CharacterType.Ghost1.ToString());
 }
