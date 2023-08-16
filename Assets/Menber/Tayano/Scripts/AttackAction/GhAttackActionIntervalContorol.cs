@@ -10,9 +10,9 @@ public class GhAttackActionIntervalContorol : MonoBehaviour
     [SerializeField]
     AttackHitDetection _attackHitDetection;
 
-    public bool ghCanAttack = true;
+    private bool ghCanAttack = true;
 
-    public bool InputOn = false;
+    private bool InputOn = false;
     // Start is called before the first frame update
     void Start()
     {
