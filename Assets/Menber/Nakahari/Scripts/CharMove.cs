@@ -33,6 +33,8 @@ public class CharMove : MonoBehaviour
 
     private test.Human _human;
 
+    public bool isAnimation;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,7 +56,10 @@ public class CharMove : MonoBehaviour
     void Update()
     {
         MUpdateCursorLock();
-        MCameraControl();
+        if (!isAnimation)
+        {
+            MCameraControl();
+        }
         //_human = new test.Human(Type.CharacterType.Player);
     }
 
@@ -158,5 +163,10 @@ public class CharMove : MonoBehaviour
             }
         }
         return false; // Default value
+    }
+
+    public void SetIsAnimation(bool value)
+    {
+        isAnimation = value;
     }
 }
