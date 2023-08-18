@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -35,6 +36,9 @@ public class CharMove : MonoBehaviour
 
     public bool isAnimation;
 
+    [SerializeField]
+    private GameObject headRig;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -68,9 +72,9 @@ public class CharMove : MonoBehaviour
     private void FixedUpdate()
     {
         Vector2 move = MGetMoveValueForPlayer(_type.ToString());
-        Vector3 camForward = Camera.transform.forward;
+        Vector3 camForward = headRig.transform.forward;
         camForward.y = 0;
-        transform.position += (camForward * move.y + Camera.transform.right * move.x) * Speed;
+        transform.position += (camForward * move.y + headRig.transform.right * move.x) * Speed;
     }
 
     public Vector2 MGetMoveValueForPlayer(string playerName)
