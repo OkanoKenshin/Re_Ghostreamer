@@ -5,7 +5,7 @@ using UnityEngine;
 public class ObjectPool : MonoBehaviour
 {
     [System.Serializable]
-    public class Pool  // Poolというクラスを定義します。ここには、各オブジェクトプールの情報を格納します（タグ、プレファブ、サイズ）
+    public class Pool  // Poolというクラスを定義。ここには、各オブジェクトプールの情報を格納します（タグ、プレファブ、サイズ）
     {
         public string tag;  // このプールを識別するためのタグ
         public GameObject prefab;  // プールするオブジェクトのプレファブ
