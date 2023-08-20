@@ -19,8 +19,6 @@ public class CamCon : MonoBehaviour
 
     private Re_Ghostreamer _ghostReamer;
 
-    public bool isAnimation = false;
-
 
     private void Start()
     {
@@ -29,18 +27,8 @@ public class CamCon : MonoBehaviour
     }
     private void Update()
     {
-        if(!isAnimation)
-        {
-            CameraControll();
-        }
-
-        Debug.Log(isAnimation);
+        CameraControll();
         
-    }
-
-    public void SetIsAnimation(bool value)
-    {
-        isAnimation = value;
     }
 
     private void CameraControll()

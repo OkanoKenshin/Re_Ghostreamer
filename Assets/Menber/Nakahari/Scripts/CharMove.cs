@@ -18,10 +18,6 @@ public class CharMove : MonoBehaviour
 
     bool cursorLock = true;
 
-    private test.IStomachState testState;
-
-    //public bool isAnimation;
-
     [SerializeField]
     private GameObject Camera;
 
@@ -30,8 +26,6 @@ public class CharMove : MonoBehaviour
     {
         _ghostReamer = new Re_Ghostreamer();
         _ghostReamer.Enable();
-        //characterRot = transform.localRotation;
-        //cameraRot = Camera.transform.localRotation;
 
         if(charaSelect == null)
         {
@@ -43,10 +37,6 @@ public class CharMove : MonoBehaviour
     void Update()
     {
         MUpdateCursorLock();
-        /*if(!isAnimation)
-        {
-            MCameraControl();
-        }*/
     }
 
 
@@ -72,51 +62,6 @@ public class CharMove : MonoBehaviour
         }
         return Vector2.zero; // Default value
     }
-    //カメラのコントロール
-    /*private void MCameraControl()
-    {
-        Vector2 look = MGetLookValueForPlayer(_type.ToString());
-        float camX = look.x * camSens;
-        float camY = look.y * camSens;
-
-        cameraRot *= Quaternion.Euler(-camY, 0, 0);
-        characterRot *= Quaternion.Euler(0, camX, 0);
-
-        cameraRot = MClampRotation(cameraRot);
-
-        Camera.transform.localRotation = cameraRot;
-        transform.localRotation = characterRot;
-    }*/
-
-    /*public Vector2 MGetLookValueForPlayer(string playerName)
-    {
-        InputActionMap actionMap = _ghostReamer.asset.FindActionMap(playerName);
-        if (actionMap != null)
-        {
-            InputAction LookAction = actionMap.FindAction("Look");
-            if (LookAction != null)
-            {
-                return LookAction.ReadValue<Vector2>();
-            }
-        }
-        return Vector2.zero; // Default value
-    }*/
-
-    //カメラの感度
-    /*public Quaternion MClampRotation(Quaternion q)
-    {
-        q.x /= q.w;
-        q.y /= q.w;
-        q.z /= q.w;
-        q.w = 1f;
-
-        float angleX = (Mathf.Atan(q.x) * Mathf.Rad2Deg);
-        angleX = Mathf.Clamp(angleX, minX, maxX);
-        //感度調整
-        q.x = Mathf.Tan(angleX * Mathf.Deg2Rad * 0.5f);
-
-        return q;
-    }*/
     public void MUpdateCursorLock()
     {
         if (MGetCursorLockValueForPlayer(_type.ToString()))
