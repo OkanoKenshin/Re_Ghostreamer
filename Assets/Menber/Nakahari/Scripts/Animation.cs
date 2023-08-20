@@ -18,7 +18,13 @@ public class Animation : MonoBehaviour
     CharMove _charMove;
 
     [SerializeField]
+    CamCon _camCon;
+
+    [SerializeField]
     private bool inputon = false;
+
+    [SerializeField]
+    private float _ct = 120;
 
     // Start is called before the first frame update
     void Start()
@@ -33,13 +39,17 @@ public class Animation : MonoBehaviour
         {
             animator = GetComponent<Animator>();
         }
+        if(_camCon == null)
+        {
+            _camCon = GetComponent<CamCon>();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         move = _charMove.MGetMoveValueForPlayer(_type.ToString());
-        //MMoveAnima();
+        MMoveAnima();
         MGhAttackAnima();
     }
 
@@ -57,14 +67,14 @@ public class Animation : MonoBehaviour
                 animator.SetTrigger("Move");
             }
         }
-        else
+        /*else
         {
             if(animationNow != 0)
             {
                 animationNow = 0;
                 animator.SetTrigger("Idol");
             }
-        }
+        }*/
     }
     #region Streamerのアニメーション
     public void MStSprintAnima()
@@ -102,16 +112,18 @@ public class Animation : MonoBehaviour
     #region Ghostのアニメーション
     public void MGhAttackAnima()
     {
-            if (animationNow != 5 && inputon == true)
-            {
-                _charMove.SetIsAnimation(true);
-                animationNow = 5;
-                animator.SetTrigger("Attack");  
-            }
-            else if(inputon == false)
-            {
-                _charMove.SetIsAnimation(false);
-            }
+        if (animationNow != 5 && inputon == true)
+        {
+            _camCon.SetIsAnimation(true);
+            animationNow = 5;
+            animator.SetTrigger("Attack");
+            StartCoroutine(Ct());
+            StartCoroutine(AttackCT());
+        }
+        else if(_ct == 120)
+        {
+            _camCon.SetIsAnimation(false);
+        }
     }
 
     public void MGhFogAnima()
@@ -132,5 +144,20 @@ public class Animation : MonoBehaviour
         }
     }
     #endregion
+
+    IEnumerator Ct()
+    {
+        while (_ct <= 120)
+        {
+            yield return null;
+            _ct++;
+        }
+        _ct = 0;
+    }
+
+    IEnumerator AttackCT()
+    {
+        yield return new WaitForSeconds(_ct);
+    }
 
 }

@@ -9,22 +9,10 @@ public class CharMove : MonoBehaviour
     [SerializeField]
     private Type.CharacterType _type = Type.CharacterType.Ghost1;
 
-    [SerializeField]
-    private float camSens = 5;
-
     private Re_Ghostreamer _ghostReamer;
-
-    private Rigidbody rb;
 
     [SerializeField]
     float Speed = 5.0f;
-
-    Quaternion cameraRot, characterRot;
-
-    public GameObject Camera;
-
-    [SerializeField]
-    float minX = -45f, maxX = 45f;
 
     CharaSelect charaSelect;
 
@@ -32,39 +20,33 @@ public class CharMove : MonoBehaviour
 
     private test.IStomachState testState;
 
-    private test.Human _human;
-
-    public bool isAnimation;
+    //public bool isAnimation;
 
     [SerializeField]
-    private GameObject headRig;
+    private GameObject Camera;
 
     // Start is called before the first frame update
     void Start()
     {
         _ghostReamer = new Re_Ghostreamer();
         _ghostReamer.Enable();
-        rb = GetComponent<Rigidbody>();
-        characterRot = transform.localRotation;
-        cameraRot = Camera.transform.localRotation;
+        //characterRot = transform.localRotation;
+        //cameraRot = Camera.transform.localRotation;
 
         if(charaSelect == null)
         {
             charaSelect = GetComponent<CharaSelect>();
         }
-        /*testState = new test.Player();
-        _human = new test.Human(testState);*/
     }
 
     // Update is called once per frame
     void Update()
     {
         MUpdateCursorLock();
-        if (!isAnimation)
+        /*if(!isAnimation)
         {
             MCameraControl();
-        }
-        //_human = new test.Human(Type.CharacterType.Player);
+        }*/
     }
 
 
@@ -72,9 +54,9 @@ public class CharMove : MonoBehaviour
     private void FixedUpdate()
     {
         Vector2 move = MGetMoveValueForPlayer(_type.ToString());
-        Vector3 camForward = headRig.transform.forward;
+        Vector3 camForward = Camera.transform.forward;
         camForward.y = 0;
-        transform.position += (camForward * move.y + headRig.transform.right * move.x) * Speed;
+        transform.position += (camForward * move.y + Camera.transform.right * move.x) * Speed;
     }
 
     public Vector2 MGetMoveValueForPlayer(string playerName)
@@ -91,7 +73,7 @@ public class CharMove : MonoBehaviour
         return Vector2.zero; // Default value
     }
     //カメラのコントロール
-    private void MCameraControl()
+    /*private void MCameraControl()
     {
         Vector2 look = MGetLookValueForPlayer(_type.ToString());
         float camX = look.x * camSens;
@@ -104,9 +86,9 @@ public class CharMove : MonoBehaviour
 
         Camera.transform.localRotation = cameraRot;
         transform.localRotation = characterRot;
-    }
+    }*/
 
-    public Vector2 MGetLookValueForPlayer(string playerName)
+    /*public Vector2 MGetLookValueForPlayer(string playerName)
     {
         InputActionMap actionMap = _ghostReamer.asset.FindActionMap(playerName);
         if (actionMap != null)
@@ -118,10 +100,10 @@ public class CharMove : MonoBehaviour
             }
         }
         return Vector2.zero; // Default value
-    }
+    }*/
 
     //カメラの感度
-    public Quaternion MClampRotation(Quaternion q)
+    /*public Quaternion MClampRotation(Quaternion q)
     {
         q.x /= q.w;
         q.y /= q.w;
@@ -134,7 +116,7 @@ public class CharMove : MonoBehaviour
         q.x = Mathf.Tan(angleX * Mathf.Deg2Rad * 0.5f);
 
         return q;
-    }
+    }*/
     public void MUpdateCursorLock()
     {
         if (MGetCursorLockValueForPlayer(_type.ToString()))
@@ -169,8 +151,8 @@ public class CharMove : MonoBehaviour
         return false; // Default value
     }
 
-    public void SetIsAnimation(bool value)
+    /*public void SetIsAnimation(bool value)
     {
         isAnimation = value;
-    }
+    }*/
 }
