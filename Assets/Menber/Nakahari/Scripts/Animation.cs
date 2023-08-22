@@ -9,14 +9,24 @@
 //    [SerializeField]
 //    private Type.CharacterType _type = Type.CharacterType.Ghost1;
 
+<<<<<<< HEAD
 //    Re_Ghostreamer re_Ghostreamer;
 //    Vector2 move;
 //    private Animator animator;
 //    [SerializeField]
 //    private int animationNow = 0;
+=======
+    Re_Ghostreamer re_Ghostreamer;
+    Vector2 move;
+    private Animator animator;
+
+    [SerializeField]
+    private int animationNow = 0;
+>>>>>>> feature/Nakahari
 
 //    CharMove _charMove;
 
+<<<<<<< HEAD
 //    [SerializeField]
 //    private bool inputon = false;
 
@@ -42,6 +52,29 @@
 //        //MMoveAnima();
 //        MGhAttackAnima();
 //    }
+=======
+    // Start is called before the first frame update
+    void Start()
+    {
+        re_Ghostreamer = new Re_Ghostreamer();
+        re_Ghostreamer.Enable();
+        if (_charMove == null)
+        {
+            _charMove = GetComponent<CharMove>();
+        }
+        if(animator == null)
+        {
+            animator = GetComponent<Animator>();
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        move = _charMove.MGetMoveValueForPlayer(_type.ToString());
+        MMoveAnima();
+    }
+>>>>>>> feature/Nakahari
 
 
 
@@ -99,6 +132,7 @@
 //    #endregion
 
 
+<<<<<<< HEAD
 //    #region Ghostのアニメーション
 //    public void MGhAttackAnima()
 //    {
@@ -113,6 +147,17 @@
 //                _charMove.SetIsAnimation(false);
 //            }
 //    }
+=======
+    #region Ghostのアニメーション
+    public void MGhAttackAnima()
+    {
+        if (animationNow != 5)
+        {
+            animationNow = 5;
+            animator.SetTrigger("Attack");
+        }
+    }
+>>>>>>> feature/Nakahari
 
 //    public void MGhFogAnima()
 //    {
@@ -133,4 +178,9 @@
 //    }
 //    #endregion
 
+<<<<<<< HEAD
 //}
+=======
+
+}
+>>>>>>> feature/Nakahari
