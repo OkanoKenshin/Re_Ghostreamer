@@ -27,22 +27,22 @@ public class CamCon : MonoBehaviour
     }
     private void Update()
     {
-        CameraControll();
+        //CameraControll();
         
     }
 
-    private void CameraControll()
-    {
-        var look = _ghostReamer.Ghost1.Look.ReadValue<Vector2>();
-        float rotationX = transform.localEulerAngles.y + look.x * sensitivityX;
-        rotationY += look.y * sensitivityY;
-        rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
+    //private void CameraControll()
+    //{
+    //    var look = _ghostReamer.Ghost1.Look.ReadValue<Vector2>();
+    //    float rotationX = transform.localEulerAngles.y + look.x * sensitivityX;
+    //    rotationY += look.y * sensitivityY;
+    //    rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
 
-        transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
-        playerTransform.eulerAngles = new Vector3(0, rotationX, 0);
+    //    transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
+    //    playerTransform.eulerAngles = new Vector3(0, rotationX, 0);
 
-        this.transform.position = camPos.transform.position;
+    //    this.transform.position = camPos.transform.position;
 
-        characterModel.localEulerAngles = new Vector3(0, playerTransform.eulerAngles.y, 0);
-    }
+    //    characterModel.localEulerAngles = new Vector3(0, playerTransform.eulerAngles.y, 0);
+    //}
 }
