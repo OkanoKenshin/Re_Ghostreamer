@@ -9,7 +9,7 @@ public class GameStateManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SetState(new TilelState());
+        SetState(new DevicePairingState());
     }
 
    public void SetState(IGameSceneState newState)

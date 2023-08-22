@@ -2,20 +2,38 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.InputSystem.Users;
 
 
 public class AssociateWithInputUser : MonoBehaviour
 {
+    [SerializeField]
+    private int maxDevices;
     public InputActionAsset actionAsset;
     InputActionMap actionMap;
+  
 
     Dictionary<InputUser, UserData> userMapping = new Dictionary<InputUser, UserData>();
-
     public static AssociateWithInputUser Instance { get; private set; }
-
-    void Awake()
+    private void Awake()
     {
+        foreach (var device in InputSystem.devices)
+        {
+            Debug.Log(device.name);
+        }
+
+        foreach (var user in InputUser.all)
+        {
+            Debug.Log("User: " + user.index);
+            foreach (var device in user.pairedDevices)
+            {
+                Debug.Log("  Device: " + device.name);
+            }
+        }
+
+
+
         // シングルトンの実装部分
         if (Instance == null)
         {
@@ -28,26 +46,45 @@ public class AssociateWithInputUser : MonoBehaviour
             return;
         }
 
-        InputUser.onChange += OnUserChange;
+        InputSystem.onEvent += OnInputEvent;
         actionMap = actionAsset.FindActionMap("Player");
     }
 
-    void OnUserChange(InputUser user, InputUserChange change, InputDevice device)
+    void OnInputEvent(InputEventPtr eventPtr, InputDevice device)
     {
-        // 新しいInputUserがペアリングされた場合
-        if (change == InputUserChange.DevicePaired)
+        if (eventPtr.IsA<StateEvent>() || eventPtr.IsA<DeltaStateEvent>())
         {
-            Debug.Log("コントローラのボタンを押してください");
-            // 本来はここで上記文言が書かれた画像を表示する。
+            int currentPaieredDevices = InputUser.all.Count;
 
-            // 利用可能なDisplayがある場合、ペアリングを行う
-            int availableDisplayIndex = FindAvailableDisplay();
-            if (availableDisplayIndex != -1)
+            if(currentPaieredDevices < maxDevices)
             {
-                userMapping[user] = new UserData { display = Display.displays[availableDisplayIndex] };
-                Debug.Log("ペアリング完了！");
+                InputUser.PerformPairingWithDevice(device);
+
+            }
+            else
+            {
+                Debug.Log("デバイスの接続制限に達しました。新しいデバイスはペアリングされません。");
             }
         }
+        // 新しいInputUserがペアリングされた場合
+        //if (change == InputUserChange.DevicePaired)
+        //{
+        //    Debug.Log("コントローラのボタンを押してください");
+
+        //    int availableDisplayIndex = FindAvailableDisplay();
+        //    // 利用可能なDisplayがある場合、ペアリングを行う
+
+        //    // if (availableDisplayIndex != -1)
+        //    {
+        //        Vector3 spwanPosition = new Vector3(0,0,0);
+        //        Quaternion spwanRotation = Quaternion.identity;
+        //        GameObject pleasePressButton = ObjectPool.Instance.SpawnFromPool("DevicePairing", spwanPosition, spwanRotation);
+
+        //        userMapping[user] = new UserData { display = Display.displays[availableDisplayIndex] };
+        //        user.AssociateActionsWithUser(actionMap);
+        //        Debug.Log("ペアリング完了！");
+        //    }
+        //}
     }
 
     int FindAvailableDisplay()
