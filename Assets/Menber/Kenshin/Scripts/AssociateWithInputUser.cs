@@ -1,102 +1,285 @@
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
+using System.Linq;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.InputSystem.Users;
-
+using System.Collections;
+using JetBrains.Annotations;
 
 public class AssociateWithInputUser : MonoBehaviour
 {
-    [SerializeField]
-    private int maxDevices;
     public InputActionAsset actionAsset;
     InputActionMap actionMap;
-  
+   
+    UserDataVault _userDataVault;
 
-    Dictionary<InputUser, UserData> userMapping = new Dictionary<InputUser, UserData>();
-    public static AssociateWithInputUser Instance { get; private set; }
-    private void Awake()
+    private string objectTag = "WaitPlease";
+    private Vector3 spawnPosition = Vector3.zero;
+    private Quaternion spawnRotation = Quaternion.identity;
+    GameObject waitPleaseImage;
+    GameObject devicePairingImage;
+    GameObject pairingCompletedImage;
+    Display currentDisplay;
+
+    private int numOfDisplay = 4;
+    // 表示Displayの枚数
+    void Start()
     {
-        foreach (var device in InputSystem.devices)
-        {
-            Debug.Log(device.name);
-        }
+        StartCoroutine(InitializeUserDataVault());
 
-        foreach (var user in InputUser.all)
-        {
-            Debug.Log("User: " + user.index);
-            foreach (var device in user.pairedDevices)
-            {
-                Debug.Log("  Device: " + device.name);
-            }
-        }
-
-
-
-        // シングルトンの実装部分
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        InputSystem.onEvent += OnInputEvent;
         actionMap = actionAsset.FindActionMap("Player");
     }
-
-    void OnInputEvent(InputEventPtr eventPtr, InputDevice device)
+    IEnumerator InitializeUserDataVault()
     {
-        if (eventPtr.IsA<StateEvent>() || eventPtr.IsA<DeltaStateEvent>())
+        yield return new WaitForSeconds(0.1f); // 0.1秒待つ
+        _userDataVault = UserDataVault.Instance;
+    }
+    public void MWaitPlease()
+    {
+        #region 初期状態として全ディスプレイに入力しないで待つように指示する画像を出す。
+        for (int count = 0; count < numOfDisplay; count++)
         {
-            int currentPaieredDevices = InputUser.all.Count;
-
-            if(currentPaieredDevices < maxDevices)
+            if (count == 0)
             {
-                InputUser.PerformPairingWithDevice(device);
-
+                int firstDisplay = 0;
+                devicePairingImage = ObjectPool.Instance.SpawnFromPool("DevicePairing", spawnPosition, spawnRotation);
+                Canvas display2Project = devicePairingImage.GetComponent<Canvas>();
+                display2Project.targetDisplay = firstDisplay;
             }
             else
             {
-                Debug.Log("デバイスの接続制限に達しました。新しいデバイスはペアリングされません。");
+                waitPleaseImage = ObjectPool.Instance.SpawnFromPool(objectTag, spawnPosition, spawnRotation);
+                Canvas display2Project = waitPleaseImage.GetComponent<Canvas>();
+                display2Project.targetDisplay = count;
             }
         }
-        // 新しいInputUserがペアリングされた場合
-        //if (change == InputUserChange.DevicePaired)
-        //{
-        //    Debug.Log("コントローラのボタンを押してください");
-
-        //    int availableDisplayIndex = FindAvailableDisplay();
-        //    // 利用可能なDisplayがある場合、ペアリングを行う
-
-        //    // if (availableDisplayIndex != -1)
-        //    {
-        //        Vector3 spwanPosition = new Vector3(0,0,0);
-        //        Quaternion spwanRotation = Quaternion.identity;
-        //        GameObject pleasePressButton = ObjectPool.Instance.SpawnFromPool("DevicePairing", spwanPosition, spwanRotation);
-
-        //        userMapping[user] = new UserData { display = Display.displays[availableDisplayIndex] };
-        //        user.AssociateActionsWithUser(actionMap);
-        //        Debug.Log("ペアリング完了！");
-        //    }
-        //}
+        #endregion
     }
 
-    int FindAvailableDisplay()
+    public void OnDevicePair2Display(InputEventPtr eventPtr, InputDevice device)
     {
-        for (int i = 0; i < Display.displays.Length; i++)
+        
+        Debug.Log("OnDevicePair2Display called with device: " + device.name);
+        var buttonControl = eventPtr.GetFirstButtonPressOrNull();
+        // ボタン入力を検知
+        #region 入力したDeviceとInputUserの取得
+        if (buttonControl != null)
+            // もしボタンが押されたら…
+           
         {
-            if (!userMapping.Values.Any(data => data.display == Display.displays[i]))
+            for (int displayCount = 0; displayCount < Display.displays.Length; displayCount++)
             {
-                return i;
+                InputUser getedUser = default;
+
+                foreach(var user in InputUser.all)
+                {
+                    foreach (var pairedDevice in user.pairedDevices)
+                    {
+                        Debug.Log("ユーザー" +user.index+ "とペアのデバイスは" + pairedDevice.name);
+
+                    }
+                }
+                
+
+                InputDevice targetDevice = device;
+                // 引数で受け取ったDevice情報
+
+                getedUser = GetUserPairedToDevice(targetDevice);
+
+                if (!getedUser.valid)
+                {
+                    Debug.LogError("Invalid InputUser");
+                    return;
+                }
+
+                InputUser firstUser;
+                InputUser secondUser;
+                InputUser thirdUser;
+                InputUser fourthUser;
+                                              
+                // 入力を行ったDeviceと紐づいたUserを取得してgetedUserに格納
+                {
+                    switch (displayCount)
+                    {
+                        case 0:
+                            firstUser = getedUser;
+                            #region Nullチェック
+                            if (_userDataVault == null)
+                            {
+                                _userDataVault = UserDataVault.Instance;
+                                if (_userDataVault == null)
+                                {
+                                    Debug.LogError("_userDataVault is still null after trying to initialize");
+                                    return;
+                                }
+                            }
+                            #endregion
+
+                            if (!_userDataVault.userMapping.ContainsKey(firstUser))
+                            {
+                                _userDataVault.userMapping.Add(firstUser, new UserData());
+                            }
+
+                            MDisplayPairing(firstUser, displayCount);
+                            break;
+
+                        case 1:
+                           secondUser = getedUser;
+                            #region Nullチェック
+                            if (_userDataVault == null)
+                            {
+                                _userDataVault = UserDataVault.Instance;
+                                if (_userDataVault == null)
+                                {
+                                    Debug.LogError("_userDataVault is still null after trying to initialize");
+                                    return;
+                                }
+                            }
+                            #endregion
+
+                            if (!_userDataVault.userMapping.ContainsKey(secondUser))
+                            {
+                                _userDataVault.userMapping.Add(secondUser, new UserData());
+                            }
+                            MDisplayPairing(secondUser, displayCount);
+
+                            break;
+
+                        case 2:
+                            thirdUser = getedUser;
+                            #region Nullチェック
+                            if (_userDataVault == null)
+                            {
+                                _userDataVault = UserDataVault.Instance;
+                                if (_userDataVault == null)
+                                {
+                                    Debug.LogError("_userDataVault is still null after trying to initialize");
+                                    return;
+                                }
+                            }
+                            #endregion
+
+                            if (!_userDataVault.userMapping.ContainsKey(thirdUser))
+                            {
+                                _userDataVault.userMapping.Add(thirdUser, new UserData());
+                            }
+                            MDisplayPairing(thirdUser, displayCount);
+                            break;
+
+                        case 3:
+                            fourthUser = getedUser;
+                            #region Nullチェック
+                            if (_userDataVault == null)
+                            {
+                                _userDataVault = UserDataVault.Instance;
+                                if (_userDataVault == null)
+                                {
+                                    Debug.LogError("_userDataVault is still null after trying to initialize");
+                                    return;
+                                }
+                            }
+                            #endregion
+
+                            if (!_userDataVault.userMapping.ContainsKey(fourthUser))
+                            {
+                                _userDataVault.userMapping.Add(fourthUser, new UserData());
+                            }
+
+                            MDisplayPairing(fourthUser, displayCount);
+                            break;
+
+                        default:
+                            Debug.LogError("これ以上のデバイス追加は不可能です。");
+                            break;
+                    }
+                    //}
+                }
+                #endregion
+
+                //#region Display登録が無いUserにDisplayを若い順で紐づけ
+                //InputUser currentUser = getedUser;
+
+                //    Debug.Log(device + "から入力を受けた！");
+                //    #region 76行目で発生したヌルポの対策
+                //    if (_userDataVault == null || _userDataVault.userMapping == null)
+                //    {
+                //        _userDataVault = UserDataVault.Instance;
+                //        if (_userDataVault == null)
+                //        {
+                //            Debug.LogError("_userDataVault が null です");
+                //        }
+                //        return;
+                //    }
+                //    #endregion
+                //    //for (int displayCount = 0; displayCount < Display.displays.Length; displayCount++)
+                //    //{
+                //    //switch (currentUser)
+                //    //{
+                //    //    case :
+                //    //    break;
+                //    //}
+                //    //MDisplayPairing(currentUser, displayCount);
+
+                //    //}
+
+                //#endregion
             }
         }
-        return -1; // 利用可能なDisplayがない場合
+    }
+
+
+    public void MDisplayPairing(InputUser userName,int displayNum)
+    {
+        if (_userDataVault.userMapping.TryGetValue(userName, out UserData userData))
+        {
+            currentDisplay = userData.display;
+            if (currentDisplay == null)
+            {
+                #region DictionaryのDisplay情報を上書き
+                userData.display = Display.displays[displayNum];
+                _userDataVault.userMapping[userName] = userData;
+                MDisplay2Project(displayNum, "PairingCompleted", objectName: pairingCompletedImage);
+                #endregion
+
+                #region 次のDisplayにボタンを押してと表示
+                int nextDisplay = displayNum + 1;
+                devicePairingImage = ObjectPool.Instance.SpawnFromPool("DevicePairing", spawnPosition, spawnRotation);
+                Canvas display2Project = devicePairingImage.GetComponent<Canvas>();
+                display2Project.targetDisplay = nextDisplay;
+                #endregion
+                Debug.Log(displayNum + "ペアリング完了");
+            }
+        }
+    }
+    public void MDisplay2Project(int displayNum,string objectTagName,GameObject objectName)
+    {
+        #region  
+            objectName = ObjectPool.Instance.SpawnFromPool(objectTagName, spawnPosition, spawnRotation);
+            Canvas display2Project = objectName.GetComponent<Canvas>();
+            display2Project.targetDisplay = displayNum;
+        #endregion
+    }
+
+    public InputUser GetUserPairedToDevice(InputDevice targetDevice)
+    {
+        foreach (var user in InputUser.all)
+        {
+            if (user.pairedDevices.Contains(targetDevice))
+            {
+                return user;
+            }
+
+        }
+        return default; // ペアリングされているユーザーが見つからなかった場合
+
     }
 
 }
+
+//for (int count = 0; count < numOfDisplay; count++)
+//{
+//    if (waitPleaseImage != null)
+//    {
+//        waitPleaseImage.SetActive(false);
+//    }
+//}
