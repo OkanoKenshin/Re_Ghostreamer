@@ -1,29 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class DevicePairingState : IGameSceneState
 {
-    public string objectTag = "DevicePairing";
-    public Vector3 spawnPosition = Vector3.zero;
-    public Quaternion spawnRotation = Quaternion.identity;
-    private GameObject devicePaiering;
+    AssociateWithInputUser _associateWithInputUser = new AssociateWithInputUser();
+
     public void HandleInput(InputAction.CallbackContext context)
     {
 
     }
     public void EnterState()
     {
-        devicePaiering = ObjectPool.Instance.SpawnFromPool(objectTag, spawnPosition, spawnRotation);
-
+        _associateWithInputUser.MWaitPlease();
+        InputSystem.onEvent += _associateWithInputUser.OnDevicePair2Display;
     }
 
     public void ExitState()
     {
-        if (devicePaiering != null)
-        {
-            devicePaiering.SetActive(false);
-        }
+        InputSystem.onEvent -= _associateWithInputUser.OnDevicePair2Display;
+
     }
 }
