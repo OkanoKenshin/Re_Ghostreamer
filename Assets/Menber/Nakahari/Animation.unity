@@ -464,9 +464,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2467407868734008809, guid: 18284d6b930be29488ed7f720bc59543, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2467407868734008810, guid: 18284d6b930be29488ed7f720bc59543, type: 3}
       propertyPath: m_Name
       value: InputSystemManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2467407868734008810, guid: 18284d6b930be29488ed7f720bc59543, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18284d6b930be29488ed7f720bc59543, type: 3}
