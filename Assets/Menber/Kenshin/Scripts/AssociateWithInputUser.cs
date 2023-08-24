@@ -61,13 +61,14 @@ public class AssociateWithInputUser : MonoBehaviour
         
         Debug.Log("OnDevicePair2Display called with device: " + device.name);
         var buttonControl = eventPtr.GetFirstButtonPressOrNull();
+        int usercount = 4;
         // ボタン入力を検知
         #region 入力したDeviceとInputUserの取得
         if (buttonControl != null)
             // もしボタンが押されたら…
            
         {
-            for (int displayCount = 0; displayCount < Display.displays.Length; displayCount++)
+            for (int displayCount = 0; displayCount < usercount; displayCount++)
             {
                 InputUser getedUser = default;
 

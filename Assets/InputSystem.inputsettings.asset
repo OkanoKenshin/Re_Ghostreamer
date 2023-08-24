@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: InputSystem.inputsettings
   m_EditorClassIdentifier: 
   m_SupportedDevices:
-  - Gamepad
-  - XInputController
+  - 'HID::HORI CO.,LTD. HORIPAD 4 '
+  - DualShockGamepad
   m_UpdateMode: 2
   m_MaxEventBytesPerUpdate: 5242880
   m_MaxQueuedEventsPerUpdate: 1000
