@@ -2,53 +2,43 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-
+using UnityEngine.InputSystem;
 
 public class Animation : MonoBehaviour
 {
-    [SerializeField]
-    private Type.CharacterType _type = Type.CharacterType.Ghost1;
-
-    Re_Ghostreamer re_Ghostreamer;
     Vector2 move;
+
     private Animator animator;
+
+    private CharMove _charMove;
 
     [SerializeField]
     private int animationNow = 0;
 
-    CharMove _charMove;
-
-    // Start is called before the first frame update
     void Start()
     {
-        re_Ghostreamer = new Re_Ghostreamer();
-        re_Ghostreamer.Enable();
-        if (_charMove == null)
+
+        if(_charMove == null)
         {
             _charMove = GetComponent<CharMove>();
         }
-        if(animator == null)
+        if (animator == null)
         {
             animator = GetComponent<Animator>();
         }
     }
-
-    // Update is called once per frame
     void Update()
     {
-        move = _charMove.MGetMoveValueForPlayer(_type.ToString());
-        MMoveAnima();
+        move = _charMove.move;
     }
-
-
 
     public void MMoveAnima()
     {
-        if(move.x != 0 || move.y != 0)
+        if (move.x != 0 || move.y != 0)
         {
-            animator.SetFloat("X",move.x);
+            animator.SetFloat("X", move.x);
             animator.SetFloat("Z", move.y);
-            if(animationNow != 1)
+            if (animationNow != 1)
             {
                 animationNow = 1;
                 animator.SetTrigger("Move");
@@ -56,17 +46,18 @@ public class Animation : MonoBehaviour
         }
         else
         {
-            if(animationNow != 0)
+            if (animationNow != 0)
             {
                 animationNow = 0;
                 animator.SetTrigger("Idol");
             }
         }
     }
+
     #region Streamerのアニメーション
     public void MStSprintAnima()
     {
-        if(animationNow != 2)
+        if (animationNow != 2)
         {
             animationNow = 2;
             animator.SetTrigger("Sprint");
@@ -75,26 +66,25 @@ public class Animation : MonoBehaviour
 
     public void MStStaminaAnima()
     {
-        if(animationNow != 3)
+        if (animationNow != 3)
         {
             animationNow = 3;
             animator.SetTrigger("Stamina");
         }
-        
+
     }
 
     public void MStHoldAnima()
     {
-        if(animationNow != 4)
+        if (animationNow != 4)
         {
             animationNow = 4;
             animator.SetTrigger("Hold");
         }
-       
+
     }
 
     #endregion
-
 
     #region Ghostのアニメーション
     public void MGhAttackAnima()
@@ -105,7 +95,6 @@ public class Animation : MonoBehaviour
             animator.SetTrigger("Attack");
         }
     }
-
     public void MGhFogAnima()
     {
         if (animationNow != 6)
@@ -117,13 +106,29 @@ public class Animation : MonoBehaviour
 
     public void MGhSearchAnima()
     {
-        if( animationNow != 7)
+        if (animationNow != 7)
         {
             animationNow = 7;
             animator.SetTrigger("Search");
         }
     }
+
+    public void MGhHeavyAttackAnima()
+    {
+        if(animationNow != 8)
+        {
+            animationNow = 8;
+            animator.SetTrigger("HeavyAttack");
+        }
+    }
     #endregion
 
-
 }
+
+
+
+
+
+
+
+

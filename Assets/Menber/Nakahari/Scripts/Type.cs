@@ -3,7 +3,6 @@ using System.Numerics;
 
 public class Type
 {
-    private readonly CharMove charMove;
     public enum CharacterType
     {
         Ghost1,

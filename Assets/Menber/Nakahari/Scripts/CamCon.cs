@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CamCon : MonoBehaviour
 {
@@ -19,21 +20,25 @@ public class CamCon : MonoBehaviour
 
     private Re_Ghostreamer _ghostReamer;
 
+    [SerializeField]
+    private CharMove _charMove;
 
-    private void Start()
+    Vector2 look;
+
+    void Start()
     {
         _ghostReamer = new Re_Ghostreamer();
         _ghostReamer.Enable();
     }
-    private void Update()
+    void Update()
     {
         CameraControll();
-        
+        look = _charMove.look;
     }
 
+    
     private void CameraControll()
     {
-        var look = _ghostReamer.Ghost1.Look.ReadValue<Vector2>();
         float rotationX = transform.localEulerAngles.y + look.x * sensitivityX;
         rotationY += look.y * sensitivityY;
         rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
