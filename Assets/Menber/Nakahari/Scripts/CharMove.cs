@@ -10,14 +10,13 @@ public class CharMove : MonoBehaviour
     private Rigidbody rb;
 
     [SerializeField]
-    float Speed = 5.0f;
+    public float Speed = 5.0f;
 
     public Vector2 move, look;
 
-    bool cursor,attack,ability;
+    float cursor,attack,ability,dash;
 
-    CharaSelect charaSelect;
-
+    bool _attack, _ability, _dash;
     bool cursorLock = true;
 
     public bool isAnimation;
@@ -31,11 +30,6 @@ public class CharMove : MonoBehaviour
     {
         _ghostReamer = new Re_Ghostreamer();
         _ghostReamer.Enable();
-
-        if (charaSelect == null)
-        {
-            charaSelect = GetComponent<CharaSelect>();
-        }
         if(_animation == null)
         {
             _animation = GetComponent<Animation>();
@@ -47,14 +41,16 @@ public class CharMove : MonoBehaviour
         MUpdateCursorLock();
         Attack();
         Ability();
+        Dash();
         
     }
 
     public void OnMove(InputAction.CallbackContext ctx) => move = ctx.ReadValue<Vector2>();
     public void OnCamera(InputAction.CallbackContext ctx) => look = ctx.ReadValue<Vector2>();
-    public void OnAttack(InputAction.CallbackContext ctx) => attack = ctx.ReadValue<bool>();
-    public void OnAbility(InputAction.CallbackContext ctx) => ability = ctx.ReadValue<bool>();
-    public void OnCursor(InputAction.CallbackContext ctx) => cursor = ctx.ReadValue<bool>();
+    public void OnAttack(InputAction.CallbackContext ctx) => attack = ctx.ReadValue<float>();
+    public void OnAbility(InputAction.CallbackContext ctx) => ability = ctx.ReadValue<float>();
+    public void OnCursor(InputAction.CallbackContext ctx) => cursor = ctx.ReadValue<float>();
+    public void OnDash(InputAction.CallbackContext ctx) => dash = ctx.ReadValue<float>();
 
 
     // ÉJÉÅÉâÇÃå¸Ç´Çê≥ñ Ç…ÇµÇƒìÆÇ≠
@@ -68,7 +64,7 @@ public class CharMove : MonoBehaviour
     
     public void MUpdateCursorLock()
     {
-        if (cursor)
+        if (cursor == 1)
         {
             cursorLock = false;
         }
@@ -89,7 +85,16 @@ public class CharMove : MonoBehaviour
 
     public void Attack()
     {
-        if(attack)
+        if(attack == 1)
+        {
+            _attack = true;
+        }
+        else
+        {
+            _attack = false;
+        }
+
+        if (_attack)
         {
             _animation.MGhAttackAnima();
         }
@@ -97,9 +102,31 @@ public class CharMove : MonoBehaviour
 
     public void Ability()
     {
-        if (ability)
+        if (ability == 1)
+        {
+            _ability = true;
+        }
+        else
+        {
+            _ability = false;
+        }
+
+        if (_ability)
         {
             _animation.MGhHeavyAttackAnima();
+        }
+    }
+
+    public void Dash()
+    {
+        if(dash == 1)
+        {
+            Speed = 0.3f;
+            _animation.MStSprintAnima();
+        }
+        else
+        {
+            //Speed = 0.1f;
         }
     }
     

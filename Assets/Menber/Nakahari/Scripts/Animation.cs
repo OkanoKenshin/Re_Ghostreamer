@@ -48,6 +48,7 @@ public class Animation : MonoBehaviour
         {
             if (animationNow != 0)
             {
+                _charMove.Speed = 0.1f;
                 animationNow = 0;
                 animator.SetTrigger("Idol");
             }
