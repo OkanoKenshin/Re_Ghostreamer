@@ -74,6 +74,8 @@ public class HeatGaugeControl : MonoBehaviour
 
             {
                 _centerOfLightData.heatGauge += heatGaugeIncrease;
+                // _lightStateControl.StartCoroutine("MLightSettingTransition");
+                _lightStateControl.MLaserDisabeled2Active();
                 // ヒートゲージを毎処理指定された減少量でインクリメント
             }
         }

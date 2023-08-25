@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class LightStateControl : MonoBehaviour
@@ -28,6 +29,8 @@ public class LightStateControl : MonoBehaviour
     public float lightAngle;
     public float lightIntensity;
     public float lightRange;
+
+    public bool heatStart = false;
 
     // CenterOfLightData の参照取得
     [SerializeField]
@@ -81,6 +84,7 @@ public class LightStateControl : MonoBehaviour
 
     public IEnumerator MLightSettingTransition
     (
+        
         float angleToChange, float angleBeforeChange, float angleAfterChange,
         float intensityToChange, float intensityBeforeChange, float intensityAfterChange,
         float rangeToChange, float rangeBeforeChange, float rangeAfterChange,
@@ -88,23 +92,23 @@ public class LightStateControl : MonoBehaviour
     )
 
     {
-        float startPointOfLightSettingTransition = Time.time;
-        // このCoroutineがスタートしたゲーム内経過時間のタイムスタンプ
-        // Time.timeはゲームがスタートからの経過時間のプロパティ
+            float startPointOfLightSettingTransition = Time.time;
+            // このCoroutineがスタートしたゲーム内経過時間のタイムスタンプ
+            // Time.timeはゲームがスタートからの経過時間のプロパティ
 
-        while (Time.time - startPointOfLightSettingTransition < transitionTime)
-        {
-            float interpolationFactor = ((Time.time - startPointOfLightSettingTransition) / transitionTime);
+            while (Time.time - startPointOfLightSettingTransition < transitionTime)
+            {
+                float interpolationFactor = ((Time.time - startPointOfLightSettingTransition) / transitionTime);
 
-            angleToChange = Mathf.Lerp(angleBeforeChange, angleAfterChange, interpolationFactor);
-            intensityToChange = Mathf.Lerp(intensityBeforeChange, intensityAfterChange, interpolationFactor);
-            rangeToChange = Mathf.Lerp(rangeBeforeChange, rangeAfterChange, interpolationFactor);
-            yield return null;
-        }
+                angleToChange = Mathf.Lerp(angleBeforeChange, angleAfterChange, interpolationFactor);
+                intensityToChange = Mathf.Lerp(intensityBeforeChange, intensityAfterChange, interpolationFactor);
+                rangeToChange = Mathf.Lerp(rangeBeforeChange, rangeAfterChange, interpolationFactor);
+                yield return null;
+            }
 
-        angleToChange = angleAfterChange;
-        intensityToChange = intensityAfterChange;
-        rangeToChange = rangeAfterChange;
+            angleToChange = angleAfterChange;
+            intensityToChange = intensityAfterChange;
+            rangeToChange = rangeAfterChange;
     }
 
     #region オバヒ発生時に走るライト弱化メソッド
@@ -144,6 +148,51 @@ public class LightStateControl : MonoBehaviour
           base2LowTransitionTime
         ));
         _centerOfLightData.valueOfLaserLightRange = lightSource.range;
+    }
+    #endregion
+
+    #region Laserモードから通常モードへの復帰メソッド
+    public void MSub2Basic()
+    {
+
+        StartCoroutine(MLightSettingTransition
+        (
+          lightAngle, subLightAngle, baseLightAngle,
+          lightIntensity, subLightIntensity, baseLightIntensity,
+          lightRange, subLightRange, baseLightRange,
+          base2LowTransitionTime
+        )
+        );
+    }
+    #endregion
+
+    #region Laser用ライトの有効化＆ライトをフェードインさせるように起動
+    public void MLaserDisabeled2Active()
+    {
+        laserLightSource.enabled = true;
+        StartCoroutine(MLightSettingTransition
+        (
+          laserAngle, whenOffLaserLightAngle, laserLightAngle,
+          laserIntensity, whenOffLaserLightIntensity, laserLightIntensity,
+          laserRange, whenOffLaserLightRange, laserLightRange,
+          base2LowTransitionTime
+        )
+        );
+    }
+    #endregion
+
+    #region ライトをフェードアウトさせるように停止＆Laser用ライトの無効化
+    public void MLaserActive2Disabeled()
+    {
+        StartCoroutine(MLightSettingTransition
+        (
+          laserAngle, laserLightAngle, whenOffLaserLightAngle,
+          laserIntensity, laserLightIntensity, whenOffLaserLightIntensity,
+          laserRange, laserLightRange, whenOffLaserLightRange,
+          base2LowTransitionTime
+        )
+        );
+        laserLightSource.enabled = false;
     }
     #endregion
 }
