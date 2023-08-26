@@ -12,7 +12,7 @@ public class GhAttackActionIntervalContorol : MonoBehaviour
 
     private bool ghCanAttack = true;
 
-    private bool InputOn = false;
+    private bool InputOn = true;
     // Start is called before the first frame update
     void Start()
     {

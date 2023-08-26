@@ -689,7 +689,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ff7507efd961c54d8aae85c51ba4c84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ghAttackInterval: 0
+  ghAttackInterval: 5
   _attackHitDetection: {fileID: 1277891114}
 --- !u!4 &1277891116
 Transform:

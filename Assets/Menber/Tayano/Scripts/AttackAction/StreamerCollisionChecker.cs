@@ -115,7 +115,6 @@ public class StreamerCollisionChecker : MonoBehaviour
                 if (layerWithStreamer == layerToHit)
                 //ƒqƒbƒg‚µ‚½‘ÎÛ‚ªStreamer‚©”»’è
                 {
-                    _attackHitDetection.MAttackHitDetection();
                     _attackHitDetection.attackHitTheStreamer = true;
                 }
                 break;
