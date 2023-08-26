@@ -44,7 +44,7 @@ public class Animation : MonoBehaviour
                 animator.SetTrigger("Move");
             }
         }
-        else
+        /*else
         {
             if (animationNow != 0)
             {
@@ -52,7 +52,7 @@ public class Animation : MonoBehaviour
                 animationNow = 0;
                 animator.SetTrigger("Idol");
             }
-        }
+        }*/
     }
 
     #region Streamerのアニメーション

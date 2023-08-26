@@ -87,15 +87,6 @@ public class CharMove : MonoBehaviour
     {
         if(attack == 1)
         {
-            _attack = true;
-        }
-        else
-        {
-            _attack = false;
-        }
-
-        if (_attack)
-        {
             _animation.MGhAttackAnima();
         }
     }
@@ -103,15 +94,6 @@ public class CharMove : MonoBehaviour
     public void Ability()
     {
         if (ability == 1)
-        {
-            _ability = true;
-        }
-        else
-        {
-            _ability = false;
-        }
-
-        if (_ability)
         {
             _animation.MGhHeavyAttackAnima();
         }
@@ -121,7 +103,7 @@ public class CharMove : MonoBehaviour
     {
         if(dash == 1)
         {
-            Speed = 0.3f;
+            Speed = 0.19f;
             _animation.MStSprintAnima();
         }
         else
