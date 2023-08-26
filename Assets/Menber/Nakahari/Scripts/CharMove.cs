@@ -41,7 +41,6 @@ public class CharMove : MonoBehaviour
         MUpdateCursorLock();
         Attack();
         Ability();
-        Dash();
         
     }
 
@@ -117,17 +116,6 @@ public class CharMove : MonoBehaviour
         }
     }
 
-    public void Dash()
-    {
-        if(dash == 1)
-        {
-            Speed = 0.3f;
-            _animation.MStSprintAnima();
-        }
-        else
-        {
-            //Speed = 0.1f;
-        }
-    }
+
     
 }
