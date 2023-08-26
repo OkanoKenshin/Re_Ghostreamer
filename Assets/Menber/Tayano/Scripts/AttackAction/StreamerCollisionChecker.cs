@@ -56,7 +56,7 @@ public class StreamerCollisionChecker : MonoBehaviour
         #region AttackHitDetectionのNullチェック
         if (AttachedAttackHitDetection != null)
         {
-            _attackHitDetection = GetComponent<AttackHitDetection>();
+            _attackHitDetection = AttachedAttackHitDetection.GetComponent<AttackHitDetection>();
             if (_attackHitDetection != null)
             {
                 Debug.Log("「AttackHitDetection」は正常に取得されています。");
@@ -115,6 +115,7 @@ public class StreamerCollisionChecker : MonoBehaviour
                 if (layerWithStreamer == layerToHit)
                 //ヒットした対象がStreamerか判定
                 {
+                    _attackHitDetection.MAttackHitDetection();
                     _attackHitDetection.attackHitTheStreamer = true;
                 }
                 break;

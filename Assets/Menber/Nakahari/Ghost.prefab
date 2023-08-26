@@ -526,38 +526,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!1 &7404233544529851905 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8537694849367409614, guid: aae580d62d8aa9e46877c5c6c3fb89f9, type: 3}
-  m_PrefabInstance: {fileID: 1205525538039510479}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1122659926355767380
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7404233544529851905}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a43dfdc9d547d649bd87d6010a1741a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GhAttackIntervalContorolObject: {fileID: 0}
-  AttachedAttackHitDetection: {fileID: 0}
---- !u!65 &7616654697910388795
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7404233544529851905}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.3, z: 0.1}
-  m_Center: {x: 0, y: 0.15, z: 0}
 --- !u!1 &9155782774869181365 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8049406954880530042, guid: aae580d62d8aa9e46877c5c6c3fb89f9, type: 3}

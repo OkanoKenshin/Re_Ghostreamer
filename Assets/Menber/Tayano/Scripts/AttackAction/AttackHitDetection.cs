@@ -9,10 +9,14 @@ public class AttackHitDetection :MonoBehaviour
     [SerializeField]
     public float ghAttackPower;
 
+    public GameObject _streamerhp;
     private Streamerhp streamerhp;
 
-    [SerializeField]
-    private float stHp;
+    private void Start()
+    {
+            streamerhp = _streamerhp.GetComponent<Streamerhp>();
+    }
+
     public void MAttackHitDetection()
     {
         if (attackHitTheStreamer == true)
