@@ -25,7 +25,7 @@ public class StreamerCollisionChecker : MonoBehaviour
     AttackHitDetection _attackHitDetection;
 
     /*
-    //"IdentifyTouchedObjects"の参照作成
+    "IdentifyTouchedObjects"の参照作成
     [SerializeField]
     GameObject AttachedIdentifyTouchedObjects;
     IdentifyTouchedObjects _identifyTouchedObjects;
@@ -56,7 +56,7 @@ public class StreamerCollisionChecker : MonoBehaviour
         #region AttackHitDetectionのNullチェック
         if (AttachedAttackHitDetection != null)
         {
-            _attackHitDetection = GetComponent<AttackHitDetection>();
+            _attackHitDetection = AttachedAttackHitDetection.GetComponent<AttackHitDetection>();
             if (_attackHitDetection != null)
             {
                 Debug.Log("「AttackHitDetection」は正常に取得されています。");
@@ -97,7 +97,7 @@ public class StreamerCollisionChecker : MonoBehaviour
     {
         
     }
-  /*  private void OnCollisionEnter(Collision hitInfo)
+   private void OnCollisionEnter(Collision hitInfo)
     //hit情報を"hitInfo"に格納
     {
         int layerToHit = hitInfo.gameObject.layer;
@@ -118,7 +118,7 @@ public class StreamerCollisionChecker : MonoBehaviour
                     _attackHitDetection.attackHitTheStreamer = true;
                 }
                 break;
-
+                /*
             case layerWithManipulativeObject:
                 //操作可能Objectにこのscriptがアタッチされている場合
                 if (layerWithStreamer == layerToHit)
@@ -127,7 +127,8 @@ public class StreamerCollisionChecker : MonoBehaviour
                     _identifyTouchedObjects.touchedObject = this.gameObject.tag;
                 }
                 break;
+                */
         }
-    }*/
+    }
 
 }
