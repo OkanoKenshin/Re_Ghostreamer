@@ -80,6 +80,27 @@ public partial class @Re_Ghostreamer: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+<<<<<<< HEAD
+=======
+                },
+                {
+                    ""name"": ""CursorLock"",
+                    ""type"": ""Button"",
+                    ""id"": ""ab33208f-2140-4c4d-9cad-f3dc42456d4d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""HeavyAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""7e3abba8-14e1-417e-8bb8-0ee6a752d9ab"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+>>>>>>> develop
                 }
             ],
             ""bindings"": [
@@ -379,6 +400,42 @@ public partial class @Re_Ghostreamer: IInputActionCollection2, IDisposable
                     ""action"": ""Ability"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+<<<<<<< HEAD
+=======
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1510e5de-0161-465e-8d60-263b28585b03"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""CursorLock"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b12bab67-a2bf-4dfe-a4d3-507418089d9b"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HeavyAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""64a59272-5929-4e23-a53e-78a3b8b2fc4b"",
+                    ""path"": ""<DualShockGamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HeavyAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+>>>>>>> develop
                 }
             ]
         },
@@ -970,6 +1027,11 @@ public partial class @Re_Ghostreamer: IInputActionCollection2, IDisposable
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_Ability = m_Player.FindAction("Ability", throwIfNotFound: true);
+<<<<<<< HEAD
+=======
+        m_Player_CursorLock = m_Player.FindAction("CursorLock", throwIfNotFound: true);
+        m_Player_HeavyAttack = m_Player.FindAction("HeavyAttack", throwIfNotFound: true);
+>>>>>>> develop
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1049,6 +1111,11 @@ public partial class @Re_Ghostreamer: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Attack;
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_Ability;
+<<<<<<< HEAD
+=======
+    private readonly InputAction m_Player_CursorLock;
+    private readonly InputAction m_Player_HeavyAttack;
+>>>>>>> develop
     public struct PlayerActions
     {
         private @Re_Ghostreamer m_Wrapper;
@@ -1059,6 +1126,11 @@ public partial class @Re_Ghostreamer: IInputActionCollection2, IDisposable
         public InputAction @Attack => m_Wrapper.m_Player_Attack;
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @Ability => m_Wrapper.m_Player_Ability;
+<<<<<<< HEAD
+=======
+        public InputAction @CursorLock => m_Wrapper.m_Player_CursorLock;
+        public InputAction @HeavyAttack => m_Wrapper.m_Player_HeavyAttack;
+>>>>>>> develop
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1086,6 +1158,15 @@ public partial class @Re_Ghostreamer: IInputActionCollection2, IDisposable
             @Ability.started += instance.OnAbility;
             @Ability.performed += instance.OnAbility;
             @Ability.canceled += instance.OnAbility;
+<<<<<<< HEAD
+=======
+            @CursorLock.started += instance.OnCursorLock;
+            @CursorLock.performed += instance.OnCursorLock;
+            @CursorLock.canceled += instance.OnCursorLock;
+            @HeavyAttack.started += instance.OnHeavyAttack;
+            @HeavyAttack.performed += instance.OnHeavyAttack;
+            @HeavyAttack.canceled += instance.OnHeavyAttack;
+>>>>>>> develop
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1108,6 +1189,15 @@ public partial class @Re_Ghostreamer: IInputActionCollection2, IDisposable
             @Ability.started -= instance.OnAbility;
             @Ability.performed -= instance.OnAbility;
             @Ability.canceled -= instance.OnAbility;
+<<<<<<< HEAD
+=======
+            @CursorLock.started -= instance.OnCursorLock;
+            @CursorLock.performed -= instance.OnCursorLock;
+            @CursorLock.canceled -= instance.OnCursorLock;
+            @HeavyAttack.started -= instance.OnHeavyAttack;
+            @HeavyAttack.performed -= instance.OnHeavyAttack;
+            @HeavyAttack.canceled -= instance.OnHeavyAttack;
+>>>>>>> develop
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1296,6 +1386,11 @@ public partial class @Re_Ghostreamer: IInputActionCollection2, IDisposable
         void OnAttack(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnAbility(InputAction.CallbackContext context);
+<<<<<<< HEAD
+=======
+        void OnCursorLock(InputAction.CallbackContext context);
+        void OnHeavyAttack(InputAction.CallbackContext context);
+>>>>>>> develop
     }
     public interface IUIActions
     {

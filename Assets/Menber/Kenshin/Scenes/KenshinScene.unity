@@ -164,7 +164,71 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2cbf0b7f-395c-44f4-ab3b-fd137a480294
+    m_ActionName: Player/Look[/DualShock4GamepadHID/rightStick]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ad177c31-bca9-435b-afd4-0e8838a9dae8
+    m_ActionName: Player/Select[/DualShock4GamepadHID/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f33283a6-ecce-4699-99c5-b1519b4cf7e8
+    m_ActionName: Player/Move[/DualShock4GamepadHID/leftStick]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 16da438e-a2cc-41ba-ae13-de1adeb19a15
+    m_ActionName: Player/Attack[/DualShock4GamepadHID/rightTrigger]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 170a36b8-6929-438d-8d29-c2a6744206ac
+    m_ActionName: Player/Dash[/DualShock4GamepadHID/rightShoulder]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 69d2b1a0-7f0e-4d3c-a43e-2fbe04903cfd
+    m_ActionName: Player/Ability[/DualShock4GamepadHID/leftShoulder]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 633f8688-73ce-41fa-bdc8-377a012027a9
+    m_ActionName: UI/Navigate[/DualShock4GamepadHID/leftStick/up,/DualShock4GamepadHID/rightStick/up,/DualShock4GamepadHID/leftStick/down,/DualShock4GamepadHID/rightStick/down,/DualShock4GamepadHID/leftStick/left,/DualShock4GamepadHID/rightStick/left,/DualShock4GamepadHID/leftStick/right,/DualShock4GamepadHID/rightStick/right,/DualShock4GamepadHID/dpad]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 871844c8-1105-4f71-87be-817bd6b7a815
+    m_ActionName: UI/Submit[/DualShock4GamepadHID/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 40d8bd73-de1a-44b5-adb3-5ba9fc9ac84e
+    m_ActionName: UI/Cancel[/DualShock4GamepadHID/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c9d2fd6a-ad7d-4d50-aa9a-72f14bc5218f
+    m_ActionName: UI/Point
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d4820499-d944-401e-aa10-47b21409b3da
+    m_ActionName: UI/Click
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 345b8ad4-0341-4f19-9d33-f435513f8cad
+    m_ActionName: UI/ScrollWheel
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7abce594-3439-42b6-9281-3118dcbede6b
+    m_ActionName: UI/MiddleClick
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fefd6752-ed33-4af4-9cbd-418cf8fe3bdd
+    m_ActionName: UI/RightClick
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7182f175-3ca5-423b-b79e-07ab68f6c7f9
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 01f54a37-48f8-45f8-b082-0d65a985bfb4
+    m_ActionName: UI/TrackedDeviceOrientation
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player
@@ -335,6 +399,7 @@ GameObject:
   m_Component:
   - component: {fileID: 217049956}
   - component: {fileID: 217049955}
+  - component: {fileID: 217049957}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -369,6 +434,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &217049957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217049953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5941e16f6808c2c45995c096bf6812b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionAsset: {fileID: -944628639613478452, guid: 7a00d989ec225c449935adfca49d793b, type: 3}
 --- !u!1 &480335218
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,7 +563,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_NotificationBehavior: 3
   m_MaxPlayerCount: 4
-  m_AllowJoining: 1
+  m_AllowJoining: 0
   m_JoinBehavior: 2
   m_PlayerJoinedEvent:
     m_PersistentCalls:
@@ -496,10 +574,10 @@ MonoBehaviour:
   m_JoinAction:
     m_UseReference: 0
     m_Action:
-      m_Name: 
+      m_Name: Join
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 
+      m_Id: 30cec9cd-80c4-412f-b0b0-b2adddb4ab25
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -527,8 +605,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57c6f07683ca5ae469b8d6d0139d36e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDevices: 0
-  actionAsset: {fileID: -944628639613478452, guid: 7a00d989ec225c449935adfca49d793b, type: 3}
 --- !u!4 &714006874
 Transform:
   m_ObjectHideFlags: 0
@@ -925,11 +1001,11 @@ MonoBehaviour:
   pools:
   - tag: WaitPlease
     prefab: {fileID: 147140450218223359, guid: 9b6643c48b92cb8439b04b68069feff2, type: 3}
-    size: 4
+    size: 3
   - tag: DevicePairing
     prefab: {fileID: 1376547134940444555, guid: c7389b0706b1c2440a871a3d026b1d6c, type: 3}
     size: 4
-  - tag: Ready
+  - tag: PairingCompleted
     prefab: {fileID: 1626051509906176981, guid: 285428b4dcc014740960cb5305bb94d6, type: 3}
     size: 4
   - tag: Title
