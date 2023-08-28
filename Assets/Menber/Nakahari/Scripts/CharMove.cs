@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,7 +11,15 @@ public class CharMove : MonoBehaviour
     private Rigidbody rb;
 
     [SerializeField]
-    public float Speed = 5.0f;
+    CenterDataOfStreamer _centerDataOfStreamer;
+
+    [SerializeField]
+    public float baseSpeed = 5.0f;//→CenterDataOfStreamerのstBaseSpeedに変更お願いします。
+
+    [SerializeField]
+    public float Speed;//→CenterDataOfStreamerのstSpeedに変更お願いします。
+
+
 
     public Vector2 move, look;
 
@@ -28,11 +37,20 @@ public class CharMove : MonoBehaviour
 
     void Start()
     {
+        _centerDataOfStreamer.stSpeed = _centerDataOfStreamer.stBaseSpeed;//stSpeedの初期化
+        _centerDataOfStreamer.stStamina = _centerDataOfStreamer.stBaseStamina;//stStaminaの初期化
+
         _ghostReamer = new Re_Ghostreamer();
         _ghostReamer.Enable();
+
         if(_animation == null)
         {
             _animation = GetComponent<Animation>();
+        }
+
+        if (_centerDataOfStreamer == null)
+        {
+            _centerDataOfStreamer = GetComponent<CenterDataOfStreamer>();
         }
     }
 
@@ -41,6 +59,7 @@ public class CharMove : MonoBehaviour
         MUpdateCursorLock();
         Attack();
         Ability();
+        //Dashのdash()を呼ぶように変更お願いします.
         
     }
 
