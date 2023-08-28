@@ -17,6 +17,8 @@ public class HeatGaugeControl : MonoBehaviour
     GameObject AttachedLightStateControl;
     LightStateControl _lightStateControl;
 
+    public bool _Mouseclick = true;
+
     void Awake()
     {
         #region CenterOfLightDataのNullチェック
@@ -64,7 +66,19 @@ public class HeatGaugeControl : MonoBehaviour
             #region ヒートゲージ減少処理
             if (_centerOfLightData.heatGauge > 0 && _centerOfLightData.lightInputOn == false)
             {
-                _centerOfLightData.heatGauge -= heatGaugeDecrease;
+                if(_centerOfLightData.overHeat == true)
+                {
+                    _centerOfLightData.heatGauge -= heatGaugeDecrease / 2;
+                }
+                else
+                {
+                    _centerOfLightData.heatGauge -= heatGaugeDecrease;
+                    if(_Mouseclick == true)
+                    {
+                        _lightStateControl.MSub2Basic();
+                        _lightStateControl.MLaserActive2Disabeled();
+                    }
+                }
                 // ヒートゲージを毎処理指定された減少量でデクリメント
             }
             #endregion
@@ -74,8 +88,11 @@ public class HeatGaugeControl : MonoBehaviour
 
             {
                 _centerOfLightData.heatGauge += heatGaugeIncrease;
-                // _lightStateControl.StartCoroutine("MLightSettingTransition");
-                _lightStateControl.MLaserDisabeled2Active();
+                if(_Mouseclick == true)
+                {
+                    _lightStateControl.MBasic2Sub();
+                    _lightStateControl.MLaserDisabeled2Active();
+                }
                 // ヒートゲージを毎処理指定された減少量でインクリメント
             }
         }
@@ -98,7 +115,7 @@ public class HeatGaugeControl : MonoBehaviour
             {
                 // オバヒ状態は一度heatGaugeが冷め切らないと解除されない。
                 _centerOfLightData.overHeat = false;
-                _lightStateControl.MBasic2Week();
+                _lightStateControl.MWeek2Basic();
             }
         }
     }

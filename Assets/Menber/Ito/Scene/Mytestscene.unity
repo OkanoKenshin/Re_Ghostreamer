@@ -342,19 +342,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 263583030611266349, guid: 8bc14542dc690a6489bb6829e0188a46, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.03866877
+      value: 0.0386688
       objectReference: {fileID: 0}
     - target: {fileID: 263583030611266349, guid: 8bc14542dc690a6489bb6829e0188a46, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.009959416
+      value: -0.009959424
       objectReference: {fileID: 0}
     - target: {fileID: 1371277141826530629, guid: 8bc14542dc690a6489bb6829e0188a46, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1371277141826530630, guid: 8bc14542dc690a6489bb6829e0188a46, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1371277142622820499, guid: 8bc14542dc690a6489bb6829e0188a46, type: 3}
       propertyPath: m_TargetDisplay
@@ -450,11 +450,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7086619778354486121, guid: 8bc14542dc690a6489bb6829e0188a46, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.032799542
+      value: 0.03279957
       objectReference: {fileID: 0}
     - target: {fileID: 7086619778354486121, guid: 8bc14542dc690a6489bb6829e0188a46, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0035669778
+      value: -0.0035669797
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bc14542dc690a6489bb6829e0188a46, type: 3}
@@ -544,6 +544,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 556986459781414593, guid: 35e8f6bbbe8b01e4e9e5f437fcc2f1ae, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1122659926355767380, guid: 35e8f6bbbe8b01e4e9e5f437fcc2f1ae, type: 3}
       propertyPath: AttachedAttackHitDetection
       value: 
@@ -604,6 +608,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Ghost
       objectReference: {fileID: 0}
+    - target: {fileID: 1996572903586604640, guid: 35e8f6bbbe8b01e4e9e5f437fcc2f1ae, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2093666264637014380, guid: 35e8f6bbbe8b01e4e9e5f437fcc2f1ae, type: 3}
       propertyPath: m_Height
       value: 0.52
@@ -623,6 +631,10 @@ PrefabInstance:
     - target: {fileID: 3169266342978100405, guid: 35e8f6bbbe8b01e4e9e5f437fcc2f1ae, type: 3}
       propertyPath: m_TagString
       value: Ghost
+      objectReference: {fileID: 0}
+    - target: {fileID: 7225172951712134567, guid: 35e8f6bbbe8b01e4e9e5f437fcc2f1ae, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7404233544529851905, guid: 35e8f6bbbe8b01e4e9e5f437fcc2f1ae, type: 3}
       propertyPath: m_Layer

@@ -37,8 +37,12 @@ public class LightStateControl : MonoBehaviour
     GameObject AttachedCenterOfLightData;
     CenterOfLightData _centerOfLightData;
 
+    [SerializeField]
+    HeatGaugeControl _heatGaugeControl;
+
     void Awake()
     {
+        _heatGaugeControl = GetComponent<HeatGaugeControl>();
         #region CenterOfLightDataのNullチェック
         if (AttachedCenterOfLightData != null)
         {
@@ -125,7 +129,7 @@ public class LightStateControl : MonoBehaviour
     #endregion
 
     #region オバヒからの回復時に走るライト弱化解除メソッド
-    public void MBasic2Week()
+    public void MWeek2Basic()
     {
         StartCoroutine(MLightSettingTransition
         (
@@ -140,6 +144,7 @@ public class LightStateControl : MonoBehaviour
     #region Laserモード使用時の設定変更メソッド
     public void MBasic2Sub()
     {
+        _heatGaugeControl._Mouseclick = false;
         StartCoroutine(MLightSettingTransition
         (
           lightAngle, baseLightAngle, subLightAngle,
@@ -148,13 +153,14 @@ public class LightStateControl : MonoBehaviour
           base2LowTransitionTime
         ));
         _centerOfLightData.valueOfLaserLightRange = lightSource.range;
+        _heatGaugeControl._Mouseclick = true;
     }
     #endregion
 
     #region Laserモードから通常モードへの復帰メソッド
     public void MSub2Basic()
     {
-
+        _heatGaugeControl._Mouseclick = false;
         StartCoroutine(MLightSettingTransition
         (
           lightAngle, subLightAngle, baseLightAngle,
@@ -163,6 +169,7 @@ public class LightStateControl : MonoBehaviour
           base2LowTransitionTime
         )
         );
+        _heatGaugeControl._Mouseclick = true;
     }
     #endregion
 
