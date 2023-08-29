@@ -21,6 +21,8 @@ public class UnitMove : MonoBehaviour
 
     private Animation _animation;
 
+    float Speed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,18 +48,21 @@ public class UnitMove : MonoBehaviour
     {
         UpdateCursorLock();
         //Dash‚Ìdash()‚ğŒÄ‚Ô‚æ‚¤‚É•ÏX‚¨Šè‚¢‚µ‚Ü‚·.
+
+        //Debug.Log(_inputParam.Ability);
+        //Debug.Log(_inputParam.Attack);
+        //Debug.Log(_inputParam.Select);
+        //Debug.Log(_inputParam.Dash);
     }
 
     //ƒJƒƒ‰‚ÌŒü‚«‚ğ³–Ê‚É‚µ‚Ä“®‚­
     private void FixedUpdate()
     {
-        //Debug.Log(_inputParam.Ability);
-        //Debug.Log(_inputParam.Attack);
-        //Debug.Log(_inputParam.Select);
-        //Debug.Log(_inputParam.Dash);
+        Speed = _unitType == CommonParam.UnitType.Streamer ? _centerDataOfStreamer.stSpeed : _centerDataOfStreamer.stBaseSpeed;
+
         Vector3 camForward = Cam.transform.forward;
         camForward.y = 0;
-        transform.position += (camForward * _inputParam.MoveZ + Cam.transform.right * _inputParam.MoveX) * _centerDataOfStreamer.stSpeed;
+        transform.position += (camForward * _inputParam.MoveZ + Cam.transform.right * _inputParam.MoveX) * Speed;
         _animation.MMoveAnima();
     }
 
