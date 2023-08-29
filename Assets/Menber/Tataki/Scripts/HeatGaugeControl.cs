@@ -61,28 +61,28 @@ public class HeatGaugeControl : MonoBehaviour
     }
     void FixedUpdate()
     {
+
+        #region ヒートゲージ減少処理
+        if (_centerOfLightData.heatGauge > 0 && _centerOfLightData.lightInputOn == false)
+        {
+            if(_centerOfLightData.overHeat == true)
+            {
+                _centerOfLightData.heatGauge -= heatGaugeDecrease / 2;
+            }
+            else
+            {
+                _centerOfLightData.heatGauge -= heatGaugeDecrease;
+                if(_Mouseclick == true)
+                {
+                    _lightStateControl.MSub2Basic();
+                    _lightStateControl.MLaserActive2Disabeled();
+                }
+            }
+            // ヒートゲージを毎処理指定された減少量でデクリメント
+        }
+        #endregion
         if (_centerOfLightData.overHeat == false)
         {
-            #region ヒートゲージ減少処理
-            if (_centerOfLightData.heatGauge > 0 && _centerOfLightData.lightInputOn == false)
-            {
-                if(_centerOfLightData.overHeat == true)
-                {
-                    _centerOfLightData.heatGauge -= heatGaugeDecrease / 2;
-                }
-                else
-                {
-                    _centerOfLightData.heatGauge -= heatGaugeDecrease;
-                    if(_Mouseclick == true)
-                    {
-                        _lightStateControl.MSub2Basic();
-                        _lightStateControl.MLaserActive2Disabeled();
-                    }
-                }
-                // ヒートゲージを毎処理指定された減少量でデクリメント
-            }
-            #endregion
-
             #region ヒートゲージ増加処理
             if (_centerOfLightData.heatGauge != _centerOfLightData.maxHeatGauge && _centerOfLightData.lightInputOn == true)
 
