@@ -58,7 +58,7 @@ public class InputManager : MonoBehaviour
     private Dictionary<CommonParam.UnitType, InputTypeString> _inputKinds = new Dictionary<CommonParam.UnitType, InputTypeString>()
     {
         {CommonParam.UnitType.FGGhost, new InputTypeString()    { Horizontal = "FGGHorizontal", Vertical = "FGGVertical", CamHorizontal = "FGGCamHori", CamVertical = "FGGCamVer", Ability = "FGGAbility", Attack = "FGGAttack", Select = "FGGSelect", Dash = "FGGDash", CursorLock = "FGGCursorLock"}},
-        {CommonParam.UnitType.FPGhost, new InputTypeString()    { Horizontal = "FPGHorizontal", Vertical = "FPGVertical", CamHorizontal = "FPGCamHori", CamVertical = "FPGCamVer", Ability = "FPGAbility", Attack = "FPGAttack", Select = "FPASelect", Dash = "FPADash", CursorLock = "FPACursorLock"}},
+        {CommonParam.UnitType.FPGhost, new InputTypeString()    { Horizontal = "FPGHorizontal", Vertical = "FPGVertical", CamHorizontal = "FPGCamHori", CamVertical = "FPGCamVer", Ability = "FPGAbility", Attack = "FPGAttack", Select = "FPGSelect", Dash = "FPGDash", CursorLock = "FPGCursorLock"}},
         {CommonParam.UnitType.HAGhost, new InputTypeString()    { Horizontal = "HAGHorizontal", Vertical = "HAGVertical", CamHorizontal = "HAGCamHori", CamVertical = "HAGCamVer", Ability = "HAGAbility", Attack = "HAGAttack", Select = "HAGSelect", Dash = "HAGDash", CursorLock = "HAGCursorLock"}},
         {CommonParam.UnitType.Streamer, new InputTypeString()    { Horizontal = "StHorizontal", Vertical = "StVertical", CamHorizontal = "StCamHori", CamVertical = "StCamVer", Ability = "StAbility", Attack = "StAttack", Select = "StSelect", Dash = "StDash", CursorLock = "StCursorLock"}},
     };
