@@ -38,9 +38,6 @@ public class UnitMove : MonoBehaviour
         {
             _animation = GetComponent<Animation>();
         }
-        {
-            
-        }
         _inputParam = _inputManager.UnitInputParams[_unitType];
     }
 
@@ -54,11 +51,13 @@ public class UnitMove : MonoBehaviour
     //ƒJƒƒ‰‚ÌŒü‚«‚ğ³–Ê‚É‚µ‚Ä“®‚­
     private void FixedUpdate()
     {
-        Debug.Log(_inputParam.MoveZ);
-        Debug.Log(_inputParam.MoveX);
+        //Debug.Log(_inputParam.Ability);
+        //Debug.Log(_inputParam.Attack);
+        //Debug.Log(_inputParam.Select);
+        //Debug.Log(_inputParam.Dash);
         Vector3 camForward = Cam.transform.forward;
         camForward.y = 0;
-        transform.position += (camForward * _inputParam.MoveX + Cam.transform.right * _inputParam.MoveZ) * _centerDataOfStreamer.stSpeed;
+        transform.position += (camForward * _inputParam.MoveZ + Cam.transform.right * _inputParam.MoveX) * _centerDataOfStreamer.stSpeed;
         _animation.MMoveAnima();
     }
 

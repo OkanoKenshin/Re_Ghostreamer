@@ -18,6 +18,11 @@ public class InputManager : MonoBehaviour
         public bool Select = false;
         public bool Dash = false;
         public bool CursorLock = false;
+
+        //public bool AbilityFlag = false;
+        //public bool AttackFlag = false;
+        //public bool SelectFlag = false;
+        //public bool DashFlag = false;
     }
     public class InputTypeString
     {
@@ -82,9 +87,14 @@ public class InputManager : MonoBehaviour
         inputParam.MoveZ = Input.GetAxisRaw(input.Vertical);
         inputParam.CamX = Input.GetAxisRaw(input.CamHorizontal);
         inputParam.CamY = Input.GetAxisRaw(input.CamVertical);
-        inputParam.Ability = Input.GetButtonDown(input.Ability);
-        inputParam.Attack = Input.GetButtonDown(input.Attack);
-        inputParam.Dash = Input.GetButtonDown(input.Dash);
-        inputParam.CursorLock = Input.GetButtonDown(input.CursorLock);
+        inputParam.Ability = Input.GetButton(input.Ability);
+        //if (inputParam.Ability) inputParam.AbilityFlag = true;
+        inputParam.Attack = Input.GetButton(input.Attack);
+        //if (inputParam.Attack) inputParam.AttackFlag = true;
+        inputParam.Dash = Input.GetButton(input.Dash);
+        //if (inputParam.Dash) inputParam.DashFlag = true;
+        inputParam.Select = Input.GetButton(input.Select);
+        //if(inputParam.Select) inputParam.SelectFlag = true;
+        inputParam.CursorLock = Input.GetButton(input.CursorLock);
     }
 }

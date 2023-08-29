@@ -268,7 +268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stHp: 0
-  stBaseSpeed: 5
+  stBaseSpeed: 0.1
   stSpeed: 0
   stDashSpeed: 1.5
   stBaseStamina: 0
@@ -499,7 +499,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 788776949}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5443368, y: -6.55, z: 1.6063309}
+  m_LocalPosition: {x: -1.5443368, y: -1.4, z: 1.6063309}
   m_LocalScale: {x: 4.5444, y: 4.5444, z: 4.5444}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -521,6 +521,14 @@ PrefabInstance:
       propertyPath: _centerDataOfStreamer
       value: 
       objectReference: {fileID: 714995960}
+    - target: {fileID: 5720106332302674631, guid: 8bc14542dc690a6489bb6829e0188a46, type: 3}
+      propertyPath: sensitivityX
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5720106332302674631, guid: 8bc14542dc690a6489bb6829e0188a46, type: 3}
+      propertyPath: sensitivityY
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5720106332302674631, guid: 8bc14542dc690a6489bb6829e0188a46, type: 3}
       propertyPath: _inputManager
       value: 
