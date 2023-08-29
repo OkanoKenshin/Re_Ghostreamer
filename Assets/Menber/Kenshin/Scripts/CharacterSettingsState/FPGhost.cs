@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class FGGhost : ICharacterSettingsState
+public class FPGhost : ICharacterSettingsState
 {
-    public void HandleInput(InputAction.CallbackContext context) 
-    {
+    public void HandleInput(InputAction.CallbackContext context)
+    {  
         // ジョイスティックの入力を取得してキャラクターを移動 
         if (context.action.name == "Move")
         {
