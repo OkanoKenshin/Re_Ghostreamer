@@ -42,14 +42,10 @@ public class HeavyAttack : MonoBehaviour
     // 攻撃を管理するクラス
     public class AttackManager : MonoBehaviour
     {
-        //アニメーションの時間を変数へ
-        private float animationTime;
-
         // 攻撃の実行メソッド
         public void MAbilityOfHeavyAttack(float baseDamage)
         {
-
-            AttackStage _attackStage = null;
+            AttackStage _attackStage;
 
             if (IsInFirstAttackFrame())
             {
@@ -67,24 +63,7 @@ public class HeavyAttack : MonoBehaviour
             _attackStage.ExecuteAttack(baseDamage);
         }
 
-        //攻撃が初弾の攻撃フレームか判定
-        private bool IsInFirstAttackFrame()
-        {
-            return animationTime >= 1.22f && animationTime <= 1.33f;
-        }
-
-        //2段目の攻撃フレーム判定
-        private bool IsInSecondAttackFrame()
-        {
-            return animationTime >= 1.35f && animationTime <= 1.50f;
-        }
-
-        //3段目の攻撃フレーム判定
-        private bool IsInThirdAttackFrame()
-        {
-            return animationTime >= 2.25 && animationTime <= 2.54;
-        }
-        ////攻撃当たり判定
+        //stre
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Streamer"))
