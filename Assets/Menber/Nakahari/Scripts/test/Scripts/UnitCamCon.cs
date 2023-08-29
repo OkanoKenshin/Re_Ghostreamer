@@ -4,10 +4,17 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CamCon : MonoBehaviour
+public class UnitCamCon : MonoBehaviour
 {
+
+    [SerializeField]
+    private CommonParam.UnitType _unitType = CommonParam.UnitType.Streamer;
+
     [SerializeField]
     private GameObject camPos;
+
+    [SerializeField]
+    InputManager _inputManager;
 
     public Transform playerTransform;
     public Transform characterModel;
@@ -18,29 +25,30 @@ public class CamCon : MonoBehaviour
 
     private float rotationY = 0.0f;
 
-    private Re_Ghostreamer _ghostReamer;
+    private InputManager.InputParam _inputParam;
 
-    [SerializeField]
-    private CharMove _charMove;
-
-    Vector2 look;
+    //private Re_Ghostreamer _ghostReamer;
 
     void Start()
     {
-        _ghostReamer = new Re_Ghostreamer();
-        _ghostReamer.Enable();
+        if (_inputManager == null)
+        {
+            _inputManager = GetComponent<InputManager>();
+        }
+        _inputParam = _inputManager.UnitInputParams[_unitType];
+        //_ghostReamer = new Re_Ghostreamer();
+        //_ghostReamer.Enable();
     }
     void Update()
     {
         CameraControll();
-        look = _charMove.look;
     }
 
     
     private void CameraControll()
     {
-        float rotationX = transform.localEulerAngles.y + look.x * sensitivityX;
-        rotationY += look.y * sensitivityY;
+        float rotationX = transform.localEulerAngles.y + _inputParam.CamX * sensitivityX;
+        rotationY += _inputParam.CamY * sensitivityY;
         rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
 
         transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);

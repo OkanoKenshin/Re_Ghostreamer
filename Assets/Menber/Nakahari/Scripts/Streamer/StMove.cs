@@ -4,7 +4,7 @@ using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CharMove : MonoBehaviour
+public class StMove : MonoBehaviour
 {
     private Re_Ghostreamer _ghostReamer;
 
@@ -22,10 +22,7 @@ public class CharMove : MonoBehaviour
 
 
     public Vector2 move, look;
-
-    float cursor,attack,ability,dash;
-
-    bool _attack, _ability, _dash;
+    bool cursor;
     bool cursorLock = true;
 
     public bool isAnimation;
@@ -57,32 +54,28 @@ public class CharMove : MonoBehaviour
     void Update()
     {
         MUpdateCursorLock();
-        Attack();
-        Ability();
         //DashÇÃdash()ÇåƒÇ‘ÇÊÇ§Ç…ïœçXÇ®äËÇ¢ÇµÇ‹Ç∑.
         
     }
-
-    public void OnMove(InputAction.CallbackContext ctx) => move = ctx.ReadValue<Vector2>();
     public void OnCamera(InputAction.CallbackContext ctx) => look = ctx.ReadValue<Vector2>();
-    public void OnAttack(InputAction.CallbackContext ctx) => attack = ctx.ReadValue<float>();
-    public void OnAbility(InputAction.CallbackContext ctx) => ability = ctx.ReadValue<float>();
-    public void OnCursor(InputAction.CallbackContext ctx) => cursor = ctx.ReadValue<float>();
-    public void OnDash(InputAction.CallbackContext ctx) => dash = ctx.ReadValue<float>();
 
 
     // ÉJÉÅÉâÇÃå¸Ç´Çê≥ñ Ç…ÇµÇƒìÆÇ≠
     private void FixedUpdate()
     {
+        move = _ghostReamer.Streamer.Move.ReadValue<Vector2>();
         Vector3 camForward = headRig.transform.forward;
         camForward.y = 0;
         transform.position += (camForward * move.y + headRig.transform.right * move.x) * Speed;
-        _animation.MMoveAnima();
+        //_animation.MStMoveAnima();
     }
     
     public void MUpdateCursorLock()
     {
-        if (cursor == 1)
+
+        cursor = _ghostReamer.Streamer.CursorLock.IsPressed();
+
+        if (cursor)
         {
             cursorLock = false;
         }
@@ -100,41 +93,4 @@ public class CharMove : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
         }
     }
-
-    public void Attack()
-    {
-        if(attack == 1)
-        {
-            _attack = true;
-        }
-        else
-        {
-            _attack = false;
-        }
-
-        if (_attack)
-        {
-            _animation.MGhAttackAnima();
-        }
-    }
-
-    public void Ability()
-    {
-        if (ability == 1)
-        {
-            _ability = true;
-        }
-        else
-        {
-            _ability = false;
-        }
-
-        if (_ability)
-        {
-            _animation.MGhHeavyAttackAnima();
-        }
-    }
-
-
-    
 }

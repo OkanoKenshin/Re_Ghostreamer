@@ -6,38 +6,43 @@ using UnityEngine.InputSystem;
 
 public class Animation : MonoBehaviour
 {
-    Vector2 move;
+
+    [SerializeField]
+    private CommonParam.UnitType _unitType = CommonParam.UnitType.Streamer;
 
     private Animator animator;
 
-    private CharMove _charMove;
+    private InputManager.InputParam _inputParam;
+
+    [SerializeField]
+    InputManager _inputManager;
 
     [SerializeField]
     private int animationNow = 0;
 
     void Start()
     {
-
-        if(_charMove == null)
-        {
-            _charMove = GetComponent<CharMove>();
-        }
         if (animator == null)
         {
             animator = GetComponent<Animator>();
         }
+        if (_inputManager == null)
+        {
+            _inputManager = GetComponent<InputManager>();
+        }
+        _inputParam = _inputManager.UnitInputParams[_unitType];
     }
     void Update()
     {
-        move = _charMove.move;
+
     }
 
     public void MMoveAnima()
     {
-        if (move.x != 0 || move.y != 0)
+        if (_inputParam.MoveX != 0 || _inputParam.MoveZ != 0)
         {
-            animator.SetFloat("X", move.x);
-            animator.SetFloat("Z", move.y);
+            animator.SetFloat("X", _inputParam.MoveX);
+            animator.SetFloat("Z", _inputParam.MoveZ);
             if (animationNow != 1)
             {
                 animationNow = 1;
@@ -48,7 +53,6 @@ public class Animation : MonoBehaviour
         {
             if (animationNow != 0)
             {
-                _charMove.Speed = 0.1f;
                 animationNow = 0;
                 animator.SetTrigger("Idol");
             }
@@ -56,6 +60,9 @@ public class Animation : MonoBehaviour
     }
 
     #region Streamerのアニメーション
+
+
+
     public void MStSprintAnima()
     {
         if (animationNow != 2)
@@ -88,6 +95,7 @@ public class Animation : MonoBehaviour
     #endregion
 
     #region Ghostのアニメーション
+
     public void MGhAttackAnima()
     {
         if (animationNow != 5)
@@ -96,6 +104,7 @@ public class Animation : MonoBehaviour
             animator.SetTrigger("Attack");
         }
     }
+
     public void MGhFogAnima()
     {
         if (animationNow != 6)
@@ -116,7 +125,7 @@ public class Animation : MonoBehaviour
 
     public void MGhHeavyAttackAnima()
     {
-        if(animationNow != 8)
+        if (animationNow != 8)
         {
             animationNow = 8;
             animator.SetTrigger("HeavyAttack");
