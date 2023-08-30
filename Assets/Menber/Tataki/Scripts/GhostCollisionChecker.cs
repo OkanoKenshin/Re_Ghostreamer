@@ -65,7 +65,7 @@ public class GhostCollisionChecker : MonoBehaviour
         #region "LightHitDetection"のNullチェック
         if (AttachedLightHitDetection != null)
         {
-            _lightHitDetection = GetComponent<LightHitDetection>();
+            _lightHitDetection = AttachedLightHitDetection.GetComponent<LightHitDetection>();
             if (_lightHitDetection != null)
             {
                 Debug.Log("「LightHitDetection」は正常に取得されています。");
@@ -116,6 +116,7 @@ public class GhostCollisionChecker : MonoBehaviour
             // layerWithGhost ＝ Ghostのワールドモデルが存在するLayer
             // これがヒットいる場合、Ghostのどれかに確実に当たっている。
             {
+                _lightHitDetection.MLightHitDetection();
                 _lightHitDetection.ghostTagHit = checkObject.transform.gameObject.tag;
                 Debug.Log(checkObject.transform.gameObject.tag);
                 // Tagの中身をコンソールに表示
