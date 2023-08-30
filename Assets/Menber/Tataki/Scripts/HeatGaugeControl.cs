@@ -17,7 +17,7 @@ public class HeatGaugeControl : MonoBehaviour
     GameObject AttachedLightStateControl;
     LightStateControl _lightStateControl;
 
-    public bool _Mouseclick = true;
+    private bool onTransition = false;
 
     void Awake()
     {
@@ -61,54 +61,61 @@ public class HeatGaugeControl : MonoBehaviour
     }
     void FixedUpdate()
     {
-
         #region ヒートゲージ減少処理
         if (_centerOfLightData.heatGauge > 0 && _centerOfLightData.lightInputOn == false)
         {
-            if(_centerOfLightData.overHeat == true)
+            if (_centerOfLightData.overHeat == true)
             {
                 _centerOfLightData.heatGauge -= heatGaugeDecrease / 2;
             }
             else
             {
                 _centerOfLightData.heatGauge -= heatGaugeDecrease;
-                if(_Mouseclick == true)
-                {
-                    _lightStateControl.MSub2Basic();
-                    _lightStateControl.MLaserActive2Disabeled();
-                }
             }
             // ヒートゲージを毎処理指定された減少量でデクリメント
         }
-        #endregion
-        if (_centerOfLightData.overHeat == false)
-        {
-            #region ヒートゲージ増加処理
-            if (_centerOfLightData.heatGauge != _centerOfLightData.maxHeatGauge && _centerOfLightData.lightInputOn == true)
-
-            {
-                _centerOfLightData.heatGauge += heatGaugeIncrease;
-                if(_Mouseclick == true)
-                {
-                    _lightStateControl.MBasic2Sub();
-                    _lightStateControl.MLaserDisabeled2Active();
-                }
-                // ヒートゲージを毎処理指定された減少量でインクリメント
-            }
-        }
-        #endregion
-
         #region overHeat有効化処理
-        if (_centerOfLightData.heatGauge == _centerOfLightData.maxHeatGauge && _centerOfLightData.lightInputOn == true)
+        if (_centerOfLightData.heatGauge == _centerOfLightData.maxHeatGauge)
         {
             _centerOfLightData.overHeat = true;
             // overHeat状態に変更
             _lightStateControl.MSub2Week();
+            _lightStateControl.MLaserActive2Disabeled();
+
             // Light光量をオバヒ状態にするメソッドを呼び出し
         }
         #endregion
+        #endregion
+        if (_centerOfLightData.overHeat == false)
+        {
+            if (_centerOfLightData.lightInputOn == true)
+            {
+                #region ヒートゲージ増加処理
+                if (_centerOfLightData.heatGauge != _centerOfLightData.maxHeatGauge)
+                {
+                    _centerOfLightData.heatGauge += heatGaugeIncrease;
+                    if (onTransition == false)
+                    {
+                        onTransition = true;
+                        _lightStateControl.MBasic2Sub();
+                        _lightStateControl.MLaserDisabeled2Active();
+                        // ヒートゲージを毎処理指定された減少量でインクリメント
+                    }
+                }
+                #endregion
 
-        else if (_centerOfLightData.overHeat == true)
+            }
+            else if (_centerOfLightData.lightInputOn == false)
+            {
+                if(onTransition == true)
+                {
+                    _lightStateControl.MSub2Basic();
+                    _lightStateControl.MLaserActive2Disabeled();
+                    onTransition = false;
+                }
+            }
+        }
+        else
         {
             if (_centerOfLightData.heatGauge == 0)
             // overHeatの解除処理
@@ -116,7 +123,10 @@ public class HeatGaugeControl : MonoBehaviour
                 // オバヒ状態は一度heatGaugeが冷め切らないと解除されない。
                 _centerOfLightData.overHeat = false;
                 _lightStateControl.MWeek2Basic();
+
+                // ヒートゲージを毎処理指定された減少量でインクリメント
+                 
             }
-        }
+        } 
     }
 }

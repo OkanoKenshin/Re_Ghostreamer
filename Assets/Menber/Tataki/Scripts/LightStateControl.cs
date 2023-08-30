@@ -30,6 +30,7 @@ public class LightStateControl : MonoBehaviour
     public float lightIntensity;
     public float lightRange;
 
+    private bool laseroff = false;
     public bool heatStart = false;
 
     // CenterOfLightData の参照取得
@@ -84,6 +85,12 @@ public class LightStateControl : MonoBehaviour
             Debug.Log("「laserLightSource」がアタッチされていません。");
         }
         #endregion
+        laserAngle = laserLightSource.spotAngle;
+        laserIntensity = laserLightSource.intensity;
+        laserRange = laserLightSource.range;
+        lightAngle = lightSource.spotAngle;
+        lightIntensity = lightSource.intensity;
+        lightRange = lightSource.range;
     }
 
     public IEnumerator MLightSettingTransition
@@ -108,13 +115,38 @@ public class LightStateControl : MonoBehaviour
                 intensityToChange = Mathf.Lerp(intensityBeforeChange, intensityAfterChange, interpolationFactor);
                 rangeToChange = Mathf.Lerp(rangeBeforeChange, rangeAfterChange, interpolationFactor);
                 yield return null;
+                lightSource.spotAngle = angleToChange;
+                lightSource.intensity = intensityToChange;
+                lightSource.range = rangeToChange;
             }
-
-            angleToChange = angleAfterChange;
-            intensityToChange = intensityAfterChange;
-            rangeToChange = rangeAfterChange;
     }
+    public IEnumerator MLaserSettingTransition
+    (
 
+        float angleToChange, float angleBeforeChange, float angleAfterChange,
+        float intensityToChange, float intensityBeforeChange, float intensityAfterChange,
+        float rangeToChange, float rangeBeforeChange, float rangeAfterChange,
+        float transitionTime
+    )
+
+    {
+        float startPointOfLightSettingTransition = Time.time;
+        // このCoroutineがスタートしたゲーム内経過時間のタイムスタンプ
+        // Time.timeはゲームがスタートからの経過時間のプロパティ
+
+        while (Time.time - startPointOfLightSettingTransition < transitionTime)
+        {
+            float interpolationFactor = ((Time.time - startPointOfLightSettingTransition) / transitionTime);
+
+            angleToChange = Mathf.Lerp(angleBeforeChange, angleAfterChange, interpolationFactor);
+            intensityToChange = Mathf.Lerp(intensityBeforeChange, intensityAfterChange, interpolationFactor);
+            rangeToChange = Mathf.Lerp(rangeBeforeChange, rangeAfterChange, interpolationFactor);
+            yield return null;
+            laserLightSource.spotAngle = angleToChange; ;
+            laserLightSource.intensity = intensityToChange;
+            laserLightSource.range = rangeToChange;
+        }
+    }
     #region オバヒ発生時に走るライト弱化メソッド
     public void MSub2Week()
     {
@@ -144,7 +176,6 @@ public class LightStateControl : MonoBehaviour
     #region Laserモード使用時の設定変更メソッド
     public void MBasic2Sub()
     {
-        _heatGaugeControl._Mouseclick = false;
         StartCoroutine(MLightSettingTransition
         (
           lightAngle, baseLightAngle, subLightAngle,
@@ -152,15 +183,12 @@ public class LightStateControl : MonoBehaviour
           lightRange, baseLightRange, subLightRange,
           base2LowTransitionTime
         ));
-        _centerOfLightData.valueOfLaserLightRange = lightSource.range;
-        _heatGaugeControl._Mouseclick = true;
     }
     #endregion
 
     #region Laserモードから通常モードへの復帰メソッド
     public void MSub2Basic()
     {
-        _heatGaugeControl._Mouseclick = false;
         StartCoroutine(MLightSettingTransition
         (
           lightAngle, subLightAngle, baseLightAngle,
@@ -169,7 +197,6 @@ public class LightStateControl : MonoBehaviour
           base2LowTransitionTime
         )
         );
-        _heatGaugeControl._Mouseclick = true;
     }
     #endregion
 
@@ -177,7 +204,7 @@ public class LightStateControl : MonoBehaviour
     public void MLaserDisabeled2Active()
     {
         laserLightSource.enabled = true;
-        StartCoroutine(MLightSettingTransition
+        StartCoroutine(MLaserSettingTransition
         (
           laserAngle, whenOffLaserLightAngle, laserLightAngle,
           laserIntensity, whenOffLaserLightIntensity, laserLightIntensity,
@@ -191,7 +218,7 @@ public class LightStateControl : MonoBehaviour
     #region ライトをフェードアウトさせるように停止＆Laser用ライトの無効化
     public void MLaserActive2Disabeled()
     {
-        StartCoroutine(MLightSettingTransition
+        StartCoroutine(MLaserSettingTransition
         (
           laserAngle, laserLightAngle, whenOffLaserLightAngle,
           laserIntensity, laserLightIntensity, whenOffLaserLightIntensity,
@@ -199,7 +226,6 @@ public class LightStateControl : MonoBehaviour
           base2LowTransitionTime
         )
         );
-        laserLightSource.enabled = false;
     }
     #endregion
 }

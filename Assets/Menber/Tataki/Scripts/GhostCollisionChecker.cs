@@ -16,13 +16,84 @@ public class GhostCollisionChecker : MonoBehaviour
     [SerializeField] private int layerWithNonLightPenetratingObjects;
     [SerializeField]
     GameObject RaySettingsObject;
+   private float valueOfLaserLightRange;
+
+    int layerMask = 1 << 8;
+
+    void Awake()
+    {
+        layerMask = ~layerMask;
+        valueOfLaserLightRange = 10;
+        #region CenterOfLightDataのNullチェック
+        if (AttachedCenterOfLightData != null)
+        {
+            _centerOfLightData = GetComponent<CenterOfLightData>();
+            if (_centerOfLightData != null)
+            {
+                Debug.Log("「CenterOfLightData」は正常に取得されています。");
+            }
+            else
+            {
+                Debug.Log("「AttachedCenterOfLightData」はアタッチされていますが、「CenterOfLightData」の取得に失敗しています。");
+            }
+        }
+        else
+        {
+            Debug.Log("「AttachedCenterOfLightData」はアタッチされていません。");
+        }
+        #endregion
+
+        #region "RaySettings"のNullチェック
+        if (RaySettingsObject != null)
+        {
+            _raySettings = AttachedRaySettings.GetComponent<RaySettings>();
+            if (_raySettings != null)
+            {
+                Debug.Log("「RaySettings」は正常に取得されています。");
+            }
+            else
+            {
+                Debug.Log("「RaySettingsObject」はアタッチされていますが、「RaySettings」の取得に失敗しています。");
+            }
+        }
+        else
+        {
+            Debug.Log("「RaySettingsObject」はアタッチされていません。");
+        }
+        #endregion
+
+        #region "LightHitDetection"のNullチェック
+        if (AttachedLightHitDetection != null)
+        {
+            _lightHitDetection = GetComponent<LightHitDetection>();
+            if (_lightHitDetection != null)
+            {
+                Debug.Log("「LightHitDetection」は正常に取得されています。");
+            }
+            else
+            {
+                Debug.Log("「AttachedLightHitDetection」はアタッチされていますが、「LightHitDetection」の取得に失敗しています。");
+            }
+        }
+        else
+        {
+            Debug.Log("「AttachedLightHitDetection」はアタッチされていません。");
+        }
+        #endregion
+    }
+    private void FixedUpdate()
+    {
+        MGhostCollisionChecker();
+    }
 
     public void MGhostCollisionChecker()
     {
 
-        RaycastHit[] InformationObtainedByRay = Physics.SphereCastAll(_raySettings.rayOfLight, lightRayRadius, _centerOfLightData.valueOfLaserLightRange);
+        RaycastHit[] InformationObtainedByRay = Physics.SphereCastAll(_raySettings.rayOfLight, lightRayRadius, valueOfLaserLightRange, layerMask);
+        Vector3 rays = new Vector3(0, 0, valueOfLaserLightRange);
         // 球状の判定を飛ばしてLightRayDistanceの距離内にあるすべてのObjectを検出するRaycast
-        DrawSphereCast(_raySettings.rayOfLight, lightRayRadius, distance: _centerOfLightData.valueOfLaserLightRange);
+        //DrawSphereCast(_raySettings.rayOfLight, lightRayRadius, distance: _centerOfLightData.valueOfLaserLightRange);
+        Debug.DrawRay(_raySettings.rayStartPoint, rays,Color.red);
         //Rayの可視化着弾地点に球を描写。ChatGPTで作成したDebug機能。
 
         Debug.Log($"InformationObtainedByRay length: {InformationObtainedByRay.Length}");
@@ -73,64 +144,4 @@ public class GhostCollisionChecker : MonoBehaviour
         }
     }
     #endregion
-
-    void Awake()
-    {
-        #region CenterOfLightDataのNullチェック
-        if (AttachedCenterOfLightData != null)
-        {
-            _centerOfLightData = GetComponent<CenterOfLightData>();
-            if (_centerOfLightData != null)
-            {
-                Debug.Log("「CenterOfLightData」は正常に取得されています。");
-            }
-            else
-            {
-                Debug.Log("「AttachedCenterOfLightData」はアタッチされていますが、「CenterOfLightData」の取得に失敗しています。");
-            }
-        }
-        else
-        {
-            Debug.Log("「AttachedCenterOfLightData」はアタッチされていません。");
-        }
-        #endregion
-
-        #region "RaySettings"のNullチェック
-        if (RaySettingsObject != null)
-        {
-            _raySettings = GetComponent<RaySettings>();
-            if (_raySettings != null)
-            {
-                Debug.Log("「RaySettings」は正常に取得されています。");
-            }
-            else
-            {
-                Debug.Log("「RaySettingsObject」はアタッチされていますが、「RaySettings」の取得に失敗しています。");
-            }
-        }
-        else
-        {
-            Debug.Log("「RaySettingsObject」はアタッチされていません。");
-        }
-        #endregion
-
-        #region "LightHitDetection"のNullチェック
-        if (AttachedLightHitDetection != null)
-        {
-            _lightHitDetection = GetComponent<LightHitDetection>();
-            if (_lightHitDetection != null)
-            {
-                Debug.Log("「LightHitDetection」は正常に取得されています。");
-            }
-            else
-            {
-                Debug.Log("「AttachedLightHitDetection」はアタッチされていますが、「LightHitDetection」の取得に失敗しています。");
-            }
-        }
-        else
-        {
-            Debug.Log("「AttachedLightHitDetection」はアタッチされていません。");
-        }
-        #endregion
-    }
 }
