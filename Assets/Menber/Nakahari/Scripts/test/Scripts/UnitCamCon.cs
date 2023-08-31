@@ -59,3 +59,4 @@ public class UnitCamCon : MonoBehaviour
         characterModel.localEulerAngles = new Vector3(0, playerTransform.eulerAngles.y, 0);
     }
 }
+
