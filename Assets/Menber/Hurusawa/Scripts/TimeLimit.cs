@@ -33,7 +33,7 @@ public class TimeLimit : MonoBehaviour
         {
             CountDownTime = 0.0F;
             // タイマーが0になったら指定のシーンに遷移
-            SceneManager.LoadScene("Result");
+            SceneManager.LoadScene("GhVictoryScene");
 
         }
     }
