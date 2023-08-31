@@ -9,21 +9,49 @@ public class AttackHitDetection :MonoBehaviour
     [SerializeField]
     public float ghAttackPower;
 
-    public GameObject _streamerhp;
-    private Streamerhp streamerhp;
+    public bool heavyAttakActive;
 
-    private void Start()
+    public GameObject AttachedCenterDataOfStreamer;
+    CenterDataOfStreamer _centerDataOfStreamer;
+
+    private void Awake()
     {
-            streamerhp = _streamerhp.GetComponent<Streamerhp>();
+        #region "CenterDataOfStreamer"のNullチェック
+        if (AttachedCenterDataOfStreamer != null)
+        {
+            _centerDataOfStreamer = GetComponent<CenterDataOfStreamer>();
+            if (_centerDataOfStreamer != null)
+            {
+                Debug.Log("「CenterDataOfStreamer」は正常に取得されています。");
+            }
+            else
+            {
+                Debug.Log("「AttachedCenterDataOfStreamer」はアタッチされていますが、「CenterDataOfStreamer」の取得に失敗しています。");
+            }
+        }
+        else
+        {
+            Debug.Log("「AttachedCenterDataOfStreamer」はアタッチされていません。");
+        }
+        #endregion
+
     }
 
     public void MAttackHitDetection()
     {
         if (attackHitTheStreamer == true)
         {
-            //ここにDebug.Logで"StreamerのHPはstHpです"と表示するようにする。
-            Debug.Log("StreamerのHPはstHpです");
-            streamerhp.SThp -= ghAttackPower;
+            if (heavyAttakActive)
+            {
+                float hADamage = (ghAttackPower);
+                _centerDataOfStreamer.stHp -= hADamage;
+                Debug.Log("StreamerのHPはstHpです");
+            }
+            else
+            {
+                _centerDataOfStreamer.stHp -= ghAttackPower;
+            }
+
         }
     }
 }
