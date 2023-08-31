@@ -11,29 +11,6 @@ public class LightHitDetection : MonoBehaviour
     [SerializeField] public float firstGhHp;
     [SerializeField] public float secondGhHp;
     [SerializeField] public float thirdGhHp;
-    private bool lightInputOn;
-    [SerializeField] private float ghHp;
-
-    public void MLightHitDetection()
-    {
-        if (_centerOfLightData.overHeat == false)
-        {
-            if (lightInputOn == true && ghostTagHit != null)
-            {
-                if (_centerOfLightData.lightInputOn == true)
-                {
-                    if (ghostTagHit != "")
-                    {
-                        Debug.Log("空である");
-                    }
-                    else
-                    {
-                        MDmageApplyToGhost(ghostTagHit);
-                    }
-                }
-            }
-        }
-    }
 
     #region CenterOfLightDataのNullチェック
 
@@ -59,6 +36,20 @@ public class LightHitDetection : MonoBehaviour
         }
     }
     #endregion
+
+    public void MLightHitDetection()
+    {
+        if (_centerOfLightData.overHeat == false)
+        {
+            if (_centerOfLightData.lightInputOn == true)
+            {
+                if (ghostTagHit != null)
+                {
+                    MDmageApplyToGhost(ghostTagHit);
+                }
+            }
+        }
+    }
 
     public void MDmageApplyToGhost(string ghostTagHit)
     {

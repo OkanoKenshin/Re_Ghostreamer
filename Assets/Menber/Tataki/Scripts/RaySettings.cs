@@ -27,7 +27,7 @@ public class RaySettings : MonoBehaviour
     private void FixedUpdate()
     {
         localRayStartPoint = transform.localPosition;
-        rayDirection = transform.up;
+        rayDirection = transform.forward;
         //‘S‚Ä‚ÌŒ³‚Æ‚È‚én“_‚Æ•ûŒü‚ğ‰Šú‰»
 
         rayStartPoint = transform.parent.TransformPoint(localRayStartPoint);
