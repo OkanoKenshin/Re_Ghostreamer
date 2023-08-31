@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class FGGhost : ICharacterSettingsState
+public class FGGhost
 {
     public void HandleInput(InputAction.CallbackContext context) 
     {
