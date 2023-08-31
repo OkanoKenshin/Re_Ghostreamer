@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class Ghost2hp : MonoBehaviour
 {
-    public float GH2hp;
+    [SerializeField]
+    GameObject st;
+    LightHitDetection _lightHitDetection;
     // Start is called before the first frame update
     void Start()
     {
-
+        _lightHitDetection = st.GetComponent<LightHitDetection>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (GH2hp <= 0)
+        if (_lightHitDetection.secondGhHp <= 0)
         {
             Destroy(this.gameObject);
         }
