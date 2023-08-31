@@ -138,6 +138,14 @@ PrefabInstance:
       propertyPath: _inputManager
       value: 
       objectReference: {fileID: 7914691495683906072}
+    - target: {fileID: 4485193841173580095, guid: 8bc14542dc690a6489bb6829e0188a46, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.032799546
+      objectReference: {fileID: 0}
+    - target: {fileID: 4485193841173580095, guid: 8bc14542dc690a6489bb6829e0188a46, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.003566978
+      objectReference: {fileID: 0}
     - target: {fileID: 5720106332595863312, guid: 8bc14542dc690a6489bb6829e0188a46, type: 3}
       propertyPath: _inputManager
       value: 
@@ -190,6 +198,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6903534933480806779, guid: 8bc14542dc690a6489bb6829e0188a46, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.038668774
+      objectReference: {fileID: 0}
+    - target: {fileID: 6903534933480806779, guid: 8bc14542dc690a6489bb6829e0188a46, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.009959417
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bc14542dc690a6489bb6829e0188a46, type: 3}
 --- !u!4 &2501546855115159162 stripped
@@ -197,6 +213,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5720106333603136458, guid: 8bc14542dc690a6489bb6829e0188a46, type: 3}
   m_PrefabInstance: {fileID: 7914691494622197168}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3347914283478725022 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4873052810925982766, guid: 8bc14542dc690a6489bb6829e0188a46, type: 3}
+  m_PrefabInstance: {fileID: 7914691494622197168}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5506185013459956823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3347914283478725022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5690b8a7137a6124f96301d51e691828, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _centerDataOfStreamer: {fileID: 7914691495683906071}
+  InputOn: 0
+  _unitType: 3
+  _inputManager: {fileID: 7914691495683906072}
 --- !u!1001 &7914691494652156075
 PrefabInstance:
   m_ObjectHideFlags: 0

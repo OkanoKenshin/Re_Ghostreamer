@@ -6,7 +6,6 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     #region データ保持用のクラス
-
     public class InputParam
     {
         public float MoveX = 0;

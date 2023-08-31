@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &201280517 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5506185013459956823, guid: 8df6b5f29318758448c1e37aae4713a2, type: 3}
+  m_PrefabInstance: {fileID: 7914691496330568431}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5690b8a7137a6124f96301d51e691828, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &620519978
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,6 +417,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1082373991643829141, guid: 8df6b5f29318758448c1e37aae4713a2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7914691495683906071, guid: 8df6b5f29318758448c1e37aae4713a2, type: 3}
+      propertyPath: stStamina
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7914691495683906071, guid: 8df6b5f29318758448c1e37aae4713a2, type: 3}
+      propertyPath: stDashSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7914691495683906071, guid: 8df6b5f29318758448c1e37aae4713a2, type: 3}
+      propertyPath: stBaseStamina
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7914691495683906071, guid: 8df6b5f29318758448c1e37aae4713a2, type: 3}
+      propertyPath: stStaminaDecrease
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7914691495683906071, guid: 8df6b5f29318758448c1e37aae4713a2, type: 3}
+      propertyPath: stStaminaIncrease
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7914691495683906072, guid: 8df6b5f29318758448c1e37aae4713a2, type: 3}
+      propertyPath: dash
+      value: 
+      objectReference: {fileID: 201280517}
     - target: {fileID: 7914691495683906073, guid: 8df6b5f29318758448c1e37aae4713a2, type: 3}
       propertyPath: m_RootOrder
       value: 3

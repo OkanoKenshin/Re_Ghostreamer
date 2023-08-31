@@ -267,34 +267,3 @@ MonoBehaviour:
   _centerDataOfStreamer: {fileID: 0}
   _inputManager: {fileID: 0}
   Cam: {fileID: 7476024574753158411}
---- !u!1 &3375901358501762683 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5267435696523934588, guid: aae580d62d8aa9e46877c5c6c3fb89f9, type: 3}
-  m_PrefabInstance: {fileID: 7476024574224952583}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &3325495796124723278
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3375901358501762683}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.13960308, y: 0.6752952}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.4463861, y: 1.5871304}
-  m_EdgeRadius: 0
