@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class SelectStart : MonoBehaviour
 {
     public Button _start;
-    public Button _exit;
+    //public Button _exit;
 
    // private Transform _exitStart;
 
