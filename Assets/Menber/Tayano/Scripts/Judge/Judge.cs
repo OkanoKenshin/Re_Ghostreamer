@@ -5,24 +5,29 @@ using UnityEngine.SceneManagement;
 
 public class Judge : MonoBehaviour
 {
+    //[SerializeField]
+    //GameObject AttachedCenterDataOfStreamer;
     [SerializeField]
-    GameObject AttachedCenterDataOfStreamer;
     CenterDataOfStreamer _centerDataOfStreamer;
 
+    //[SerializeField]
+    //GameObject AttachedCenterDataOfHAGhost;
     [SerializeField]
-    GameObject AttachedCenterDataOfHAGhost;
     CenterDataOfHAGhost _centerDataOfHAGhost;
 
+    //[SerializeField]
+    //GameObject AttachedCenterDataOfFPGhost;
     [SerializeField]
-    GameObject AttachedCenterDataOfFPGhost;
     CenterDataOfFPGhost _centerDataOfFPGhost;
 
+    //[SerializeField]
+    //GameObject AttachedCenterDataOfFGGhost;
     [SerializeField]
-    GameObject AttachedCenterDataOfFGGhost;
     CenterDataOfFGGhost _centerDataOfFGGhost;
     // Start is called before the first frame update
     void Awake()
     {
+        /*
         #region "CenterDataOfStreamer"のNullチェック
         if (AttachedCenterDataOfStreamer != null)
         {
@@ -98,6 +103,28 @@ public class Judge : MonoBehaviour
             Debug.Log("「AttachedCenterDataOfFGGhost」はアタッチされていません。");
         }
         #endregion
+        */
+        if(_centerDataOfStreamer == null)
+        {
+            Debug.Log("Stなかったよ");
+            _centerDataOfStreamer = GetComponent<CenterDataOfStreamer>();
+        }
+        if (_centerDataOfHAGhost == null)
+        {
+            Debug.Log("GhHAなかったよ");
+            _centerDataOfHAGhost = GetComponent<CenterDataOfHAGhost>();
+        }
+        if (_centerDataOfFPGhost == null)
+        {
+            Debug.Log("GhFpなかったよ");
+            _centerDataOfFPGhost = GetComponent<CenterDataOfFPGhost>();
+        }
+        if (_centerDataOfFGGhost == null)
+        {
+            Debug.Log("GhFgなかったよ");
+            _centerDataOfFGGhost = GetComponent<CenterDataOfFGGhost>();
+        }
+
 
     }
 
