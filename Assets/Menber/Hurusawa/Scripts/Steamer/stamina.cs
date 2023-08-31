@@ -11,7 +11,7 @@ public class stamina : MonoBehaviour
     [SerializeField]
     GameObject CenterDataOfStreamer;
     CenterDataOfStreamer _centerDataOfStreamer;
-    public float maxHP;
+    public float maxStamina;
     private Image _image;
 
   
@@ -32,14 +32,14 @@ public class stamina : MonoBehaviour
     void Start()
     {
         _image = this.GetComponent<Image>();
-        maxHP = _centerDataOfStreamer.stStamina;
+        maxStamina = _centerDataOfStreamer.stStamina;
     }
 
     private void FixedUpdate()
     {
         if (previousFrameHp != _centerDataOfStreamer.stStamina)
         {
-            _image.fillAmount = (float)_centerDataOfStreamer.stStamina / maxHP;
+            _image.fillAmount = (float)_centerDataOfStreamer.stStamina / maxStamina;
         }
     }
 }

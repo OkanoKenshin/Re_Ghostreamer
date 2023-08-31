@@ -42,6 +42,6 @@ public class SampleSceneManager : MonoBehaviour
 
     private void NextScene()
     {
-        SceneManager.LoadScene("Mainscene");
+        SceneManager.LoadScene("explanation");
     }
 }
