@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: closetbowl-mt 1
-  m_Shader: {fileID: 4800000, guid: ceb8b0a4e39081b4d9b81d7671ffc2b6, type: 3}
+  m_Shader: {fileID: 2, guid: 0000000000000000f000000000000000, type: 0}
   m_ValidKeywords: []
   m_InvalidKeywords:
   - _METALLICGLOSSMAP
