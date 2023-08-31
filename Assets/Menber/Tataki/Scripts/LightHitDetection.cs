@@ -6,11 +6,21 @@ public class LightHitDetection : MonoBehaviour
 {
     [SerializeField] GameObject AttachedCenterOfLightData;
     CenterOfLightData _centerOfLightData;
+
+    [SerializeField]
+    GameObject AttachedCenterDataOfHAGhost;
+    CenterDataOfHAGhost _centerDataOfHAGhost;
+
+    [SerializeField]
+    GameObject AttachedCenterDataOfFPGhost;
+    CenterDataOfFPGhost _centerDataOfFPGhost;
+
+    [SerializeField]
+    GameObject AttachedCenterDataOfFGGhost;
+    CenterDataOfFGGhost _centerDataOfFGGhost;
+
     public string ghostTagHit;
     [SerializeField] public float lightDamage;
-    [SerializeField] public float firstGhHp;
-    [SerializeField] public float secondGhHp;
-    [SerializeField] public float thirdGhHp;
 
     #region CenterOfLightDataのNullチェック
 
@@ -55,15 +65,15 @@ public class LightHitDetection : MonoBehaviour
     {
         if (ghostTagHit == "Ghost1")
         {
-            firstGhHp -= lightDamage;
+            _centerDataOfFGGhost.fgGhHp -= lightDamage;
         }
         else if (ghostTagHit == "Ghost2")
         {
-            secondGhHp -= lightDamage;
+            _centerDataOfFPGhost.fpGhHp -= lightDamage;
         }
         else if (ghostTagHit == "Ghost3")
         {
-            thirdGhHp -= lightDamage;
+            _centerDataOfHAGhost.haGhHp -= lightDamage;
         }
         else
         {
