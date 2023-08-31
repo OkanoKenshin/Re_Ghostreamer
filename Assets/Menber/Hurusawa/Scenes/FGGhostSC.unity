@@ -202,7 +202,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_TargetDisplay: 0
+  m_TargetDisplay: 1
 --- !u!224 &110774644
 RectTransform:
   m_ObjectHideFlags: 0
@@ -662,7 +662,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b62789c178d5e904697eb3195c8831d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitType: 0
+  _unitType: 3
+  _inputManager: {fileID: 0}
   fillImage: {fileID: 1602067185}
   totalTime: 40
   fillSpeed: 1

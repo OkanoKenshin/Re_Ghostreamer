@@ -6,7 +6,6 @@ public class HeatGaugeControl : MonoBehaviour
 {
     [SerializeField] public float heatGaugeDecrease;
     [SerializeField] public float heatGaugeIncrease;
-    [SerializeField] private float maxHeatGauge;
     // "CenterOfLightData"�̎Q�Ƃ̎擾
     [SerializeField]
     GameObject AttachedCenterOfLightData;

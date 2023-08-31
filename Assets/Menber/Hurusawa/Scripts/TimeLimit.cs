@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TimeLimit : MonoBehaviour
 {
@@ -13,8 +14,8 @@ public class TimeLimit : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        deltaTime = 0.02f;
-        CountDownTime = 300.0F; // カウントダウン開始秒数をセット
+        deltaTime = 0.005f;
+        CountDownTime = 180.0F; // カウントダウン開始秒数をセット
     }
 
     // Update is called once per frame
@@ -31,6 +32,9 @@ public class TimeLimit : MonoBehaviour
         if (CountDownTime <= 0.0F)
         {
             CountDownTime = 0.0F;
+            // タイマーが0になったら指定のシーンに遷移
+            SceneManager.LoadScene("Result");
+
         }
     }
 }
