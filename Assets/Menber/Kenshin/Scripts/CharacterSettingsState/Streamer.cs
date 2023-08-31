@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Streamer : ICharacterSettingsState
+public class Streamer
 {
     public void HandleInput(InputAction.CallbackContext context)
     {// ジョイスティックの入力を取得してキャラクターを移動 
