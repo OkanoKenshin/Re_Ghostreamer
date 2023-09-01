@@ -8,6 +8,7 @@ public class HeavyAttack : MonoBehaviour
     [SerializeField] private GameObject secondHitStage;
     [SerializeField] private GameObject thirdHitStage;
 
+
     // 攻撃ステージの基底クラス
     public abstract class AttackStage
     {
@@ -48,19 +49,22 @@ public class HeavyAttack : MonoBehaviour
         // 攻撃の実行メソッド
         public void MAbilityOfHeavyAttack(float baseDamage)
         {
-            
+
             AttackStage _attackStage = null;
 
             if (IsInFirstAttackFrame())
             {
+                Debug.Log("1");
                 _attackStage = new FirstAttackStage();
             }
             else if (IsInSecondAttackFrame())
             {
+                Debug.Log("2");
                 _attackStage = new SecondAttackStage();
             }
             else if (IsInThirdAttackFrame())
             {
+                Debug.Log("3");
                 _attackStage = new ThirdAttackStage();
             }
             // 攻撃ステージを実行
