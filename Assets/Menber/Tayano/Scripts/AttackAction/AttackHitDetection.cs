@@ -51,6 +51,7 @@ public class AttackHitDetection :MonoBehaviour
             {
                 _centerDataOfStreamer.stHp -= ghAttackPower;
             }
+            attackHitTheStreamer = false;
 
         }
     }

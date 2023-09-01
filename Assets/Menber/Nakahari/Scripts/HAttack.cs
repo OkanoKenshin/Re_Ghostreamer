@@ -30,8 +30,8 @@ public class HAttack : MonoBehaviour
     [SerializeField]
     float ghAttackPower3 = 0f;
 
-    //[SerializeField]
-    //bool InputOn = false;
+    [SerializeField]
+    bool InputOn = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -52,7 +52,7 @@ public class HAttack : MonoBehaviour
 
     private void Update()
     {
-        if (_inputParam.Ability)
+        if (InputOn/*_inputParam.Ability*/)
         {
             _animation.MGhHeavyAttackAnima();
             if (_attackHitDetection.attackHitTheStreamer)
@@ -62,6 +62,13 @@ public class HAttack : MonoBehaviour
                 count++;
             }
         }
+        else
+        {
+            count = 0;
+        }
+
+        Debug.Log(count);
+        Debug.Log(_attackHitDetection.attackHitTheStreamer);
     }
 
     void Damege()

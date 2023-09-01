@@ -475,6 +475,7 @@ MonoBehaviour:
   ghAttackPower1: 10
   ghAttackPower2: 20
   ghAttackPower3: 100
+  InputOn: 0
 --- !u!114 &1700345431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -921,8 +922,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 71802137562421087, guid: 8df6b5f29318758448c1e37aae4713a2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 71802137562421087, guid: 8df6b5f29318758448c1e37aae4713a2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.36
+      value: -1.14
       objectReference: {fileID: 0}
     - target: {fileID: 95924480701597489, guid: 8df6b5f29318758448c1e37aae4713a2, type: 3}
       propertyPath: m_Layer
