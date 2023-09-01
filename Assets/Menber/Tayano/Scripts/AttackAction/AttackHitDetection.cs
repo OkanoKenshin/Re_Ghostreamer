@@ -19,7 +19,7 @@ public class AttackHitDetection :MonoBehaviour
         #region "CenterDataOfStreamer"のNullチェック
         if (AttachedCenterDataOfStreamer != null)
         {
-            _centerDataOfStreamer = GetComponent<CenterDataOfStreamer>();
+            _centerDataOfStreamer = AttachedCenterDataOfStreamer.GetComponent<CenterDataOfStreamer>();
             if (_centerDataOfStreamer != null)
             {
                 Debug.Log("「CenterDataOfStreamer」は正常に取得されています。");

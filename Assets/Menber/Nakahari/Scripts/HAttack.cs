@@ -52,7 +52,7 @@ public class HAttack : MonoBehaviour
 
     private void Update()
     {
-        if (InputOn/*_inputParam.Ability*/)
+        if (_inputParam.Select)
         {
             _animation.MGhHeavyAttackAnima();
             if (_attackHitDetection.attackHitTheStreamer)
@@ -67,8 +67,8 @@ public class HAttack : MonoBehaviour
             count = 0;
         }
 
-        Debug.Log(count);
-        Debug.Log(_attackHitDetection.attackHitTheStreamer);
+        //Debug.Log(count);
+        //Debug.Log(_attackHitDetection.attackHitTheStreamer);
     }
 
     void Damege()

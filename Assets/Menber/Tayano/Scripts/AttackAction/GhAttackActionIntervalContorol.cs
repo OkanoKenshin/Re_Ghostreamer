@@ -12,12 +12,15 @@ public class GhAttackActionIntervalContorol : MonoBehaviour
 
     private bool ghCanAttack = true;
 
+    [SerializeField]
     private bool InputOn = true;
 
     [SerializeField]
     private CommonParam.UnitType _unitType = CommonParam.UnitType.Streamer;
     [SerializeField]
     InputManager _inputManager;
+
+    private Animation _animation;
 
     private InputManager.InputParam _inputParam;
     // Start is called before the first frame update
@@ -31,6 +34,10 @@ public class GhAttackActionIntervalContorol : MonoBehaviour
         {
             _inputManager = GetComponent<InputManager>();
         }
+        if(_animation == null)
+        {
+            _animation = GetComponent<Animation>();
+        }
         _inputParam = _inputManager.UnitInputParams[_unitType];
     }
 
@@ -41,13 +48,16 @@ public class GhAttackActionIntervalContorol : MonoBehaviour
         {
             StartCoroutine(AttackCooldown());
             _attackHitDetection.MAttackHitDetection();
-
+            _animation.MGhAttackAnima();
+            
         }
+        //Debug.Log(ghCanAttack);
     }
     IEnumerator AttackCooldown()
     {
         ghCanAttack = false;
         yield return new WaitForSeconds(ghAttackInterval);
+
         ghCanAttack = true;
     }
 }

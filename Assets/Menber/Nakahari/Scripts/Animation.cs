@@ -100,8 +100,8 @@ public class Animation : MonoBehaviour
     {
         if (animationNow != 5)
         {
-            animationNow = 5;
             animator.SetTrigger("Attack");
+            StartCoroutine(tarn(90));
         }
     }
 
@@ -132,6 +132,12 @@ public class Animation : MonoBehaviour
         }
     }
     #endregion
+
+    IEnumerator tarn(float anime)
+    {
+        yield return new WaitForSeconds(anime);
+        animationNow = 5;
+    }
 
 }
 

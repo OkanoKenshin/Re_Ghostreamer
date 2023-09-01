@@ -49,10 +49,10 @@ public class UnitMove : MonoBehaviour
         UpdateCursorLock();
         //Dash‚Ìdash()‚ğŒÄ‚Ô‚æ‚¤‚É•ÏX‚¨Šè‚¢‚µ‚Ü‚·.
 
-        //Debug.Log(_inputParam.Ability);
-        //Debug.Log(_inputParam.Attack);
-        //Debug.Log(_inputParam.Select);
-        //Debug.Log(_inputParam.Dash);
+        Debug.Log(_inputParam.Ability);
+        Debug.Log(_inputParam.Attack);
+        Debug.Log(_inputParam.Select);
+        Debug.Log(_inputParam.Dash);
     }
 
     //ƒJƒƒ‰‚ÌŒü‚«‚ğ³–Ê‚É‚µ‚Ä“®‚­
