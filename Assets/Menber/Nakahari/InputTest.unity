@@ -490,6 +490,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GhAttackIntervalContorolObject: {fileID: 7914691496330568432}
   AttachedAttackHitDetection: {fileID: 7914691496330568432}
+--- !u!114 &1700345432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700345426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ff7507efd961c54d8aae85c51ba4c84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghAttackInterval: 0
+  _attackHitDetection: {fileID: 7914691496330568434}
+  _unitType: 3
+  _inputManager: {fileID: 1393458046}
 --- !u!1 &1930255515 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7941064105542014862, guid: 8df6b5f29318758448c1e37aae4713a2, type: 3}
@@ -1596,17 +1612,3 @@ MonoBehaviour:
   ghAttackPower: 0
   heavyAttakActive: 0
   AttachedCenterDataOfStreamer: {fileID: 7914691496330568432}
---- !u!114 &7914691496330568435
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7914691496330568432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ff7507efd961c54d8aae85c51ba4c84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ghAttackInterval: 0
-  _attackHitDetection: {fileID: 7914691496330568434}

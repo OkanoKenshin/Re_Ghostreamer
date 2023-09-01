@@ -938,6 +938,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de8313cefa38c9d4da88fca6c2b0551e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _unitType: 3
+  _inputManager: {fileID: 0}
   animationNow: 0
 --- !u!95 &1223382992481011831
 Animator:

@@ -76,17 +76,17 @@ public class HAttack : MonoBehaviour
         if (count == 1)
         {
             //Debug.Log("1");
-            _centerDataOfStreamer.stHp -= ghAttackPower1;
+            _centerDataOfStreamer.stHp -= _attackHitDetection.ghAttackPower * ghAttackPower1;
         }
         else if(count == 2)
         {
             //Debug.Log("2");
-            _centerDataOfStreamer.stHp -= ghAttackPower2;
+            _centerDataOfStreamer.stHp -= _attackHitDetection.ghAttackPower * ghAttackPower2;
         }
         else if(count == 3)
         {
             //Debug.Log("3");
-            _centerDataOfStreamer.stHp -= ghAttackPower3;
+            _centerDataOfStreamer.stHp -= _attackHitDetection.ghAttackPower * ghAttackPower3;
         }
     }
 }

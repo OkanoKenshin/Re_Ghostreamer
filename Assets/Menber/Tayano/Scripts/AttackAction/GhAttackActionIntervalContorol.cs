@@ -13,6 +13,13 @@ public class GhAttackActionIntervalContorol : MonoBehaviour
     private bool ghCanAttack = true;
 
     private bool InputOn = true;
+
+    [SerializeField]
+    private CommonParam.UnitType _unitType = CommonParam.UnitType.Streamer;
+    [SerializeField]
+    InputManager _inputManager;
+
+    private InputManager.InputParam _inputParam;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,12 +27,17 @@ public class GhAttackActionIntervalContorol : MonoBehaviour
         {
             _attackHitDetection = GetComponent<AttackHitDetection>();
         }
+        if (_inputManager == null)
+        {
+            _inputManager = GetComponent<InputManager>();
+        }
+        _inputParam = _inputManager.UnitInputParams[_unitType];
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(InputOn && ghCanAttack)
+        if(_inputParam.Attack && ghCanAttack)
         {
             StartCoroutine(AttackCooldown());
             _attackHitDetection.MAttackHitDetection();

@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class LightHitDetection : MonoBehaviour
 {
-    [SerializeField] GameObject AttachedCenterOfLightData;
+    [SerializeField] //GameObject AttachedCenterOfLightData;
     CenterOfLightData _centerOfLightData;
 
     [SerializeField]
-    GameObject AttachedCenterDataOfHAGhost;
+    //GameObject AttachedCenterDataOfHAGhost;
     CenterDataOfHAGhost _centerDataOfHAGhost;
 
     [SerializeField]
-    GameObject AttachedCenterDataOfFPGhost;
+    //GameObject AttachedCenterDataOfFPGhost;
     CenterDataOfFPGhost _centerDataOfFPGhost;
 
     [SerializeField]
-    GameObject AttachedCenterDataOfFGGhost;
+    //GameObject AttachedCenterDataOfFGGhost;
     CenterDataOfFGGhost _centerDataOfFGGhost;
 
     public string ghostTagHit;
@@ -26,7 +26,7 @@ public class LightHitDetection : MonoBehaviour
 
     void Awake()
     {
-        // CenterOfLightData オブジェクトの有無をチェック
+        /*// CenterOfLightData オブジェクトの有無をチェック
         if (AttachedCenterOfLightData != null)
         {
             _centerOfLightData = AttachedCenterOfLightData.GetComponent<CenterOfLightData>();
@@ -43,7 +43,7 @@ public class LightHitDetection : MonoBehaviour
         else
         {
             Debug.Log("「AttachedCenterOfLightData」はアタッチされていません。");
-        }
+        }*/
     }
     #endregion
 
