@@ -18,6 +18,9 @@ public class FogAction : MonoBehaviour
 
     private Animation _animation;
 
+    public MonoBehaviour _unityMove;
+
+
     // アニメーションが再生中かどうかを示すフラグ
     private bool animationPlaying = false;
 
@@ -30,6 +33,8 @@ public class FogAction : MonoBehaviour
     [SerializeField]
     private float _timeLeft;
 
+    [SerializeField]
+    private float _timeanima;
     //[SerializeField]
     //VolumetricFogAndMist.VolumetricFog VolumetricFog;
 
@@ -50,10 +55,12 @@ public class FogAction : MonoBehaviour
     private void Update()
     {
         MFogAction();
+        Debug.Log("_unityMove.enabled is now: " + _unityMove.enabled);
     }
 
     private void MFogAction()
     {
+        _unityMove = GetComponent<UnitMove>();
         //var ThisRotation = this.transform.forward;
         if (_inputParam.Select)
         {
@@ -63,9 +70,15 @@ public class FogAction : MonoBehaviour
             Quaternion quaternion = Quaternion.Euler(this.transform.forward);
             Fog.transform.localScale = _transform.localScale;
             _animation.MGhFogAnima();
-            animationPlaying = true;
+            
+            if (animationPlaying == true)
+            {
+                _unityMove.enabled = false;
+            }
             FogActionFrames();
             StartCoroutine(FogDisable());
+            // アニメーションの完了を確認するデバッグログを出力
+            Debug.Log("Animation is playing: " + animationPlaying);
         }
     }
 
@@ -74,27 +87,32 @@ public class FogAction : MonoBehaviour
     // アニメーションが実行されたら関数を呼び出す
     public void FogActionFrames()
     {
-        if (!animationPlaying)
+        if (animationPlaying == false)
         {
+            animationPlaying = true;
             // コルーチンの呼び出し　アニメーション再生中フラグを設定
-            StartCoroutine(FogActionControl(235));
+            StartCoroutine(FogActionControl());
         }
     }
 
     // コルーチン開始
-    IEnumerator FogActionControl(float duration)
+    IEnumerator FogActionControl()
     {
         // アニメーション再生中フラグをtrue
         //animationPlaying = true;
 
         // アニメーションの再生待機
-        yield return new WaitForSeconds(duration);
+        yield return new WaitForSeconds(_timeanima);
 
         _inputParam.MoveX = 0;
         _inputParam.MoveZ = 0;
 
         // アニメーションが終了したら再生中フラグをfalse
         animationPlaying = false;
+        if(animationPlaying == false)
+        {
+            _unityMove.enabled = true;
+        }
     }
 
     IEnumerator FogDisable()
