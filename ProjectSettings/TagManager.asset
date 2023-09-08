@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ghost
+  - Streamer
+  - IRCamera
+  - FloorMap
+  - Ghost1
+  - Ghost2
+  - Ghost3
   layers:
   - Default
   - TransparentFX
@@ -11,22 +18,22 @@ TagManager:
   - 
   - Water
   - UI
+  - test
+  - 
+  - Streamer
+  - 
+  - Ghost
   - 
   - 
   - 
   - 
+  - NonLightPenetratingObjects
   - 
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - ManipulativeObject
+  - Light
   - 
   - 
   - 
