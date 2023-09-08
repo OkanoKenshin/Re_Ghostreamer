@@ -53,6 +53,7 @@ public class GhAttackActionIntervalContorol : MonoBehaviour
         }
         //Debug.Log(ghCanAttack);
     }
+    #region attackのクールダウン
     IEnumerator AttackCooldown()
     {
         ghCanAttack = false;
@@ -60,4 +61,5 @@ public class GhAttackActionIntervalContorol : MonoBehaviour
 
         ghCanAttack = true;
     }
+    #endregion
 }
