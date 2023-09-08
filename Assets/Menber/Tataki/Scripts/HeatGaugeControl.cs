@@ -90,7 +90,7 @@ public class HeatGaugeControl : MonoBehaviour
             if (_centerOfLightData.lightInputOn == true)
             {
                 #region ヒートゲージ増加処理
-                if (_centerOfLightData.heatGauge != _centerOfLightData.maxHeatGauge)
+                if (_centerOfLightData.heatGauge <= _centerOfLightData.maxHeatGauge)
                 {
                     _centerOfLightData.heatGauge += heatGaugeIncrease;
                     if (onTransition == false)
