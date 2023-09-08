@@ -79,7 +79,7 @@ public class Dash : MonoBehaviour
        while(_centerDataOfStreamer.stStamina < _centerDataOfStreamer.stBaseStamina)
         {
             _inputParam.Dash = false;
-            _centerDataOfStreamer.stSpeed = _centerDataOfStreamer.stBaseSpeed;
+            _centerDataOfStreamer.stSpeed = _centerDataOfStreamer.stBaseSpeed;//スピードを初期値に戻す
             _centerDataOfStreamer.stStamina += _centerDataOfStreamer.stStaminaIncrease;//スタミナをスタミナstStaminaIncrease分増加させる
             Debug.Log("スタミナ回復中");
             yield return null;
