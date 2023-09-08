@@ -55,27 +55,36 @@ public class Dash : MonoBehaviour
 
             _centerDataOfStreamer.stStamina -= _centerDataOfStreamer.stStaminaDecrease;//スタミナをstStaminaDecrease分減少させる
 
-            if(_centerDataOfStreamer.stStamina <= 0)
+            if(_centerDataOfStreamer.stStamina <= 0)//スタミナが0になった時、BaseStamina分まで回復するまでダッシュできないようにする
             {
-                _inputParam.Dash = false;
-                _centerDataOfStreamer.stSpeed = _centerDataOfStreamer.stBaseSpeed;
+                StartCoroutine(waiteStamina());
+
             }
 
         }
-        else if(_inputParam.Dash == false || _centerDataOfStreamer.stStamina <= 0)
+        else if(_inputParam.Dash == false )
         {
-            if (_centerDataOfStreamer.stStamina <= 50)
-            {
-                _inputParam.Dash = false;
-                _centerDataOfStreamer.stSpeed = _centerDataOfStreamer.stBaseSpeed;
-            }
             _centerDataOfStreamer.stSpeed = _centerDataOfStreamer.stBaseSpeed;//スピードのをベーススピードを代入(初期化)
 
             if (_centerDataOfStreamer.stStamina < _centerDataOfStreamer.stBaseStamina) //スタミナがベーススタミナより少ない場合以下を行う
             {
                 _centerDataOfStreamer.stStamina += _centerDataOfStreamer.stStaminaIncrease;//スタミナをスタミナstStaminaIncrease分増加させる
-
             }
         }
     }
+
+    #region スタミナが0以下なった時、BaseStaminaの値になるまで、ダッシュの入力をfalseで返す
+    IEnumerator waiteStamina()
+    {
+       while(_centerDataOfStreamer.stStamina < _centerDataOfStreamer.stBaseStamina)
+        {
+            _inputParam.Dash = false;
+            _centerDataOfStreamer.stSpeed = _centerDataOfStreamer.stBaseSpeed;
+            _centerDataOfStreamer.stStamina += _centerDataOfStreamer.stStaminaIncrease;//スタミナをスタミナstStaminaIncrease分増加させる
+            Debug.Log("スタミナ回復中");
+            yield return null;
+        }
+        
+    }
+    #endregion
 }
