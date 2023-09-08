@@ -14398,10 +14398,6 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1211328763065956749, guid: 8df6b5f29318758448c1e37aae4713a2, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1211328763065956749, guid: 8df6b5f29318758448c1e37aae4713a2, type: 3}
       propertyPath: _centerDataOfStreamer
       value: 
       objectReference: {fileID: 1916939482}
@@ -14756,10 +14752,6 @@ PrefabInstance:
     - target: {fileID: 2948556841915061975, guid: 8df6b5f29318758448c1e37aae4713a2, type: 3}
       propertyPath: m_Center.z
       value: 0.00000009554558
-      objectReference: {fileID: 0}
-    - target: {fileID: 2975763216484544501, guid: 8df6b5f29318758448c1e37aae4713a2, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3004164650410309705, guid: 8df6b5f29318758448c1e37aae4713a2, type: 3}
       propertyPath: m_Layer
@@ -15894,9 +15886,7 @@ MonoBehaviour:
   Fog: {fileID: 1155036878}
   _unitType: 0
   _inputManager: {fileID: 1916939483}
-  _unityMove: {fileID: 2046372917}
   _transform: {fileID: 1155036879}
-<<<<<<< HEAD
   _timeLeft: 750
 --- !u!114 &1916939500 stripped
 MonoBehaviour:
@@ -15924,10 +15914,6 @@ MonoBehaviour:
   _centerDataOfHAGhost: {fileID: 1905421673}
   HAGhost: {fileID: 1905421671}
   _animation: {fileID: 1916939500}
-=======
-  _timeLeft: 10
-  _timeanima: 5
->>>>>>> origin/feature/Tataki
 --- !u!1 &1925792399 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 210053315503144541, guid: f93830f231f87844cbd0e087bccef15b, type: 3}
@@ -16127,17 +16113,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
---- !u!114 &2046372917 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2975763216484544501, guid: 8df6b5f29318758448c1e37aae4713a2, type: 3}
-  m_PrefabInstance: {fileID: 1916939479}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1916939486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de8313cefa38c9d4da88fca6c2b0551e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2087336074 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6151650347813649339, guid: f93830f231f87844cbd0e087bccef15b, type: 3}
