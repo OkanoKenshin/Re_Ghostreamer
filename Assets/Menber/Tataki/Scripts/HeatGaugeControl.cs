@@ -74,7 +74,7 @@ public class HeatGaugeControl : MonoBehaviour
             // ヒートゲージを毎処理指定された減少量でデクリメント
         }
         #region overHeat有効化処理
-        if (_centerOfLightData.heatGauge == _centerOfLightData.maxHeatGauge)
+        if (_centerOfLightData.heatGauge >= _centerOfLightData.maxHeatGauge)
         {
             _centerOfLightData.overHeat = true;
             // overHeat状態に変更
