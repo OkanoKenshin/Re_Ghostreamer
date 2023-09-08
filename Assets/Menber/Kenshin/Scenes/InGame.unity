@@ -1431,12 +1431,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab9e8151b4c0330468eee341e6fb4fb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _centerDataOfHAGhost: {fileID: 1905421673}
-  _centerDataOfFPGhost: {fileID: 2099706049}
-  _centerDataOfFGGhost: {fileID: 1043787891}
-  FGGhost: {fileID: 1043787889}
-  FPGhost: {fileID: 2099706047}
-  HAGhost: {fileID: 1905421671}
 --- !u!1 &251106845
 GameObject:
   m_ObjectHideFlags: 0
@@ -1869,6 +1863,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 327915236}
   m_CullTransparentMesh: 1
+--- !u!114 &337238987 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 79145227207442985, guid: 8df6b5f29318758448c1e37aae4713a2, type: 3}
+  m_PrefabInstance: {fileID: 1916939479}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916939485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8313cefa38c9d4da88fca6c2b0551e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &342384489
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1990,6 +1995,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &445404279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916939485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0f1b7a2b96a6b7418565d0a85d91e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _centerDataOfFPGhost: {fileID: 2099706049}
+  FPGhost: {fileID: 2099706047}
+  _animation: {fileID: 337238987}
 --- !u!1 &451936505
 GameObject:
   m_ObjectHideFlags: 0
@@ -12485,7 +12505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a079c8749dd0d94c9fc5a193146688b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fgGhHp: 400
+  fgGhHp: 10
 --- !u!1 &1106437829 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6234906804673971010, guid: f93830f231f87844cbd0e087bccef15b, type: 3}
@@ -16451,6 +16471,32 @@ MonoBehaviour:
   _inputManager: {fileID: 1916939483}
   _transform: {fileID: 1155036879}
   _timeLeft: 750
+--- !u!114 &1916939500 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5533969972061418910, guid: 8df6b5f29318758448c1e37aae4713a2, type: 3}
+  m_PrefabInstance: {fileID: 1916939479}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916939484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8313cefa38c9d4da88fca6c2b0551e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1916939501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916939484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: febc2abfec0263742b0f479e2e462f8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _centerDataOfHAGhost: {fileID: 1905421673}
+  HAGhost: {fileID: 1905421671}
+  _animation: {fileID: 1916939500}
 --- !u!1 &1925792399 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 210053315503144541, guid: f93830f231f87844cbd0e087bccef15b, type: 3}
@@ -16472,6 +16518,32 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!114 &1926675737 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2975763216484544501, guid: 8df6b5f29318758448c1e37aae4713a2, type: 3}
+  m_PrefabInstance: {fileID: 1916939479}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916939486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8313cefa38c9d4da88fca6c2b0551e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1926675738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916939486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eeb856015ae1f04a9946526e7fb532b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _centerDataOfFGGhost: {fileID: 1043787891}
+  FGGhost: {fileID: 1043787889}
+  _animation: {fileID: 1926675737}
 --- !u!1 &1930470324 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6248043244115512545, guid: f93830f231f87844cbd0e087bccef15b, type: 3}
