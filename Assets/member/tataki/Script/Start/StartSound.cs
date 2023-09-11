@@ -9,10 +9,13 @@ public class StartSound : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        SoundManager.Instance.PlayBGM(BGMSoundData.BGM.Title);
     }
+
 
     public void PlayStart()
     {
         audioSource.PlayOneShot(audioSource.clip);
+
     }
 }
