@@ -10,14 +10,14 @@ public class BgmSe : MonoBehaviour
     void Start()
     {
         //テスト用
-        SoundManager.Instance.PlayBGM(BGMSoundData.BGM.Title);
+        //SoundManager.Instance.PlayBGM(BGMSoundData.BGM.Title);
         //SoundManager.Instance.PlaySE(SESoundData.SE.Streamer2);
     }
 
     // Update is called once per frame
     void Update()
     {
-        SoundManager.Instance.PlaySE(SESoundData.SE.Streamer);
+        //SoundManager.Instance.PlaySE(SESoundData.SE.Streamer);
         
     }
 }
