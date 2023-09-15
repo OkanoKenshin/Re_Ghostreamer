@@ -1173,6 +1173,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillObject: {fileID: 102792943}
   skillicon: {fileID: 62745150}
+  Light: {fileID: 102792942}
+  _unitType: 1
   _inputManager: {fileID: 1916939483}
   _unitType: 3
   skillCooldownTime: 5

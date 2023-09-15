@@ -8,78 +8,82 @@ using static CommonParam;
 public class SealingSkills : MonoBehaviour
 {
     [SerializeField] private HeatGaugeControl skillObject;
-    [SerializeField] private Image skillicon; 
-    [SerializeField] InputManager _inputManager;
-    [SerializeField]
-    private CommonParam.UnitType _unitType = CommonParam.UnitType.Streamer;
+    [SerializeField] private Image skillicon;
+    [SerializeField] private LightHitDetection Light;
 
+    [SerializeField]
+    private CommonParam.UnitType _unitType = CommonParam.UnitType.FPGhost;
+    [SerializeField]
+    InputManager _inputManager;
     private InputManager.InputParam _inputParam;
 
-    private bool hasskillicon = false; 
-    private bool hasActivatedSkill = false; 
-    public float skillCooldownTime = 5.0f; 
+    private bool hasskillicon = false;
+    public float skillCooldownTime = 5.0f;
 
     public float CoolTime = 0f;
-    private float fillAmount = 1.0f; 
+    private float fillAmount = 1.0f;
     private bool counting = false;
 
     private void Start()
     {
+        if (_inputManager == null)
+        {
+            _inputManager = GetComponent<InputManager>();
+        }
         _inputParam = _inputManager.UnitInputParams[_unitType];
-        // クールダウンが開始される
         CoolTime = 0;
-        counting = true; 
+        counting = true;
+
     }
-    
     private void Update()
     {
-        // クールタイムを増やす
         if (counting)
         {
-            CoolTime += Time.deltaTime * fillAmount; 
+            CoolTime += Time.deltaTime * fillAmount;
+            Debug.Log("CoolTime: " + CoolTime);
         }
 
-        if (CoolTime >= 40f) 
+        if (CoolTime >= 40f)
         {
-            if (_inputParam.Ability) 
+            if (_inputParam.Select)
             {
-                // スキルオブジェクトを無効にする
                 if (skillObject != null)
                 {
-                    skillObject.enabled = false; 
+                    skillObject.enabled = false;
                     Debug.Log("押されました");
-                    hasActivatedSkill = true;
-                    CoolTime = 0f;
-                    StartCoroutine(StartCooldown()); 
+                    StartCoroutine(StartCooldown());
                 }
-                // スキルアイコンを表示
-                if (!hasskillicon) 
+                if (!hasskillicon) // 逆に変更：hasskilliconがfalseの場合に実行
                 {
-                    skillicon.enabled = true; 
+                    skillicon.enabled = true; // 逆に変更：スキルアイコンを表示
                     Debug.Log("スキルアイコン表示");
                     hasskillicon = true;
-                    CoolTime = 0f;
-                    StartCoroutine(StartCooldown()); 
+
+                    StartCoroutine(StartCooldown());
                 }
+                CoolTime = 0f;
+
             }
         }
     }
 
     private IEnumerator StartCooldown()
     {
-        yield return new WaitForSeconds(skillCooldownTime); 
-        // クールダウン終了時にスキルオブジェクトを有効にする
+        LightHitDetection.lightstop = false;
+        yield return new WaitForSeconds(skillCooldownTime);
+
         if (skillObject != null)
         {
-            skillObject.enabled = true; 
+            skillObject.enabled = true;
             Debug.Log("クールダウン終了");
+            LightHitDetection.lightstop = true;
         }
-        // クールダウン終了時にスキルアイコンを非表示にする
         if (hasskillicon)
         {
-            skillicon.enabled = false; 
+            skillicon.enabled = false;
             Debug.Log("スキルアイコン非表示");
-            hasskillicon = false; 
+            hasskillicon = false;
         }
+
     }
 }
