@@ -39,7 +39,7 @@ public class stamina : MonoBehaviour
     {
         if (previousFrameHp != _centerDataOfStreamer.stBaseStamina)
         {
-            _image.fillAmount = (float)_centerDataOfStreamer.stBaseStamina / maxStamina;
+            _image.fillAmount = (float)_centerDataOfStreamer.stStamina / maxStamina;
         }
     }
 }
