@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,35 +6,54 @@ using UnityEngine.UI;
 
 public class SealingSkills : MonoBehaviour
 {
-    [SerializeField] private HeatGaugeControl skillObject;
+    [SerializeField] private LightHitDetection skillObject;
     [SerializeField] private Image skillicon;
     [SerializeField] InputManager _inputManager;
 
     private InputManager.InputParam _inputParam;
+
     private bool hasskillicon = false;
     private bool hasActivatedSkill = false;
     public float skillCooldownTime = 5.0f;
 
+    public float CoolTime = 0f;
+    private float fillAmount = 1.0f;
+    private bool counting = false;
+
+    private void Start()
+    {
+        CoolTime = 0;
+        counting = true;
+    }
     private void Update()
     {
-        if (!hasActivatedSkill && _inputManager == null)
+        if (counting)
         {
-            if (skillObject != null)
+            CoolTime += Time.deltaTime * fillAmount;
+        }
+
+        if (CoolTime >= 40f)
+        {
+            CoolTime = 0f;
+            if (!hasActivatedSkill && _inputManager == null)
             {
-                skillObject.enabled = false;
-                Debug.Log("押されました");
-                hasActivatedSkill = true;
+                if (skillObject != null)
+                {
+                    skillObject.enabled = false;
+                    Debug.Log("押されました");
+                    hasActivatedSkill = true;
 
-                StartCoroutine(StartCooldown());
-            }
+                    StartCoroutine(StartCooldown());
+                }
 
-            if (!hasskillicon) // 逆に変更：hasskilliconがfalseの場合に実行
-            {
-                skillicon.enabled = true; // 逆に変更：スキルアイコンを表示
-                Debug.Log("スキルアイコン表示");
-                hasskillicon = true;
+                if (!hasskillicon) // 逆に変更：hasskilliconがfalseの場合に実行
+                {
+                    skillicon.enabled = true; // 逆に変更：スキルアイコンを表示
+                    Debug.Log("スキルアイコン表示");
+                    hasskillicon = true;
 
-                StartCoroutine(StartCooldown());
+                    StartCoroutine(StartCooldown());
+                }
             }
         }
     }
@@ -50,9 +70,10 @@ public class SealingSkills : MonoBehaviour
 
         if (hasskillicon)
         {
-            skillicon.enabled = false; 
+            skillicon.enabled = false;
             Debug.Log("スキルアイコン非表示");
             hasskillicon = false;
         }
+
     }
 }
