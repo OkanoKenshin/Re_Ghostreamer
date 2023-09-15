@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Judge : MonoBehaviour
+public class Judge : MonoBehaviour //ストリーマー、ゴーストのどちらかが勝利した場合、勝利シーンに遷移する
 {
     //[SerializeField]
     //GameObject AttachedCenterDataOfStreamer;
