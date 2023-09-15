@@ -19,16 +19,16 @@ using UnityEngine;
             _collectTheIRCamera = AttachedCollectTheIRCamera.GetComponent<CollectTheIRCamera>();
             if (_collectTheIRCamera != null)
             {
-                Debug.Log("uCollectTheIRCamerav‚Í³í‚Éæ“¾‚³‚ê‚Ä‚¢‚Ü‚·B");
+                Debug.Log("ã€ŒCollectTheIRCameraã€ã¯æ­£å¸¸ã«å–å¾—ã•ã‚Œã¦ã„ã¾ã™ã€‚");
             }
             else
             {
-                Debug.Log("uAttachedCollectTheIRCamerav‚ÍƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚Ü‚·‚ªA uCollectTheIRCamerav‚Ìæ“¾‚É¸”s‚µ‚Ä‚¢‚Ü‚·B");
+                Debug.Log("ã€ŒAttachedCollectTheIRCameraã€ã¯ã‚¢ã‚¿ãƒƒãƒã•ã‚Œã¦ã„ã¾ã™ãŒã€ ã€ŒCollectTheIRCameraã€ã®å–å¾—ã«å¤±æ•—ã—ã¦ã„ã¾ã™ã€‚");
             }
         }
         else
         {
-            Debug.Log("uAttachedCollectTheIRCamerav‚ÍƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB");
+            Debug.Log("ã€ŒAttachedCollectTheIRCameraã€ã¯ã‚¢ã‚¿ãƒƒãƒã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚");
         }
 
         if (AttachedCloserToTheMap != null)
@@ -36,16 +36,16 @@ using UnityEngine;
             _closerToTheMap = AttachedCloserToTheMap.GetComponent<CloserToTheMap>();
             if (_closerToTheMap != null)
             {
-                Debug.Log("uCloserToTheMapv‚Í³í‚Éæ“¾‚³‚ê‚Ä‚¢‚Ü‚·B");
+                Debug.Log("ã€ŒCloserToTheMapã€ã¯æ­£å¸¸ã«å–å¾—ã•ã‚Œã¦ã„ã¾ã™ã€‚");
             }
             else
             {
-                Debug.Log("uAttachedCloserToTheMapv‚ÍƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚Ü‚·‚ªA uCloserToTheMapv‚Ìæ“¾‚É¸”s‚µ‚Ä‚¢‚Ü‚·B");
+                Debug.Log("ã€ŒAttachedCloserToTheMapã€ã¯ã‚¢ã‚¿ãƒƒãƒã•ã‚Œã¦ã„ã¾ã™ãŒã€ ã€ŒCloserToTheMapã€ã®å–å¾—ã«å¤±æ•—ã—ã¦ã„ã¾ã™ã€‚");
             }
         }
         else
         {
-            Debug.Log("uAttachedCloserToTheMapv‚ÍƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB");
+            Debug.Log("ã€ŒAttachedCloserToTheMapã€ã¯ã‚¢ã‚¿ãƒƒãƒã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚");
         }
     }
 
@@ -56,12 +56,12 @@ using UnityEngine;
             switch (touchedObject)
             {
                 case "IRCamera":
-                    Debug.Log("Xƒ{ƒ^ƒ“‚ÅƒJƒƒ‰‚ğ‰ñû‚·‚é");
-                    // uXƒ{ƒ^ƒ“‚ÅƒJƒƒ‰‚ğ‰ñû‚·‚év‚Æ•\¦‚·‚éUI‚ğUI’S“–Ò‚ªÀ‘•
+                    Debug.Log("Xãƒœã‚¿ãƒ³ã§ã‚«ãƒ¡ãƒ©ã‚’å›åã™ã‚‹");
+                    // ã€ŒXãƒœã‚¿ãƒ³ã§ã‚«ãƒ¡ãƒ©ã‚’å›åã™ã‚‹ã€ã¨è¡¨ç¤ºã™ã‚‹UIã‚’UIæ‹…å½“è€…ãŒå®Ÿè£…
                     break;
                 case "FloorMap":
-                    Debug.Log("Xƒ{ƒ^ƒ“‚ÅƒtƒƒAƒ}ƒbƒv‚ğŒ©‚é");
-                    // uXƒ{ƒ^ƒ“‚ÅƒtƒƒAƒ}ƒbƒv‚ğŒ©‚év‚Æ•\¦‚·‚éUI‚ğUI’S“–Ò‚ªÀ‘•
+                    Debug.Log("Xãƒœã‚¿ãƒ³ã§ãƒ•ãƒ­ã‚¢ãƒãƒƒãƒ—ã‚’è¦‹ã‚‹");
+                    // ã€ŒXãƒœã‚¿ãƒ³ã§ãƒ•ãƒ­ã‚¢ãƒãƒƒãƒ—ã‚’è¦‹ã‚‹ã€ã¨è¡¨ç¤ºã™ã‚‹UIã‚’UIæ‹…å½“è€…ãŒå®Ÿè£…
                     break;
             }
         }
@@ -84,8 +84,8 @@ using UnityEngine;
                     lookingAtMap = true;
                     _closerToTheMap.MMoveThePosition();
                     _closerToTheMap.MMoveTheRotation();
-                    // Œã‚©‚çƒ}ƒbƒv‚ğŠJ‚¢‚Ä‚¢‚é‚ÉˆÚ“®‚ğƒƒbƒN‚·‚é‹@”\‚ğ’Ç‰Á
-                    // UI’S“–Ò‚ª‚±‚±‚ÉMap‚ÌƒLƒƒƒ“ƒoƒX‚ğ•\¦‚·‚éˆ—‚ğ’Ç‰Á
+                    // å¾Œã‹ã‚‰ãƒãƒƒãƒ—ã‚’é–‹ã„ã¦ã„ã‚‹æ™‚ã«ç§»å‹•ã‚’ãƒ­ãƒƒã‚¯ã™ã‚‹æ©Ÿèƒ½ã‚’è¿½åŠ 
+                    // UIæ‹…å½“è€…ãŒã“ã“ã«Mapã®ã‚­ãƒ£ãƒ³ãƒã‚¹ã‚’è¡¨ç¤ºã™ã‚‹å‡¦ç†ã‚’è¿½åŠ 
                     break;
             }
         }

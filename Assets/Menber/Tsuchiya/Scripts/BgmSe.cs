@@ -9,7 +9,7 @@ public class BgmSe : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //テスト用
+        //繝�繧ｹ繝育畑
         //SoundManager.Instance.PlayBGM(BGMSoundData.BGM.Title);
         //SoundManager.Instance.PlaySE(SESoundData.SE.Streamer2);
     }

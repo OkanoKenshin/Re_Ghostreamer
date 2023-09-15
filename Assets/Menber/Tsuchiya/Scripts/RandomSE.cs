@@ -5,9 +5,9 @@ using UnityEngine;
 public class RandomSE : MonoBehaviour
 {
    
-    public List<AudioClip> soundEffects; // SE‚ÌƒŠƒXƒg‚ğƒCƒ“ƒXƒyƒNƒ^‚©‚çİ’è‚µ‚Ü‚·
+    public List<AudioClip> soundEffects; // SEã®ãƒªã‚¹ãƒˆã‚’ã‚¤ãƒ³ã‚¹ãƒšã‚¯ã‚¿ã‹ã‚‰è¨­å®šã™ã‚‹
     private AudioSource audioSource;
-
+ã€€ã€€ã€€//SEã‚’ãƒ©ãƒ³ãƒ€ãƒ ã§å†ç”Ÿ
     void Start()
     {
         audioSource = GetComponent<AudioSource>();

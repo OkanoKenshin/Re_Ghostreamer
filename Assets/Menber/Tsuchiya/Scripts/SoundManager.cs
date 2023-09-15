@@ -4,7 +4,7 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     [SerializeField] AudioSource bgmAudioSource;
-    [SerializeField] List<AudioSource> seAudioSources; // ������SE�Đ��p�̃I�[�f�B�I�\�[�X
+    [SerializeField] List<AudioSource> seAudioSources; // 複数のSE再生用のオーディオソース
 
     [SerializeField] List<BGMSoundData> bgmSoundDatas;
     [SerializeField] List<SESoundData> seSoundDatas;
@@ -30,9 +30,9 @@ public class SoundManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        // ����������SE�I�[�f�B�I�\�[�X���v�[���ɒǉ�
+        // 初期化時にSEオーディオソースをプールに追加
         seAudioSources = new List<AudioSource>();
-        for (int i = 0; i < 5; i++) // �����l�Ƃ���5��SE�I�[�f�B�I�\�[�X���쐬
+        for (int i = 0; i < 5; i++) // 初期値として5つのSEオーディオソースを作成
         {
             AudioSource newSEAudioSource = gameObject.AddComponent<AudioSource>();
             seAudioSources.Add(newSEAudioSource);
@@ -67,7 +67,7 @@ public class SoundManager : MonoBehaviour
         {
             float currentTime = Time.time;
             float timeSinceLastPlay = currentTime - lastPlayedTime[se];
-            if (timeSinceLastPlay < 0.8f) // �����Đ���h�����߂̎��ԊԊu
+            if (timeSinceLastPlay < 0.8f) // 高速再生を防ぐための時間間隔
             {
                 return false;
             }
@@ -85,7 +85,7 @@ public class SoundManager : MonoBehaviour
             }
         }
 
-        // ���ׂẴI�[�f�B�I�\�[�X���Đ����̏ꍇ�́A�V�����I�[�f�B�I�\�[�X���쐬���Ēǉ�
+        // すべてのオーディオソースが再生中の場合は、新しいオーディオソースを作成して追加
         AudioSource newSEAudioSource = gameObject.AddComponent<AudioSource>();
         seAudioSources.Add(newSEAudioSource);
         return newSEAudioSource;
@@ -98,7 +98,7 @@ public class BGMSoundData
 {
     public enum BGM
     {
-        //���x��
+        //ラベル
         Title, 
     }
 
@@ -113,7 +113,7 @@ public class SESoundData
 {
     public enum SE
     {
-        //���x��
+        //ラベル
         Ghost,
         GhostBarrier,
         Streamer,

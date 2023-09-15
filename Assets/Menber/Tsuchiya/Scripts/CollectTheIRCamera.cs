@@ -13,11 +13,11 @@ using UnityEngine;
 
     private IEnumerator WaitForCameraCollection()
     {
-        Debug.Log("ƒJƒƒ‰‰ñûƒAƒjƒ[ƒVƒ‡ƒ“‚ğÄ¶");
+        Debug.Log("ÂƒJÂƒÂÂƒÂ‰Â‰Å„ÂÅ±ÂƒAÂƒjÂƒÂÂ[ÂƒVÂƒÂ‡ÂƒÂ“Â‚Ä‘ÂÃ„ÂÅ›");
 
         yield return new WaitForSeconds(waitingTime);
 
-        Debug.Log("ƒJƒƒ‰‰ñûŠ®—¹");
+        Debug.Log("ÂƒJÂƒÂÂƒÂ‰Â‰Å„ÂÅ±ÂŠÅ½Â—Å¡");
     }
 
     public void MAbortCoroutine()
