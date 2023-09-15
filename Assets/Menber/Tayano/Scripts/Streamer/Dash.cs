@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dash : MonoBehaviour
+public class Dash : MonoBehaviour //streamerのダッシュ仕様
 {
     Animation _animation;
 
