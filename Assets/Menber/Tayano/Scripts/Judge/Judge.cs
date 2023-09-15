@@ -28,100 +28,100 @@ public class Judge : MonoBehaviour
     void Awake()
     {
         /*
-        #region "CenterDataOfStreamer"‚ÌNullƒ`ƒFƒbƒN
+        #region "CenterDataOfStreamer"ã®Nullãƒã‚§ãƒƒã‚¯
         if (AttachedCenterDataOfStreamer != null)
         {
             _centerDataOfStreamer = GetComponent<CenterDataOfStreamer>();
             if (_centerDataOfStreamer != null)
             {
-                Debug.Log("uCenterDataOfStreamerv‚Í³í‚Éæ“¾‚³‚ê‚Ä‚¢‚Ü‚·B");
+                Debug.Log("ã€ŒCenterDataOfStreamerã€ã¯æ­£å¸¸ã«å–å¾—ã•ã‚Œã¦ã„ã¾ã™ã€‚");
             }
             else
             {
-                Debug.Log("uAttachedCenterDataOfStreamerv‚ÍƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚Ü‚·‚ªAuCenterDataOfStreamerv‚Ìæ“¾‚É¸”s‚µ‚Ä‚¢‚Ü‚·B");
+                Debug.Log("ã€ŒAttachedCenterDataOfStreamerã€ã¯ã‚¢ã‚¿ãƒƒãƒã•ã‚Œã¦ã„ã¾ã™ãŒã€ã€ŒCenterDataOfStreamerã€ã®å–å¾—ã«å¤±æ•—ã—ã¦ã„ã¾ã™ã€‚");
             }
         }
         else
         {
-            Debug.Log("uAttachedCenterDataOfStreamerv‚ÍƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB");
+            Debug.Log("ã€ŒAttachedCenterDataOfStreamerã€ã¯ã‚¢ã‚¿ãƒƒãƒã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚");
         }
         #endregion
 
-        #region "CenterDataOfHAGhost"‚ÌNullƒ`ƒFƒbƒN
+        #region "CenterDataOfHAGhost"ã®Nullãƒã‚§ãƒƒã‚¯
         if (AttachedCenterDataOfHAGhost != null)
         {
             _centerDataOfHAGhost = GetComponent<CenterDataOfHAGhost>();
             if (_centerDataOfHAGhost != null)
             {
-                Debug.Log("uCenterDataOfHAGhostv‚Í³í‚Éæ“¾‚³‚ê‚Ä‚¢‚Ü‚·B");
+                Debug.Log("ã€ŒCenterDataOfHAGhostã€ã¯æ­£å¸¸ã«å–å¾—ã•ã‚Œã¦ã„ã¾ã™ã€‚");
             }
             else
             {
-                Debug.Log("uAttachedCenterDataOfHAGhostv‚ÍƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚Ü‚·‚ªAuCenterDataOfHAGhostv‚Ìæ“¾‚É¸”s‚µ‚Ä‚¢‚Ü‚·B");
+                Debug.Log("ã€ŒAttachedCenterDataOfHAGhostã€ã¯ã‚¢ã‚¿ãƒƒãƒã•ã‚Œã¦ã„ã¾ã™ãŒã€ã€ŒCenterDataOfHAGhostã€ã®å–å¾—ã«å¤±æ•—ã—ã¦ã„ã¾ã™ã€‚");
             }
         }
         else
         {
-            Debug.Log("uAttachedCenterDataOfHAGhostv‚ÍƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB");
+            Debug.Log("ã€ŒAttachedCenterDataOfHAGhostã€ã¯ã‚¢ã‚¿ãƒƒãƒã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚");
         }
         #endregion
 
-        #region "CenterDataOfFPGhost"‚ÌNullƒ`ƒFƒbƒN
+        #region "CenterDataOfFPGhost"ã®Nullãƒã‚§ãƒƒã‚¯
         if (AttachedCenterDataOfFPGhost != null)
         {
             _centerDataOfFPGhost = GetComponent<CenterDataOfFPGhost>();
             if (_centerDataOfFPGhost != null)
             {
-                Debug.Log("uCenterDataOfFPGhostv‚Í³í‚Éæ“¾‚³‚ê‚Ä‚¢‚Ü‚·B");
+                Debug.Log("ã€ŒCenterDataOfFPGhostã€ã¯æ­£å¸¸ã«å–å¾—ã•ã‚Œã¦ã„ã¾ã™ã€‚");
             }
             else
             {
-                Debug.Log("uAttachedCenterDataOfFPGhostv‚ÍƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚Ü‚·‚ªAuCenterDataOfFPGhostv‚Ìæ“¾‚É¸”s‚µ‚Ä‚¢‚Ü‚·B");
+                Debug.Log("ã€ŒAttachedCenterDataOfFPGhostã€ã¯ã‚¢ã‚¿ãƒƒãƒã•ã‚Œã¦ã„ã¾ã™ãŒã€ã€ŒCenterDataOfFPGhostã€ã®å–å¾—ã«å¤±æ•—ã—ã¦ã„ã¾ã™ã€‚");
             }
         }
         else
         {
-            Debug.Log("uAttachedCenterDataOfFPGhostv‚ÍƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB");
+            Debug.Log("ã€ŒAttachedCenterDataOfFPGhostã€ã¯ã‚¢ã‚¿ãƒƒãƒã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚");
         }
         #endregion
 
-        #region "CenterDataOfFGGhost"‚ÌNullƒ`ƒFƒbƒN
+        #region "CenterDataOfFGGhost"ã®Nullãƒã‚§ãƒƒã‚¯
         if (AttachedCenterDataOfFGGhost != null)
         {
             _centerDataOfFGGhost = GetComponent<CenterDataOfFGGhost>();
             if (_centerDataOfFGGhost != null)
             {
-                Debug.Log("uCenterDataOfFGGhostv‚Í³í‚Éæ“¾‚³‚ê‚Ä‚¢‚Ü‚·B");
+                Debug.Log("ã€ŒCenterDataOfFGGhostã€ã¯æ­£å¸¸ã«å–å¾—ã•ã‚Œã¦ã„ã¾ã™ã€‚");
             }
             else
             {
-                Debug.Log("uAttachedCenterDataOfFGGhostv‚ÍƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚Ü‚·‚ªAuCenterDataOfFGGhostv‚Ìæ“¾‚É¸”s‚µ‚Ä‚¢‚Ü‚·B");
+                Debug.Log("ã€ŒAttachedCenterDataOfFGGhostã€ã¯ã‚¢ã‚¿ãƒƒãƒã•ã‚Œã¦ã„ã¾ã™ãŒã€ã€ŒCenterDataOfFGGhostã€ã®å–å¾—ã«å¤±æ•—ã—ã¦ã„ã¾ã™ã€‚");
             }
         }
         else
         {
-            Debug.Log("uAttachedCenterDataOfFGGhostv‚ÍƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB");
+            Debug.Log("ã€ŒAttachedCenterDataOfFGGhostã€ã¯ã‚¢ã‚¿ãƒƒãƒã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚");
         }
         #endregion
         */
         if(_centerDataOfStreamer == null)
         {
-            Debug.Log("St‚È‚©‚Á‚½‚æ");
+            Debug.Log("Stãªã‹ã£ãŸã‚ˆ");
             _centerDataOfStreamer = GetComponent<CenterDataOfStreamer>();
         }
         if (_centerDataOfHAGhost == null)
         {
-            Debug.Log("GhHA‚È‚©‚Á‚½‚æ");
+            Debug.Log("GhHAãªã‹ã£ãŸã‚ˆ");
             _centerDataOfHAGhost = GetComponent<CenterDataOfHAGhost>();
         }
         if (_centerDataOfFPGhost == null)
         {
-            Debug.Log("GhFp‚È‚©‚Á‚½‚æ");
+            Debug.Log("GhFpãªã‹ã£ãŸã‚ˆ");
             _centerDataOfFPGhost = GetComponent<CenterDataOfFPGhost>();
         }
         if (_centerDataOfFGGhost == null)
         {
-            Debug.Log("GhFg‚È‚©‚Á‚½‚æ");
+            Debug.Log("GhFgãªã‹ã£ãŸã‚ˆ");
             _centerDataOfFGGhost = GetComponent<CenterDataOfFGGhost>();
         }
 
