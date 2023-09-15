@@ -27,102 +27,26 @@ public class Judge : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        /*
-        #region "CenterDataOfStreamer"のNullチェック
-        if (AttachedCenterDataOfStreamer != null)
-        {
-            _centerDataOfStreamer = GetComponent<CenterDataOfStreamer>();
-            if (_centerDataOfStreamer != null)
-            {
-                Debug.Log("「CenterDataOfStreamer」は正常に取得されています。");
-            }
-            else
-            {
-                Debug.Log("「AttachedCenterDataOfStreamer」はアタッチされていますが、「CenterDataOfStreamer」の取得に失敗しています。");
-            }
-        }
-        else
-        {
-            Debug.Log("「AttachedCenterDataOfStreamer」はアタッチされていません。");
-        }
-        #endregion
-
-        #region "CenterDataOfHAGhost"のNullチェック
-        if (AttachedCenterDataOfHAGhost != null)
-        {
-            _centerDataOfHAGhost = GetComponent<CenterDataOfHAGhost>();
-            if (_centerDataOfHAGhost != null)
-            {
-                Debug.Log("「CenterDataOfHAGhost」は正常に取得されています。");
-            }
-            else
-            {
-                Debug.Log("「AttachedCenterDataOfHAGhost」はアタッチされていますが、「CenterDataOfHAGhost」の取得に失敗しています。");
-            }
-        }
-        else
-        {
-            Debug.Log("「AttachedCenterDataOfHAGhost」はアタッチされていません。");
-        }
-        #endregion
-
-        #region "CenterDataOfFPGhost"のNullチェック
-        if (AttachedCenterDataOfFPGhost != null)
-        {
-            _centerDataOfFPGhost = GetComponent<CenterDataOfFPGhost>();
-            if (_centerDataOfFPGhost != null)
-            {
-                Debug.Log("「CenterDataOfFPGhost」は正常に取得されています。");
-            }
-            else
-            {
-                Debug.Log("「AttachedCenterDataOfFPGhost」はアタッチされていますが、「CenterDataOfFPGhost」の取得に失敗しています。");
-            }
-        }
-        else
-        {
-            Debug.Log("「AttachedCenterDataOfFPGhost」はアタッチされていません。");
-        }
-        #endregion
-
-        #region "CenterDataOfFGGhost"のNullチェック
-        if (AttachedCenterDataOfFGGhost != null)
-        {
-            _centerDataOfFGGhost = GetComponent<CenterDataOfFGGhost>();
-            if (_centerDataOfFGGhost != null)
-            {
-                Debug.Log("「CenterDataOfFGGhost」は正常に取得されています。");
-            }
-            else
-            {
-                Debug.Log("「AttachedCenterDataOfFGGhost」はアタッチされていますが、「CenterDataOfFGGhost」の取得に失敗しています。");
-            }
-        }
-        else
-        {
-            Debug.Log("「AttachedCenterDataOfFGGhost」はアタッチされていません。");
-        }
-        #endregion
-        */
+        
         if(_centerDataOfStreamer == null)
         {
-            Debug.Log("Stなかったよ");
-            _centerDataOfStreamer = GetComponent<CenterDataOfStreamer>();
+           
+            _centerDataOfStreamer = GetComponent<CenterDataOfStreamer>();//CenterDataOfStreamerのnullチェック
         }
         if (_centerDataOfHAGhost == null)
         {
-            Debug.Log("GhHAなかったよ");
-            _centerDataOfHAGhost = GetComponent<CenterDataOfHAGhost>();
+           
+            _centerDataOfHAGhost = GetComponent<CenterDataOfHAGhost>();//CenterDataOfHAGhostのnullチェック
         }
         if (_centerDataOfFPGhost == null)
         {
-            Debug.Log("GhFpなかったよ");
-            _centerDataOfFPGhost = GetComponent<CenterDataOfFPGhost>();
+           
+            _centerDataOfFPGhost = GetComponent<CenterDataOfFPGhost>();//CenterDataOfFPGhostのnullチェック
         }
         if (_centerDataOfFGGhost == null)
         {
-            Debug.Log("GhFgなかったよ");
-            _centerDataOfFGGhost = GetComponent<CenterDataOfFGGhost>();
+           
+            _centerDataOfFGGhost = GetComponent<CenterDataOfFGGhost>();//CenterDataOfFGGhostのnullチェック
         }
 
 
@@ -140,7 +64,7 @@ public class Judge : MonoBehaviour
         GhVictory();
     }
 
-    void StVictory()
+    void StVictory()//ゴースト３体のHPがすべて0になったらストリーマーの勝利シーンへと遷移する
     {
         if (_centerDataOfFGGhost.fgGhHp <= 0 && _centerDataOfFPGhost.fpGhHp <= 0 && _centerDataOfHAGhost.haGhHp <= 0)
         {
@@ -149,7 +73,7 @@ public class Judge : MonoBehaviour
         
     }
 
-    void GhVictory()
+    void GhVictory()//ストリーマーのHPが0になったらゴーストの勝利シーンへと遷移する
     {
         if (_centerDataOfStreamer.stHp <= 0)
         {

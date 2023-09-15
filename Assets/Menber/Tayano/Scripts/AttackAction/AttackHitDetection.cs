@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackHitDetection :MonoBehaviour
+public class AttackHitDetection :MonoBehaviour //ゴーストの攻撃がヒットしたら処理を行うクラス
 {
     public bool attackHitTheStreamer;
 
@@ -16,36 +16,36 @@ public class AttackHitDetection :MonoBehaviour
 
     private void Awake()
     {
-        #region "CenterDataOfStreamer"��Null�`�F�b�N
+        #region "CenterDataOfStreamer"のNullチェック
         if (AttachedCenterDataOfStreamer != null)
         {
             _centerDataOfStreamer = AttachedCenterDataOfStreamer.GetComponent<CenterDataOfStreamer>();
             if (_centerDataOfStreamer != null)
             {
-                Debug.Log("�uCenterDataOfStreamer�v�͐���Ɏ擾����Ă��܂��B");
+                Debug.Log("「CenterDataOfStreamer」は正常に取得されています。");
             }
             else
             {
-                Debug.Log("�uAttachedCenterDataOfStreamer�v�̓A�^�b�`����Ă��܂����A�uCenterDataOfStreamer�v�̎擾�Ɏ��s���Ă��܂��B");
+                Debug.Log("「AttachedCenterDataOfStreamer」はアタッチされていますが、「CenterDataOfStreamer」の取得に失敗しています。");
             }
         }
         else
         {
-            Debug.Log("�uAttachedCenterDataOfStreamer�v�̓A�^�b�`����Ă��܂���B");
+            Debug.Log("「AttachedCenterDataOfStreamer」はアタッチされていません。");
         }
         #endregion
 
     }
 
-    public void MAttackHitDetection()
+    public void MAttackHitDetection()//攻撃がヒットしたのがストリーマーだった場合ストリーマーのHPを減らす処理
     {
-        if (attackHitTheStreamer == true)
+        if (attackHitTheStreamer == true)//攻撃が当たった対象がストリーマーだった場合以下の処理を行う
         {
-            if (heavyAttakActive)
+            if (heavyAttakActive)//スキルのheaveyAttackだった場合普通の攻撃よりHPを減らす量を多くする
             {
                 float hADamage = (ghAttackPower);
                 _centerDataOfStreamer.stHp -= hADamage;
-                Debug.Log("Streamer��HP��stHp�ł�");
+                Debug.Log("StreamerのHPはstHpです");
             }
             else
             {
