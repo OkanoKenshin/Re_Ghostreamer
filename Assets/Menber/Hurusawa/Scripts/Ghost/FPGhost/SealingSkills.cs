@@ -7,52 +7,57 @@ using UnityEngine.UI;
 public class SealingSkills : MonoBehaviour
 {
     [SerializeField] private LightHitDetection skillObject;
-    [SerializeField] private Image skillicon;
-    [SerializeField] InputManager _inputManager;
+    [SerializeField] private Image skillicon; 
+    [SerializeField] InputManager _inputManager; 
 
     private InputManager.InputParam _inputParam;
 
-    private bool hasskillicon = false;
-    private bool hasActivatedSkill = false;
-    public float skillCooldownTime = 5.0f;
+    private bool hasskillicon = false; 
+    private bool hasActivatedSkill = false; 
+    public float skillCooldownTime = 5.0f; 
 
     public float CoolTime = 0f;
-    private float fillAmount = 1.0f;
+    private float fillAmount = 1.0f; 
     private bool counting = false;
 
     private void Start()
     {
+        // ã‚¯ãƒ¼ãƒ«ãƒ€ã‚¦ãƒ³ãŒé–‹å§‹ã•ã‚Œã‚‹
         CoolTime = 0;
-        counting = true;
+        counting = true; 
     }
+    
     private void Update()
     {
+        // ã‚¯ãƒ¼ãƒ«ã‚¿ã‚¤ãƒ ã‚’å¢—ã‚„ã™
         if (counting)
         {
-            CoolTime += Time.deltaTime * fillAmount;
+            CoolTime += Time.deltaTime * fillAmount; 
         }
 
-        if (CoolTime >= 40f)
+        if (CoolTime >= 40f) 
         {
-            CoolTime = 0f;
-            if (!hasActivatedSkill && _inputManager == null)
+            CoolTime = 0f; 
+
+            if (!hasActivatedSkill && _inputManager == null) 
             {
+                // ã‚¹ã‚­ãƒ«ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç„¡åŠ¹ã«ã™ã‚‹
                 if (skillObject != null)
                 {
-                    skillObject.enabled = false;
-                    Debug.Log("‰Ÿ‚³‚ê‚Ü‚µ‚½");
-                    hasActivatedSkill = true;
+                    skillObject.enabled = false; 
+                    Debug.Log("æŠ¼ã•ã‚Œã¾ã—ãŸ");
+                    hasActivatedSkill = true; 
 
-                    StartCoroutine(StartCooldown());
+                    StartCoroutine(StartCooldown()); 
                 }
-
-                if (!hasskillicon) // ‹t‚É•ÏXFhasskillicon‚ªfalse‚Ìê‡‚ÉÀs
+                // ã‚¹ã‚­ãƒ«ã‚¢ã‚¤ã‚³ãƒ³ã‚’è¡¨ç¤º
+                if (!hasskillicon) 
                 {
-                    skillicon.enabled = true; // ‹t‚É•ÏXFƒXƒLƒ‹ƒAƒCƒRƒ“‚ğ•\¦
-                    Debug.Log("ƒXƒLƒ‹ƒAƒCƒRƒ“•\¦");
-                    hasskillicon = true;
+                    skillicon.enabled = true; 
+                    Debug.Log("ã‚¹ã‚­ãƒ«ã‚¢ã‚¤ã‚³ãƒ³è¡¨ç¤º");
+                    hasskillicon = true; 
 
-                    StartCoroutine(StartCooldown());
+                    StartCoroutine(StartCooldown()); 
                 }
             }
         }
@@ -60,20 +65,19 @@ public class SealingSkills : MonoBehaviour
 
     private IEnumerator StartCooldown()
     {
-        yield return new WaitForSeconds(skillCooldownTime);
-
+        yield return new WaitForSeconds(skillCooldownTime); 
+        // ã‚¯ãƒ¼ãƒ«ãƒ€ã‚¦ãƒ³çµ‚äº†æ™‚ã«ã‚¹ã‚­ãƒ«ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æœ‰åŠ¹ã«ã™ã‚‹
         if (skillObject != null)
         {
-            skillObject.enabled = true;
-            Debug.Log("ƒN[ƒ‹ƒ_ƒEƒ“I—¹");
+            skillObject.enabled = true; 
+            Debug.Log("ã‚¯ãƒ¼ãƒ«ãƒ€ã‚¦ãƒ³çµ‚äº†");
         }
-
+        // ã‚¯ãƒ¼ãƒ«ãƒ€ã‚¦ãƒ³çµ‚äº†æ™‚ã«ã‚¹ã‚­ãƒ«ã‚¢ã‚¤ã‚³ãƒ³ã‚’éè¡¨ç¤ºã«ã™ã‚‹
         if (hasskillicon)
         {
-            skillicon.enabled = false;
-            Debug.Log("ƒXƒLƒ‹ƒAƒCƒRƒ“”ñ•\¦");
-            hasskillicon = false;
+            skillicon.enabled = false; 
+            Debug.Log("ã‚¹ã‚­ãƒ«ã‚¢ã‚¤ã‚³ãƒ³éè¡¨ç¤º");
+            hasskillicon = false; 
         }
-
     }
 }
