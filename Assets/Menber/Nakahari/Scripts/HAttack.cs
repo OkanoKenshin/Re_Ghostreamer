@@ -52,7 +52,7 @@ public class HAttack : MonoBehaviour
 
     private void Update()
     {
-        if (_inputParam.Select)
+        if (_inputParam.Ability)
         {
             _animation.MGhHeavyAttackAnima();
             if (_attackHitDetection.attackHitTheStreamer)

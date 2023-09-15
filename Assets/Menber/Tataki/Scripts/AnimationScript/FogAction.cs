@@ -62,7 +62,7 @@ public class FogAction : MonoBehaviour
     {
         _unityMove = GetComponent<UnitMove>();
         //var ThisRotation = this.transform.forward;
-        if (_inputParam.Select)
+        if (_inputParam.Ability)
         {
             //Instantiate(FogPrefab, this.transform.position, this.transform.rotation);
             Fog.SetActive(true);
