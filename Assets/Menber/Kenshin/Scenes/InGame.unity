@@ -1159,6 +1159,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e3d446f7ff644b70a8daaa5525fcf56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &76442850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916939485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a311d72653fb5c24bb781571db50a4d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillObject: {fileID: 102792942}
+  skillicon: {fileID: 62745150}
+  _inputManager: {fileID: 1916939483}
+  skillCooldownTime: 5
 --- !u!1 &102792939
 GameObject:
   m_ObjectHideFlags: 0
@@ -12775,7 +12791,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8995711475037727926, guid: a0c549efa2f550149997f29f3df21625, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8995711475037727926, guid: a0c549efa2f550149997f29f3df21625, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16278,5 +16294,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
