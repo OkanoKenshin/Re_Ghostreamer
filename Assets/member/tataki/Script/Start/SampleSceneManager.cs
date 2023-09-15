@@ -1,54 +1,99 @@
 using System.Collections;
+
 using System.Collections.Generic;
+
 using UnityEngine;
+
 using UnityEngine.SceneManagement;
+
 using UnityEngine.Video;
 
+ 
+
 public class SampleSceneManager : MonoBehaviour
+
 {
+
     [SerializeField] private MovieViewType _movieViewType;
+
     [SerializeField] private FadeSystem _fadeSystemType;
+
     [SerializeField] private VideoPlayer _videoPlayer;
+
     public void OnNextSceneButton()
+
     {
-        //Play=å‹•ç”»å†ç”Ÿ
+
+        //Play=“®‰æÄ¶
+
         _videoPlayer.Play();
-        //ã‚³ãƒ«ãƒ¼ãƒãƒ³ã‚’å‘¼ã³å‡ºã™
+
+        //ƒRƒ‹[ƒ`ƒ“‚ğŒÄ‚Ño‚·
+
         StartCoroutine(NextSceneMove());
-<<<<<<< HEAD
-        //ã‚³ãƒ«ãƒ¼ãƒãƒ³ã‚’å‘¼ã³å‡ºã—ã¦ã‚‚debug.logã‚‚åŒæ™‚ã«å‡¦ç†ã•ã‚Œã‚‹
-=======
+
         //ƒRƒ‹[ƒ`ƒ“‚ğŒÄ‚Ño‚µ‚Ä‚àdebug.log‚à“¯‚Éˆ—‚³‚ê‚é
 
->>>>>>> develop
+
+
     }
+
+
 
     private IEnumerator NextSceneMove()
+
     {
-        //ã‚³ãƒ«ãƒ¼ãƒãƒ³ã¯éåŒæœŸã§å‹•ã„ã¦ã„ã‚‹
-        //ã‚³ãƒ¼ãƒ«ãƒãƒ³ä½¿ç”¨ãƒ»å‹•ç”»ã‚’å†ç”Ÿ
+
+        //ƒRƒ‹[ƒ`ƒ“‚Í”ñ“¯Šú‚Å“®‚¢‚Ä‚¢‚é
+
+        //ƒR[ƒ‹ƒ`ƒ“g—pE“®‰æ‚ğÄ¶
+
         yield return new WaitUntil(() => !_videoPlayer.isPlaying);
-        //å‹•ç”»ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¡¨ç¤º SetActiveã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®è¡¨ç¤ºãƒ»éè¡¨ç¤ºã‚’ã™ã‚‹
+
+        //“®‰æƒIƒuƒWƒFƒNƒg‚ğ•\¦ SetActiveƒIƒuƒWƒFƒNƒg‚Ì•\¦E”ñ•\¦‚ğ‚·‚é
+
         _movieViewType.gameObject.SetActive(true);
-        //å‹•ç”»ãŒæµã‚Œçµ‚ã‚ã£ãŸã‚‰ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆã‚¯ãƒ©ã‚¹ã‚’èª­ã¿è¾¼ã‚€
+
+        //“®‰æ‚ª—¬‚êI‚í‚Á‚½‚çƒtƒF[ƒhƒAƒEƒgƒNƒ‰ƒX‚ğ“Ç‚İ‚Ş
+
         _movieViewType.ShowMovie(FadeOutScene);
 
+
+
     }
+
+
+
 
 
     private void FadeOutScene()
+
     {
-        //setactive=ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®è¡¨ç¤ºãƒ»éè¡¨ç¤º
-        //ãƒ•ã‚§ãƒ¼ãƒ‰ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¡¨ç¤º
+
+        //setactive=ƒIƒuƒWƒFƒNƒg‚Ì•\¦E”ñ•\¦
+
+        //ƒtƒF[ƒhƒIƒuƒWƒFƒNƒg‚ğ•\¦
+
         _fadeSystemType.gameObject.SetActive(true);
-        //ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆãŒçµ‚ã‚ã£ãŸã‚‰NextSceneã‚’èª­ã¿è¾¼ã‚€
+
+        //ƒtƒF[ƒhƒAƒEƒg‚ªI‚í‚Á‚½‚çNextScene‚ğ“Ç‚İ‚Ş
+
         //FadeOut
+
         _fadeSystemType.FadeOut(NextScene);
 
+
+
     }
 
+
+
     private void NextScene()
+
     {
+
         SceneManager.LoadScene("explanation");
+
     }
+
 }
