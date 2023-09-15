@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StreamerCollisionChecker : MonoBehaviour
+public class StreamerCollisionChecker : MonoBehaviour //æ”»æ’ƒãŒå½“ãŸã£ãŸéš›ã®ç›¸æ‰‹ãŒã‚¹ãƒˆãƒªãƒ¼ãƒãƒ¼ã‹å¦ã‹ã‚’åˆ¤å®šã™ã‚‹ã‚¯ãƒ©ã‚¹
 {
-    //GhAttackHandling‚ÌƒCƒ“ƒXƒ^ƒ“ƒXì¬(ƒNƒ‰ƒX’¼‰º‚É‹Lq)
+   
     [SerializeField]
     GameObject GhAttackIntervalContorolObject;
 
@@ -19,76 +19,52 @@ public class StreamerCollisionChecker : MonoBehaviour
     [SerializeField]
     private  const int layerWithManipulativeObject = 20;
 
-    //"AttackHitDetection"‚ÌQÆì¬
+    //"AttackHitDetection"ã®å‚ç…§ä½œæˆ
     [SerializeField]
     GameObject AttachedAttackHitDetection;
     AttackHitDetection _attackHitDetection;
 
-    /*
-    "IdentifyTouchedObjects"‚ÌQÆì¬
-    [SerializeField]
-    GameObject AttachedIdentifyTouchedObjects;
-    IdentifyTouchedObjects _identifyTouchedObjects;
-    */
+
     // Start is called before the first frame update
     void Awake()
     {
 
-        #region GhAttackIntervalContorol‚ÌƒCƒ“ƒXƒ^ƒ“ƒXæ“¾‚ÆNullƒ`ƒFƒbƒN(Awakeƒƒ\ƒbƒh‚É‹Lq)
+        #region GhAttackIntervalContorolã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å–å¾—ã¨Nullãƒã‚§ãƒƒã‚¯(Awakeãƒ¡ã‚½ãƒƒãƒ‰ã«è¨˜è¿°)
         if (GhAttackIntervalContorolObject != null)
         {
             _ghAttackIntervalContorol = GetComponent<GhAttackActionIntervalContorol>();
             if (_ghAttackIntervalContorol != null)
             {
-                Debug.Log(" _ghAttackIntervalContorol‚Í³í‚Éæ“¾‚³‚ê‚Ä‚¢‚Ü‚·B");
+                Debug.Log(" _ghAttackIntervalContorolã¯æ­£å¸¸ã«å–å¾—ã•ã‚Œã¦ã„ã¾ã™ã€‚");
             }
             else
             {
-                Debug.Log("GhAttackIntervalContorolObject‚Íæ“¾‚³‚ê‚Ä‚¢‚Ü‚·‚ªA _ghAttackIntervalContorol‚Ìæ“¾‚É¸”s‚µ‚Ä‚¢‚Ü‚·B");
+                Debug.Log("GhAttackIntervalContorolObjectã¯å–å¾—ã•ã‚Œã¦ã„ã¾ã™ãŒã€ _ghAttackIntervalContorolã®å–å¾—ã«å¤±æ•—ã—ã¦ã„ã¾ã™ã€‚");
             }
         }
         else
         {
-            Debug.Log("GhAttackIntervalContorolObject‚Íæ“¾‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB");
+            Debug.Log("GhAttackIntervalContorolObjectã¯å–å¾—ã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚");
         }
         #endregion
 
-        #region AttackHitDetection‚ÌNullƒ`ƒFƒbƒN
+        #region AttackHitDetectionã®Nullãƒã‚§ãƒƒã‚¯
         if (AttachedAttackHitDetection != null)
         {
             _attackHitDetection = AttachedAttackHitDetection.GetComponent<AttackHitDetection>();
             if (_attackHitDetection != null)
             {
-                Debug.Log("uAttackHitDetectionv‚Í³í‚Éæ“¾‚³‚ê‚Ä‚¢‚Ü‚·B");
+                Debug.Log("ã€ŒAttackHitDetectionã€ã¯æ­£å¸¸ã«å–å¾—ã•ã‚Œã¦ã„ã¾ã™ã€‚");
             }
             else
             {
-                Debug.Log("uAttachedAttackHitDetectionv‚Íæ“¾‚³‚ê‚Ä‚¢‚Ü‚·‚ªA uAttackHitDetectionv‚Ìæ“¾‚É¸”s‚µ‚Ä‚¢‚Ü‚·B");
+                Debug.Log("ã€ŒAttachedAttackHitDetectionã€ã¯å–å¾—ã•ã‚Œã¦ã„ã¾ã™ãŒã€ ã€ŒAttackHitDetectionã€ã®å–å¾—ã«å¤±æ•—ã—ã¦ã„ã¾ã™ã€‚");
             }
         }
         else
         {
-            Debug.Log("uAttachedAttackHitDetectionv‚Íæ“¾‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB");
+            Debug.Log("ã€ŒAttachedAttackHitDetectionã€ã¯å–å¾—ã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚");
         }
-        #endregion
-
-        #region IdentifyTouchedObjects‚ÌNullƒ`ƒFƒbƒN
-        //if (AttachedIdentifyTouchedObjects != null)
-        //{
-        //    _identifyTouchedObjects = GetComponent<IdentifyTouchedObjects>();
-        //    if (_identifyTouchedObjects != null)
-        //    {
-        //        Debug.Log("uIdentifyTouchedObjectsv‚Í³í‚Éæ“¾‚³‚ê‚Ä‚¢‚Ü‚·B");
-        //    }
-        //    else
-        //    {
-        //        Debug.Log("uAttachedIdentifyTouchedObjectsv‚ÍƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚Ü‚·‚ªA uIdentifyTouchedObjectsv‚Ìæ“¾‚É¸”s‚µ‚Ä‚¢‚Ü‚·B");
-        //    }
-        //}
-        //else
-        //{
-        //    Debug.Log("uAttachedIdentifyTouchedObjectsv‚ÍƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB");
-        //}
         #endregion
     }
 
@@ -97,23 +73,23 @@ public class StreamerCollisionChecker : MonoBehaviour
     {
         
     }
-   private void OnCollisionEnter(Collision hitInfo)
-    //hitî•ñ‚ğ"hitInfo"‚ÉŠi”[
+   private void OnCollisionEnter(Collision hitInfo) //æ”»æ’ƒãŒå½“ãŸã£ãŸéš›ã«ã‚¹ãƒˆãƒªãƒ¼ãƒãƒ¼ã‹ã©ã†ã‹åˆ¤å®šã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
+    //hitæƒ…å ±ã‚’"hitInfo"ã«æ ¼ç´
     {
         int layerToHit = hitInfo.gameObject.layer;
-        //hitInfo‚©‚çƒqƒbƒgObject‚ÌƒŒƒCƒ„[î•ñ‚ğˆø‚«o‚µAlayerToHit‚É‘ã“üB
+        //hitInfoã‹ã‚‰ãƒ’ãƒƒãƒˆObjectã®ãƒ¬ã‚¤ãƒ¤ãƒ¼æƒ…å ±ã‚’å¼•ãå‡ºã—ã€layerToHitã«ä»£å…¥ã€‚
 
         Collider myCollider = GetComponent<Collider>();
         int layerOfThis = myCollider.gameObject.layer;
-        //‚±‚Ìscript‚ªƒAƒ^ƒbƒ`‚³‚ê‚Ä‚éGameObject‚É‚Â‚¢‚Ä‚élayer‚ğæ“¾
+        //ã“ã®scriptãŒã‚¢ã‚¿ãƒƒãƒã•ã‚Œã¦ã‚‹GameObjectã«ã¤ã„ã¦ã‚‹layerã‚’å–å¾—
 
         switch (layerOfThis)
-        //‚±‚Ìscript‚ªƒAƒ^ƒbƒ`‚³‚ê‚Ä‚éGameObject‚ª‰½‚©‚ğ”»’è
+        //ã“ã®scriptãŒã‚¢ã‚¿ãƒƒãƒã•ã‚Œã¦ã‚‹GameObjectãŒä½•ã‹ã‚’åˆ¤å®š
         {
             case layerWithGhost:
-                //Ghost‚É‚±‚Ìscript‚ªƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚éê‡
+                //Ghostã«ã“ã®scriptãŒã‚¢ã‚¿ãƒƒãƒã•ã‚Œã¦ã„ã‚‹å ´åˆ
                 if (layerWithStreamer == layerToHit)
-                //ƒqƒbƒg‚µ‚½‘ÎÛ‚ªStreamer‚©”»’è
+                //ãƒ’ãƒƒãƒˆã—ãŸå¯¾è±¡ãŒStreamerã‹åˆ¤å®š
                 {
                     _attackHitDetection.attackHitTheStreamer = true;
                 }

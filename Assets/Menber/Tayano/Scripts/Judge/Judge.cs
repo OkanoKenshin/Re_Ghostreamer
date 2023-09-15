@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Judge : MonoBehaviour
+public class Judge : MonoBehaviour //ã‚¹ãƒˆãƒªãƒ¼ãƒãƒ¼ã€ã‚´ãƒ¼ã‚¹ãƒˆã®ã©ã¡ã‚‰ã‹ãŒå‹åˆ©ã—ãŸå ´åˆã€å‹åˆ©ã‚·ãƒ¼ãƒ³ã«é·ç§»ã™ã‚‹
 {
     //[SerializeField]
     //GameObject AttachedCenterDataOfStreamer;
@@ -27,102 +27,26 @@ public class Judge : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        /*
-        #region "CenterDataOfStreamer"‚ÌNullƒ`ƒFƒbƒN
-        if (AttachedCenterDataOfStreamer != null)
-        {
-            _centerDataOfStreamer = GetComponent<CenterDataOfStreamer>();
-            if (_centerDataOfStreamer != null)
-            {
-                Debug.Log("uCenterDataOfStreamerv‚Í³í‚Éæ“¾‚³‚ê‚Ä‚¢‚Ü‚·B");
-            }
-            else
-            {
-                Debug.Log("uAttachedCenterDataOfStreamerv‚ÍƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚Ü‚·‚ªAuCenterDataOfStreamerv‚Ìæ“¾‚É¸”s‚µ‚Ä‚¢‚Ü‚·B");
-            }
-        }
-        else
-        {
-            Debug.Log("uAttachedCenterDataOfStreamerv‚ÍƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB");
-        }
-        #endregion
-
-        #region "CenterDataOfHAGhost"‚ÌNullƒ`ƒFƒbƒN
-        if (AttachedCenterDataOfHAGhost != null)
-        {
-            _centerDataOfHAGhost = GetComponent<CenterDataOfHAGhost>();
-            if (_centerDataOfHAGhost != null)
-            {
-                Debug.Log("uCenterDataOfHAGhostv‚Í³í‚Éæ“¾‚³‚ê‚Ä‚¢‚Ü‚·B");
-            }
-            else
-            {
-                Debug.Log("uAttachedCenterDataOfHAGhostv‚ÍƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚Ü‚·‚ªAuCenterDataOfHAGhostv‚Ìæ“¾‚É¸”s‚µ‚Ä‚¢‚Ü‚·B");
-            }
-        }
-        else
-        {
-            Debug.Log("uAttachedCenterDataOfHAGhostv‚ÍƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB");
-        }
-        #endregion
-
-        #region "CenterDataOfFPGhost"‚ÌNullƒ`ƒFƒbƒN
-        if (AttachedCenterDataOfFPGhost != null)
-        {
-            _centerDataOfFPGhost = GetComponent<CenterDataOfFPGhost>();
-            if (_centerDataOfFPGhost != null)
-            {
-                Debug.Log("uCenterDataOfFPGhostv‚Í³í‚Éæ“¾‚³‚ê‚Ä‚¢‚Ü‚·B");
-            }
-            else
-            {
-                Debug.Log("uAttachedCenterDataOfFPGhostv‚ÍƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚Ü‚·‚ªAuCenterDataOfFPGhostv‚Ìæ“¾‚É¸”s‚µ‚Ä‚¢‚Ü‚·B");
-            }
-        }
-        else
-        {
-            Debug.Log("uAttachedCenterDataOfFPGhostv‚ÍƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB");
-        }
-        #endregion
-
-        #region "CenterDataOfFGGhost"‚ÌNullƒ`ƒFƒbƒN
-        if (AttachedCenterDataOfFGGhost != null)
-        {
-            _centerDataOfFGGhost = GetComponent<CenterDataOfFGGhost>();
-            if (_centerDataOfFGGhost != null)
-            {
-                Debug.Log("uCenterDataOfFGGhostv‚Í³í‚Éæ“¾‚³‚ê‚Ä‚¢‚Ü‚·B");
-            }
-            else
-            {
-                Debug.Log("uAttachedCenterDataOfFGGhostv‚ÍƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚Ü‚·‚ªAuCenterDataOfFGGhostv‚Ìæ“¾‚É¸”s‚µ‚Ä‚¢‚Ü‚·B");
-            }
-        }
-        else
-        {
-            Debug.Log("uAttachedCenterDataOfFGGhostv‚ÍƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB");
-        }
-        #endregion
-        */
+        
         if(_centerDataOfStreamer == null)
         {
-            Debug.Log("St‚È‚©‚Á‚½‚æ");
-            _centerDataOfStreamer = GetComponent<CenterDataOfStreamer>();
+           
+            _centerDataOfStreamer = GetComponent<CenterDataOfStreamer>();//CenterDataOfStreamerã®nullãƒã‚§ãƒƒã‚¯
         }
         if (_centerDataOfHAGhost == null)
         {
-            Debug.Log("GhHA‚È‚©‚Á‚½‚æ");
-            _centerDataOfHAGhost = GetComponent<CenterDataOfHAGhost>();
+           
+            _centerDataOfHAGhost = GetComponent<CenterDataOfHAGhost>();//CenterDataOfHAGhostã®nullãƒã‚§ãƒƒã‚¯
         }
         if (_centerDataOfFPGhost == null)
         {
-            Debug.Log("GhFp‚È‚©‚Á‚½‚æ");
-            _centerDataOfFPGhost = GetComponent<CenterDataOfFPGhost>();
+           
+            _centerDataOfFPGhost = GetComponent<CenterDataOfFPGhost>();//CenterDataOfFPGhostã®nullãƒã‚§ãƒƒã‚¯
         }
         if (_centerDataOfFGGhost == null)
         {
-            Debug.Log("GhFg‚È‚©‚Á‚½‚æ");
-            _centerDataOfFGGhost = GetComponent<CenterDataOfFGGhost>();
+           
+            _centerDataOfFGGhost = GetComponent<CenterDataOfFGGhost>();//CenterDataOfFGGhostã®nullãƒã‚§ãƒƒã‚¯
         }
 
 
@@ -140,7 +64,7 @@ public class Judge : MonoBehaviour
         GhVictory();
     }
 
-    void StVictory()
+    void StVictory()//ã‚´ãƒ¼ã‚¹ãƒˆï¼“ä½“ã®HPãŒã™ã¹ã¦0ã«ãªã£ãŸã‚‰ã‚¹ãƒˆãƒªãƒ¼ãƒãƒ¼ã®å‹åˆ©ã‚·ãƒ¼ãƒ³ã¸ã¨é·ç§»ã™ã‚‹
     {
         if (_centerDataOfFGGhost.fgGhHp <= 0 && _centerDataOfFPGhost.fpGhHp <= 0 && _centerDataOfHAGhost.haGhHp <= 0)
         {
@@ -149,7 +73,7 @@ public class Judge : MonoBehaviour
         
     }
 
-    void GhVictory()
+    void GhVictory()//ã‚¹ãƒˆãƒªãƒ¼ãƒãƒ¼ã®HPãŒ0ã«ãªã£ãŸã‚‰ã‚´ãƒ¼ã‚¹ãƒˆã®å‹åˆ©ã‚·ãƒ¼ãƒ³ã¸ã¨é·ç§»ã™ã‚‹
     {
         if (_centerDataOfStreamer.stHp <= 0)
         {

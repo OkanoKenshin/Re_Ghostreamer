@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GhAttackActionIntervalContorol : MonoBehaviour
+public class GhAttackActionIntervalContorol : MonoBehaviour //ゴーストの攻撃を呼び出し、クールタイムの管理を行うクラス
 {
     [SerializeField]
     private float ghAttackInterval;
@@ -28,21 +28,21 @@ public class GhAttackActionIntervalContorol : MonoBehaviour
     {
         if (_attackHitDetection == null)
         {
-            _attackHitDetection = GetComponent<AttackHitDetection>();
+            _attackHitDetection = GetComponent<AttackHitDetection>();//AttackHitDetectionのnullチェック
         }
         if (_inputManager == null)
         {
-            _inputManager = GetComponent<InputManager>();
+            _inputManager = GetComponent<InputManager>();//InputManagerのnullチェック
         }
         if(_animation == null)
         {
-            _animation = GetComponent<Animation>();
+            _animation = GetComponent<Animation>();//Animationのnullチェック
         }
         _inputParam = _inputManager.UnitInputParams[_unitType];
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void FixedUpdate()//入力を受け取った際に攻撃が可能であれば、攻撃の処理を行う
     {
         if(_inputParam.Attack && ghCanAttack)
         {
@@ -53,7 +53,7 @@ public class GhAttackActionIntervalContorol : MonoBehaviour
         }
         //Debug.Log(ghCanAttack);
     }
-    #region attack�̃N�[���_�E��
+    #region attackのクールダウン
     IEnumerator AttackCooldown()
     {
         ghCanAttack = false;

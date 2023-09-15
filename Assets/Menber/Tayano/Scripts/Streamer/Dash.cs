@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dash : MonoBehaviour
+public class Dash : MonoBehaviour //streamerã®ãƒ€ãƒƒã‚·ãƒ¥ä»•æ§˜
 {
     Animation _animation;
 
@@ -22,16 +22,16 @@ public class Dash : MonoBehaviour
     {
         if (_inputManager == null)
         {
-            _inputManager = GetComponent<InputManager>();
+            _inputManager = GetComponent<InputManager>();//InputManagerã®nullãƒã‚§ãƒƒã‚¯
         }
         if (_centerDataOfStreamer == null)
         {
-            _centerDataOfStreamer = GetComponent<CenterDataOfStreamer>();
+            _centerDataOfStreamer = GetComponent<CenterDataOfStreamer>();//CenterDataOfStreamerã®nullãƒã‚§ãƒƒã‚¯
         }
 
         if (_animation == null)
         {
-            _animation = GetComponent<Animation>();
+            _animation = GetComponent<Animation>();//Animationã®nullãƒã‚§ãƒƒã‚¯
         }
         _inputParam = _inputManager.UnitInputParams[_unitType];
 
@@ -40,48 +40,48 @@ public class Dash : MonoBehaviour
         // Update is called once per frame
     void Update()
     {
-        dash();
+        MDash();
         //Debug.Log(_inputParam.Dash);
     }
 
 
-    public void dash()
+    public void MDash()
     {
-        if (_inputParam.Dash && _centerDataOfStreamer.stStamina > 0) //“ü—Í‚³‚ê‚Ä‚¢‚é&ƒXƒgƒŠ[ƒ}[‚ÌƒXƒ^ƒ~ƒi‚ªstStamina‚ª0‚æ‚è—L‚éó‘Ô‚ÅˆÈ‰º‚ğs‚¤
+        if (_inputParam.Dash && _centerDataOfStreamer.stStamina > 0) //å…¥åŠ›ã•ã‚Œã¦ã„ã‚‹&ã‚¹ãƒˆãƒªãƒ¼ãƒãƒ¼ã®ã‚¹ã‚¿ãƒŸãƒŠãŒstStaminaãŒ0ã‚ˆã‚Šæœ‰ã‚‹çŠ¶æ…‹ã§ä»¥ä¸‹ã‚’è¡Œã†
         {
-            _centerDataOfStreamer.stSpeed = _centerDataOfStreamer.stDashSpeed;//ƒXƒgƒŠ[ƒ}[‚ÌƒXƒs[ƒh‚Éƒ_ƒbƒVƒ…”{—¦‚ğŠ|‚¯‚é
+            _centerDataOfStreamer.stSpeed = _centerDataOfStreamer.stDashSpeed;//ã‚¹ãƒˆãƒªãƒ¼ãƒãƒ¼ã®ã‚¹ãƒ”ãƒ¼ãƒ‰ã«ãƒ€ãƒƒã‚·ãƒ¥å€ç‡ã‚’æ›ã‘ã‚‹
 
-            _animation.MStSprintAnima();//ƒ_ƒbƒVƒ…‚ÌƒAƒjƒ[ƒVƒ‡ƒ“‚ğ—¬‚·
+            _animation.MStSprintAnima();//ãƒ€ãƒƒã‚·ãƒ¥ã®ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã‚’æµã™
 
-            _centerDataOfStreamer.stStamina -= _centerDataOfStreamer.stStaminaDecrease;//ƒXƒ^ƒ~ƒi‚ğstStaminaDecrease•ªŒ¸­‚³‚¹‚é
+            _centerDataOfStreamer.stStamina -= _centerDataOfStreamer.stStaminaDecrease;//ã‚¹ã‚¿ãƒŸãƒŠã‚’stStaminaDecreaseåˆ†æ¸›å°‘ã•ã›ã‚‹
 
-            if(_centerDataOfStreamer.stStamina <= 0)//ƒXƒ^ƒ~ƒi‚ª0‚É‚È‚Á‚½ABaseStamina•ª‚Ü‚Å‰ñ•œ‚·‚é‚Ü‚Åƒ_ƒbƒVƒ…‚Å‚«‚È‚¢‚æ‚¤‚É‚·‚é
+            if(_centerDataOfStreamer.stStamina <= 0)//ã‚¹ã‚¿ãƒŸãƒŠãŒ0ã«ãªã£ãŸæ™‚ã€BaseStaminaåˆ†ã¾ã§å›å¾©ã™ã‚‹ã¾ã§ãƒ€ãƒƒã‚·ãƒ¥ã§ããªã„ã‚ˆã†ã«ã™ã‚‹
             {
-                StartCoroutine(waiteStamina());
+                StartCoroutine(MWaiteStamina());
 
             }
 
         }
         else if(_inputParam.Dash == false )
         {
-            _centerDataOfStreamer.stSpeed = _centerDataOfStreamer.stBaseSpeed;//ƒXƒs[ƒh‚Ì‚ğƒx[ƒXƒXƒs[ƒh‚ğ‘ã“ü(‰Šú‰»)
+            _centerDataOfStreamer.stSpeed = _centerDataOfStreamer.stBaseSpeed;//ã‚¹ãƒ”ãƒ¼ãƒ‰ã®ã‚’ãƒ™ãƒ¼ã‚¹ã‚¹ãƒ”ãƒ¼ãƒ‰ã‚’ä»£å…¥(åˆæœŸåŒ–)
 
-            if (_centerDataOfStreamer.stStamina < _centerDataOfStreamer.stBaseStamina) //ƒXƒ^ƒ~ƒi‚ªƒx[ƒXƒXƒ^ƒ~ƒi‚æ‚è­‚È‚¢ê‡ˆÈ‰º‚ğs‚¤
+            if (_centerDataOfStreamer.stStamina < _centerDataOfStreamer.stBaseStamina) //ã‚¹ã‚¿ãƒŸãƒŠãŒãƒ™ãƒ¼ã‚¹ã‚¹ã‚¿ãƒŸãƒŠã‚ˆã‚Šå°‘ãªã„å ´åˆä»¥ä¸‹ã‚’è¡Œã†
             {
-                _centerDataOfStreamer.stStamina += _centerDataOfStreamer.stStaminaIncrease;//ƒXƒ^ƒ~ƒi‚ğƒXƒ^ƒ~ƒistStaminaIncrease•ª‘‰Á‚³‚¹‚é
+                _centerDataOfStreamer.stStamina += _centerDataOfStreamer.stStaminaIncrease;//ã‚¹ã‚¿ãƒŸãƒŠã‚’ã‚¹ã‚¿ãƒŸãƒŠstStaminaIncreaseåˆ†å¢—åŠ ã•ã›ã‚‹
             }
         }
     }
 
-    #region ƒXƒ^ƒ~ƒi‚ª0ˆÈ‰º‚È‚Á‚½ABaseStamina‚Ì’l‚É‚È‚é‚Ü‚ÅAƒ_ƒbƒVƒ…‚Ì“ü—Í‚ğfalse‚Å•Ô‚·
-    IEnumerator waiteStamina()
+    #region ã‚¹ã‚¿ãƒŸãƒŠãŒ0ä»¥ä¸‹ãªã£ãŸæ™‚ã€BaseStaminaã®å€¤ã«ãªã‚‹ã¾ã§ã€ãƒ€ãƒƒã‚·ãƒ¥ã®å…¥åŠ›ã‚’falseã§è¿”ã™
+    IEnumerator MWaiteStamina()
     {
        while(_centerDataOfStreamer.stStamina < _centerDataOfStreamer.stBaseStamina)
         {
             _inputParam.Dash = false;
-            _centerDataOfStreamer.stSpeed = _centerDataOfStreamer.stBaseSpeed;//ƒXƒs[ƒh‚ğ‰Šú’l‚É–ß‚·
-            _centerDataOfStreamer.stStamina += _centerDataOfStreamer.stStaminaIncrease;//ƒXƒ^ƒ~ƒi‚ğƒXƒ^ƒ~ƒistStaminaIncrease•ª‘‰Á‚³‚¹‚é
-            Debug.Log("ƒXƒ^ƒ~ƒi‰ñ•œ’†");
+            _centerDataOfStreamer.stSpeed = _centerDataOfStreamer.stBaseSpeed;//ã‚¹ãƒ”ãƒ¼ãƒ‰ã‚’åˆæœŸå€¤ã«æˆ»ã™
+            _centerDataOfStreamer.stStamina += _centerDataOfStreamer.stStaminaIncrease;//ã‚¹ã‚¿ãƒŸãƒŠã‚’ã‚¹ã‚¿ãƒŸãƒŠstStaminaIncreaseåˆ†å¢—åŠ ã•ã›ã‚‹
+            Debug.Log("ã‚¹ã‚¿ãƒŸãƒŠå›å¾©ä¸­");
             yield return null;
         }
         

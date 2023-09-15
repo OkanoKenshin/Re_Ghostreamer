@@ -2,29 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CenterDataOfStreamer : MonoBehaviour
+public class CenterDataOfStreamer : MonoBehaviour //ã‚¹ãƒˆãƒªãƒ¼ãƒãƒ¼ã«é–¢ã‚ã‚‹å¤‰æ•°ã®ãƒ‡ãƒ¼ã‚¿ã‚’ç®¡ç†ã™ã‚‹ã‚¯ãƒ©ã‚¹
 {
     [SerializeField]
     public float stHp;
 
     [SerializeField]
-    public float stBaseSpeed = 5.0f; //ƒXƒgƒŠ[ƒ}[ƒXƒs[ƒh‚Ìƒx[ƒX—Ê
+    public float stBaseSpeed = 5.0f; //ã‚¹ãƒˆãƒªãƒ¼ãƒãƒ¼ã‚¹ãƒ”ãƒ¼ãƒ‰ã®ãƒ™ãƒ¼ã‚¹é‡
 
-    public float stSpeed;//ƒXƒgƒŠ[ƒ}[‚ÌƒXƒs[ƒh
-
-    [SerializeField]
-    public float stDashSpeed = 1.5f; //ƒXƒgƒŠ[ƒ}[‚Ìƒ_ƒbƒVƒ…”{—¦
+    public float stSpeed;//ã‚¹ãƒˆãƒªãƒ¼ãƒãƒ¼ã®ã‚¹ãƒ”ãƒ¼ãƒ‰
 
     [SerializeField]
-    public float stBaseStamina;//ƒXƒgƒŠ[ƒ}[ƒXƒ^ƒ~ƒi‚Ìƒx[ƒX—Ê
-
-    public float stStamina;//ƒXƒgƒŠ[ƒ}[‚ÌƒXƒ^ƒ~ƒi
+    public float stDashSpeed = 1.5f; //ã‚¹ãƒˆãƒªãƒ¼ãƒãƒ¼ã®ãƒ€ãƒƒã‚·ãƒ¥å€ç‡
 
     [SerializeField]
-    public float stStaminaDecrease;//ƒXƒgƒŠ[ƒ}[‚ÌƒXƒ^ƒ~ƒi‚ÌŒ¸­—Ê
+    public float stBaseStamina;//ã‚¹ãƒˆãƒªãƒ¼ãƒãƒ¼ã‚¹ã‚¿ãƒŸãƒŠã®ãƒ™ãƒ¼ã‚¹é‡
+
+    public float stStamina;//ã‚¹ãƒˆãƒªãƒ¼ãƒãƒ¼ã®ã‚¹ã‚¿ãƒŸãƒŠ
 
     [SerializeField]
-    public float stStaminaIncrease;//ƒXƒgƒŠ[ƒ}[‚ÌƒXƒ^ƒ~ƒi‘‰Á—Ê
+    public float stStaminaDecrease;//ã‚¹ãƒˆãƒªãƒ¼ãƒãƒ¼ã®ã‚¹ã‚¿ãƒŸãƒŠã®æ¸›å°‘é‡
+
+    [SerializeField]
+    public float stStaminaIncrease;//ã‚¹ãƒˆãƒªãƒ¼ãƒãƒ¼ã®ã‚¹ã‚¿ãƒŸãƒŠå¢—åŠ é‡
 
 
 }
