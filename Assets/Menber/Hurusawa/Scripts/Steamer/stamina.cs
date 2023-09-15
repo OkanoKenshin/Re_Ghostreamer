@@ -14,7 +14,7 @@ public class stamina : MonoBehaviour
     public float maxStamina;
     private Image _image;
 
-  
+
 
     private void Awake()
     {
@@ -32,14 +32,14 @@ public class stamina : MonoBehaviour
     void Start()
     {
         _image = this.GetComponent<Image>();
-        maxStamina = _centerDataOfStreamer.stStamina;
+        maxStamina = _centerDataOfStreamer.stBaseStamina;
     }
 
     private void FixedUpdate()
     {
-        if (previousFrameHp != _centerDataOfStreamer.stStamina)
+        if (previousFrameHp != _centerDataOfStreamer.stBaseStamina)
         {
-            _image.fillAmount = (float)_centerDataOfStreamer.stStamina / maxStamina;
+            _image.fillAmount = (float)_centerDataOfStreamer.stBaseStamina / maxStamina;
         }
     }
 }
