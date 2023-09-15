@@ -1171,7 +1171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a311d72653fb5c24bb781571db50a4d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillObject: {fileID: 102792942}
+  skillObject: {fileID: 102792943}
   skillicon: {fileID: 62745150}
   _inputManager: {fileID: 1916939483}
   skillCooldownTime: 5
@@ -15979,10 +15979,10 @@ MonoBehaviour:
   Fog: {fileID: 1155036878}
   _unitType: 0
   _inputManager: {fileID: 1916939483}
-  _unityMove: {fileID: 0}
+  _unityMove: {fileID: 1926675737}
   _transform: {fileID: 1155036879}
   _timeLeft: 750
-  _timeanima: 0
+  _timeanima: 5
 --- !u!114 &1916939500 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5533969972061418910, guid: 8df6b5f29318758448c1e37aae4713a2, type: 3}

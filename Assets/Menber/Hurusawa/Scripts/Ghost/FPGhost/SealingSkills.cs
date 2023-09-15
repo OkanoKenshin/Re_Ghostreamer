@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SealingSkills : MonoBehaviour
 {
-    [SerializeField] private LightHitDetection skillObject;
+    [SerializeField] private HeatGaugeControl skillObject;
     [SerializeField] private Image skillicon;
     [SerializeField] InputManager _inputManager;
 
