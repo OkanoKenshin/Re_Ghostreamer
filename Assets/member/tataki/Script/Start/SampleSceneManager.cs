@@ -15,7 +15,12 @@ public class SampleSceneManager : MonoBehaviour
         _videoPlayer.Play();
         //コルーチンを呼び出す
         StartCoroutine(NextSceneMove());
+<<<<<<< HEAD
         //コルーチンを呼び出してもdebug.logも同時に処理される
+=======
+        //�R���[�`�����Ăяo���Ă�debug.log�������ɏ��������
+
+>>>>>>> develop
     }
 
     private IEnumerator NextSceneMove()
@@ -27,6 +32,7 @@ public class SampleSceneManager : MonoBehaviour
         _movieViewType.gameObject.SetActive(true);
         //動画が流れ終わったらフェードアウトクラスを読み込む
         _movieViewType.ShowMovie(FadeOutScene);
+
     }
 
 
@@ -38,6 +44,7 @@ public class SampleSceneManager : MonoBehaviour
         //フェードアウトが終わったらNextSceneを読み込む
         //FadeOut
         _fadeSystemType.FadeOut(NextScene);
+
     }
 
     private void NextScene()

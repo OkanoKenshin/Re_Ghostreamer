@@ -63,7 +63,7 @@ public class AbilityAction : MonoBehaviour
     {
         if(inputOn == true && abilityAvailable == true)
         {
-            Debug.Log("アビリティ実行！！");
+            Debug.Log("アビリティ実行");
             //アビリティの実行
             if(ghAbilityCharge >= ghAbilityMaxCharge)
             {

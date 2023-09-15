@@ -17,5 +17,6 @@ public class SelectStart : MonoBehaviour
        // _exitStart = transform.GetChild(1);
         //Debug.Log("exitbutton");
         _start.Select();
+        
     }
 }

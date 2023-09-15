@@ -51,7 +51,7 @@ public class Animation : MonoBehaviour
         }
         else
         {
-            if (animationNow != 0)
+            if (animationNow != 0 && animationNow != 9)
             {
                 animationNow = 0;
                 animator.SetTrigger("Idol");
@@ -131,6 +131,16 @@ public class Animation : MonoBehaviour
             animator.SetTrigger("HeavyAttack");
         }
     }
+
+    public void MGhDeathAnima()
+    {
+        if (animationNow != 9)
+        {
+            animationNow = 9;
+            animator.SetTrigger("Death");
+        }
+    }
+
     #endregion
 
     IEnumerator tarn(float anime)

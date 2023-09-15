@@ -118,16 +118,7 @@ public class StreamerCollisionChecker : MonoBehaviour
                     _attackHitDetection.attackHitTheStreamer = true;
                 }
                 break;
-                /*
-            case layerWithManipulativeObject:
-                //操作可能Objectにこのscriptがアタッチされている場合
-                if (layerWithStreamer == layerToHit)
-                //Streamerが触れたObjectのTag情報を
-                {
-                    _identifyTouchedObjects.touchedObject = this.gameObject.tag;
-                }
-                break;
-                */
+
         }
     }
 
