@@ -12820,15 +12820,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8995711475037727925, guid: a0c549efa2f550149997f29f3df21625, type: 3}
       propertyPath: masterVolume
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8995711475037727925, guid: a0c549efa2f550149997f29f3df21625, type: 3}
       propertyPath: seMasterVolume
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8995711475037727925, guid: a0c549efa2f550149997f29f3df21625, type: 3}
       propertyPath: bgmMasterVolume
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8995711475037727926, guid: a0c549efa2f550149997f29f3df21625, type: 3}
       propertyPath: m_RootOrder
