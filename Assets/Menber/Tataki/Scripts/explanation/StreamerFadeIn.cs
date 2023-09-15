@@ -6,24 +6,24 @@ using UnityEngine.SceneManagement;
 
 public class StreamerFadeIn : MonoBehaviour
 {
-    public GameObject Panelfade;   // ƒtƒF[ƒhƒpƒlƒ‹‚Ìæ“¾
+    public GameObject Panelfade;   // ãƒ•ã‚§ãƒ¼ãƒ‰ãƒ‘ãƒãƒ«ã®å–å¾—
 
-    Image fadealpha;               // ƒtƒF[ƒhƒpƒlƒ‹‚ÌƒCƒ[ƒWæ“¾•Ï”
+    Image fadealpha;               // ãƒ•ã‚§ãƒ¼ãƒ‰ãƒ‘ãƒãƒ«ã®ã‚¤ãƒ¡ãƒ¼ã‚¸å–å¾—å¤‰æ•°
 
-    private float alpha = 1f;      // ƒpƒlƒ‹‚Ì‰Šúalpha’l‚ğ1‚Éİ’è
+    private float alpha = 1f;      // ãƒ‘ãƒãƒ«ã®åˆæœŸalphaå€¤ã‚’1ã«è¨­å®š
 
-    private bool fadein = true;    // ƒtƒF[ƒhƒCƒ“‚Ìƒtƒ‰ƒO•Ï”
+    private bool fadein = true;    // ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³ã®ãƒ•ãƒ©ã‚°å¤‰æ•°
 
-    public int SceneNo;            // ƒV[ƒ“‚ÌˆÚ“®æƒiƒ“ƒo[æ“¾•Ï”
+    public int SceneNo;            // ã‚·ãƒ¼ãƒ³ã®ç§»å‹•å…ˆãƒŠãƒ³ãƒãƒ¼å–å¾—å¤‰æ•°
 
-    public float fadeSpeed = 0.01f; // ƒtƒF[ƒhƒCƒ“‚Ì‘¬“x
+    public float fadeSpeed = 0.01f; // ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³ã®é€Ÿåº¦
 
     // Use this for initialization
     void Start()
     {
-        fadealpha = Panelfade.GetComponent<Image>(); // ƒpƒlƒ‹‚ÌƒCƒ[ƒWæ“¾
+        fadealpha = Panelfade.GetComponent<Image>(); // ãƒ‘ãƒãƒ«ã®ã‚¤ãƒ¡ãƒ¼ã‚¸å–å¾—
 
-        // ‰Šúó‘Ô‚ğŠ®‘S‚É•s“§–¾‚Éİ’è
+        // åˆæœŸçŠ¶æ…‹ã‚’å®Œå…¨ã«ä¸é€æ˜ã«è¨­å®š
         fadealpha.color = new Color(0, 0, 0, alpha);
     }
 
@@ -38,7 +38,7 @@ public class StreamerFadeIn : MonoBehaviour
 
     void FadeIn()
     {
-        alpha -= fadeSpeed; // “§–¾“x‚ğŒ¸­‚³‚¹‚ÄƒtƒF[ƒhƒCƒ“
+        alpha -= fadeSpeed; // é€æ˜åº¦ã‚’æ¸›å°‘ã•ã›ã¦ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³
         fadealpha.color = new Color(0, 0, 0, alpha);
 
         if (alpha <= 0)

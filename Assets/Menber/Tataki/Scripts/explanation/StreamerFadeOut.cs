@@ -6,54 +6,70 @@ using UnityEngine.UI;
 
 public class StreamerFadeOut : MonoBehaviour
 {
-    public GameObject Panelfade;   //フェードパネルの取得
+    public GameObject Panelfade;   // フェード用のパネルオブジェクト
 
-    Image fadealpha;               //フェードパネルのイメージ取得変数
+    Image fadealpha;               // パネルのImageコンポーネント
 
-    private float alpha;           //パネルのalpha値取得変数
+    private float alpha;           // パネルのアルファ値
 
-    private bool fadeout;          //フェードアウトのフラグ変数
+    private bool fadeout;          // フェードアウト中かどうかのフラグ
 
-    public int SceneNo;            //シーンの移動先ナンバー取得変数
+    public int SceneNo;            // 移動先シーンの番号
 
-    public float delayBeforeFade = 5f;//フェードアウト前の待機時間
+    public float delayBeforeFade = 5f; // フェード開始までの待機時間
 
-    // Use this for initialization
+    // 初期化
     void Start()
     {
-        fadealpha = Panelfade.GetComponent<Image>(); //パネルのイメージ取得
-        alpha = fadealpha.color.a;                 //パネルのalpha値を取得
+         // パネルのImageコンポーネントを取得
+        fadealpha = Panelfade.GetComponent<Image>();
+        // アルファ値を初期化
+        alpha = fadealpha.color.a;
+        // 待機時間後にフェードを開始するコルーチンを開始
         StartCoroutine(StartFadeAfterDelay());
     }
 
-    // Update is called once per frame
+    // 更新処理
     void Update()
     {
         if (fadeout == true)
         {
+            // フェードアウト処理を実行
             FadeOut();
         }
     }
 
+    // フェードアウト処理
     void FadeOut()
     {
+        // アルファ値を少しずつ増やす
         alpha += 0.01f;
+        // パネルのアルファ値を更新
         fadealpha.color = new Color(0, 0, 0, alpha);
+
         if (alpha >= 1)
         {
+            // フェードアウト終了
             fadeout = false;
-            SceneManager.LoadScene("InGame");
+            // 指定のシーンに移動
+            SceneManager.LoadScene("InGame"); 
         }
     }
 
-    public void fadeOut()
+    // フェードアウトを開始するための外部から呼び出すメソッド
+    // フェードアウトを開始するフラグを設定
+    public void StartFadeOut()
     {
         fadeout = true;
     }
 
+    // 待機時間後にフェードを開始するコルーチン
     IEnumerator StartFadeAfterDelay()
     {
+        // 待機時間
         yield return new WaitForSeconds(delayBeforeFade);
-        fadeOut(); // フェードアウトを開始
+        // フェードを開始
+        StartFadeOut();
     }
 }
+

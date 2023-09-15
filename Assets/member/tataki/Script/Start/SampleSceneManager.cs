@@ -11,31 +11,31 @@ public class SampleSceneManager : MonoBehaviour
     [SerializeField] private VideoPlayer _videoPlayer;
     public void OnNextSceneButton()
     {
-        //Play=“®‰æÄ¶
+        //Play=å‹•ç”»å†ç”Ÿ
         _videoPlayer.Play();
-        //ƒRƒ‹[ƒ`ƒ“‚ğŒÄ‚Ño‚·
+        //ã‚³ãƒ«ãƒ¼ãƒãƒ³ã‚’å‘¼ã³å‡ºã™
         StartCoroutine(NextSceneMove());
-        //ƒRƒ‹[ƒ`ƒ“‚ğŒÄ‚Ño‚µ‚Ä‚àdebug.log‚à“¯‚Éˆ—‚³‚ê‚é
+        //ã‚³ãƒ«ãƒ¼ãƒãƒ³ã‚’å‘¼ã³å‡ºã—ã¦ã‚‚debug.logã‚‚åŒæ™‚ã«å‡¦ç†ã•ã‚Œã‚‹
     }
 
     private IEnumerator NextSceneMove()
     {
-        //ƒRƒ‹[ƒ`ƒ“‚Í”ñ“¯Šú‚Å“®‚¢‚Ä‚¢‚é
-        //ƒR[ƒ‹ƒ`ƒ“g—pE“®‰æ‚ğÄ¶
+        //ã‚³ãƒ«ãƒ¼ãƒãƒ³ã¯éåŒæœŸã§å‹•ã„ã¦ã„ã‚‹
+        //ã‚³ãƒ¼ãƒ«ãƒãƒ³ä½¿ç”¨ãƒ»å‹•ç”»ã‚’å†ç”Ÿ
         yield return new WaitUntil(() => !_videoPlayer.isPlaying);
-        //“®‰æƒIƒuƒWƒFƒNƒg‚ğ•\¦ SetActiveƒIƒuƒWƒFƒNƒg‚Ì•\¦E”ñ•\¦‚ğ‚·‚é
+        //å‹•ç”»ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¡¨ç¤º SetActiveã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®è¡¨ç¤ºãƒ»éè¡¨ç¤ºã‚’ã™ã‚‹
         _movieViewType.gameObject.SetActive(true);
-        //“®‰æ‚ª—¬‚êI‚í‚Á‚½‚çƒtƒF[ƒhƒAƒEƒgƒNƒ‰ƒX‚ğ“Ç‚İ‚Ş
+        //å‹•ç”»ãŒæµã‚Œçµ‚ã‚ã£ãŸã‚‰ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆã‚¯ãƒ©ã‚¹ã‚’èª­ã¿è¾¼ã‚€
         _movieViewType.ShowMovie(FadeOutScene);
     }
 
 
     private void FadeOutScene()
     {
-        //setactive=ƒIƒuƒWƒFƒNƒg‚Ì•\¦E”ñ•\¦
-        //ƒtƒF[ƒhƒIƒuƒWƒFƒNƒg‚ğ•\¦
+        //setactive=ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®è¡¨ç¤ºãƒ»éè¡¨ç¤º
+        //ãƒ•ã‚§ãƒ¼ãƒ‰ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¡¨ç¤º
         _fadeSystemType.gameObject.SetActive(true);
-        //ƒtƒF[ƒhƒAƒEƒg‚ªI‚í‚Á‚½‚çNextScene‚ğ“Ç‚İ‚Ş
+        //ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆãŒçµ‚ã‚ã£ãŸã‚‰NextSceneã‚’èª­ã¿è¾¼ã‚€
         //FadeOut
         _fadeSystemType.FadeOut(NextScene);
     }
