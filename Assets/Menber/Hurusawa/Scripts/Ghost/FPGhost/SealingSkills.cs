@@ -3,12 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static CommonParam;
 
 public class SealingSkills : MonoBehaviour
 {
-    [SerializeField] private LightHitDetection skillObject;
+    [SerializeField] private HeatGaugeControl skillObject;
     [SerializeField] private Image skillicon; 
-    [SerializeField] InputManager _inputManager; 
+    [SerializeField] InputManager _inputManager;
+    [SerializeField]
+    private CommonParam.UnitType _unitType = CommonParam.UnitType.Streamer;
 
     private InputManager.InputParam _inputParam;
 
@@ -22,6 +25,7 @@ public class SealingSkills : MonoBehaviour
 
     private void Start()
     {
+        _inputParam = _inputManager.UnitInputParams[_unitType];
         // クールダウンが開始される
         CoolTime = 0;
         counting = true; 
@@ -37,17 +41,15 @@ public class SealingSkills : MonoBehaviour
 
         if (CoolTime >= 40f) 
         {
-            CoolTime = 0f; 
-
-            if (!hasActivatedSkill && _inputManager == null) 
+            if (_inputParam.Ability) 
             {
                 // スキルオブジェクトを無効にする
                 if (skillObject != null)
                 {
                     skillObject.enabled = false; 
                     Debug.Log("押されました");
-                    hasActivatedSkill = true; 
-
+                    hasActivatedSkill = true;
+                    CoolTime = 0f;
                     StartCoroutine(StartCooldown()); 
                 }
                 // スキルアイコンを表示
@@ -55,8 +57,8 @@ public class SealingSkills : MonoBehaviour
                 {
                     skillicon.enabled = true; 
                     Debug.Log("スキルアイコン表示");
-                    hasskillicon = true; 
-
+                    hasskillicon = true;
+                    CoolTime = 0f;
                     StartCoroutine(StartCooldown()); 
                 }
             }
