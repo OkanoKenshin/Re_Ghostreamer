@@ -21,6 +21,10 @@ public class LightHitDetection : MonoBehaviour
 
     public string ghostTagHit;
     [SerializeField] public float lightDamage;
+    internal static int LightDamege;
+    internal static int LightDetection;
+
+    public static bool lightstop = true;
 
     #region CenterOfLightDataのNullチェック
 
@@ -63,22 +67,25 @@ public class LightHitDetection : MonoBehaviour
 
     public void MDmageApplyToGhost(string ghostTagHit)
     {
-        if (ghostTagHit == "Ghost1")
+        if (lightstop)
         {
-            _centerDataOfFGGhost.fgGhHp -= lightDamage;
-        }
-        else if (ghostTagHit == "Ghost2")
-        {
-            _centerDataOfFPGhost.fpGhHp -= lightDamage;
-        }
-        else if (ghostTagHit == "Ghost3")
-        {
-            _centerDataOfHAGhost.haGhHp -= lightDamage;
-        }
-        else
-        {
-            //予期しない何かに当たったら以下コードを実行
-            Debug.Log("予期しないヒット", gameObject);
+            if (ghostTagHit == "Ghost1")
+            {
+                _centerDataOfFGGhost.fgGhHp -= lightDamage;
+            }
+            else if (ghostTagHit == "Ghost2")
+            {
+                _centerDataOfFPGhost.fpGhHp -= lightDamage;
+            }
+            else if (ghostTagHit == "Ghost3")
+            {
+                _centerDataOfHAGhost.haGhHp -= lightDamage;
+            }
+            else
+            {
+                //予期しない何かに当たったら以下コードを実行
+                Debug.Log("予期しないヒット", gameObject);
+            }
         }
     }
 }
