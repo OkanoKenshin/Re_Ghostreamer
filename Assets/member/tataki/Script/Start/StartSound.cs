@@ -12,10 +12,8 @@ public class StartSound : MonoBehaviour
         SoundManager.Instance.PlayBGM(BGMSoundData.BGM.Title);
     }
 
-
     public void PlayStart()
     {
         audioSource.PlayOneShot(audioSource.clip);
-
     }
 }

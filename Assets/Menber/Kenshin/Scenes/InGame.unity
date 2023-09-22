@@ -12775,7 +12775,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8995711475037727926, guid: a0c549efa2f550149997f29f3df21625, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8995711475037727926, guid: a0c549efa2f550149997f29f3df21625, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15942,6 +15942,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _unitType: 2
   _inputManager: {fileID: 1916939483}
+  _hastay: 5
   _centerDataOfStreamer: {fileID: 1916939482}
   _attackHitDetection: {fileID: 1916939489}
   ghAttackPower1: 0.25
@@ -15963,10 +15964,13 @@ MonoBehaviour:
   Fog: {fileID: 1155036878}
   _unitType: 0
   _inputManager: {fileID: 1916939483}
-  _unityMove: {fileID: 0}
+  _unityMove: {fileID: 1926675737}
+  _fogAction: {fileID: 0}
   _transform: {fileID: 1155036879}
   _timeLeft: 750
-  _timeanima: 0
+  _staytime: 5
+  _timeanima: 5
+  VolumetricFog: {fileID: 0}
 --- !u!114 &1916939500 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5533969972061418910, guid: 8df6b5f29318758448c1e37aae4713a2, type: 3}
@@ -16278,5 +16282,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

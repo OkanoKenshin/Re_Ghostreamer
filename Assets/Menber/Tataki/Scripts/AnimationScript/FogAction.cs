@@ -20,12 +20,14 @@ public class FogAction : MonoBehaviour
 
     public MonoBehaviour _unityMove;
 
+    public MonoBehaviour _fogAction;
 
-    // ƒAƒjƒ[ƒVƒ‡ƒ“‚ªÄ¶’†‚©‚Ç‚¤‚©‚ğ¦‚·ƒtƒ‰ƒO
+
+    // ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ãŒå†ç”Ÿä¸­ã‹ã©ã†ã‹ã‚’ç¤ºã™ãƒ•ãƒ©ã‚°
     private bool animationPlaying = false;
 
     //[SerializeField]
-    //private bool _isPlaying = false;
+    private bool _isPlaying = false;
 
     [SerializeField]
     private Transform _transform;
@@ -34,22 +36,31 @@ public class FogAction : MonoBehaviour
     private float _timeLeft;
 
     [SerializeField]
+    private float _staytime;
+
+    [SerializeField]
     private float _timeanima;
-    //[SerializeField]
-    //VolumetricFogAndMist.VolumetricFog VolumetricFog;
+
+    private bool _stayjudgement;
+
+    [SerializeField]
+    VolumetricFogAndMist.VolumetricFog VolumetricFog;
 
 
     private void Start()
     {
+        _stayjudgement = false;
         if (_inputManager == null)
         {
             _inputManager = GetComponent<InputManager>();
         }
-        if(_animation == null)
+        if (_animation == null)
         {
             _animation = this.GetComponent<Animation>();
         }
         _inputParam = _inputManager.UnitInputParams[_unitType];
+
+        StartCoroutine(FogStay());
     }
 
     private void Update()
@@ -61,55 +72,64 @@ public class FogAction : MonoBehaviour
     private void MFogAction()
     {
         _unityMove = GetComponent<UnitMove>();
+        _fogAction = GetComponent<FogAction>();
         //var ThisRotation = this.transform.forward;
-        if (_inputParam.Select)
-        {
-            //Instantiate(FogPrefab, this.transform.position, this.transform.rotation);
-            Fog.SetActive(true);
-            Fog.transform.position = this.transform.position;
-            Quaternion quaternion = Quaternion.Euler(this.transform.forward);
-            Fog.transform.localScale = _transform.localScale;
-            _animation.MGhFogAnima();
-            
-            if (animationPlaying == true)
+
+            if (_inputParam.Select)
             {
-                _unityMove.enabled = false;
+            if (_stayjudgement)
+            {
+                _stayjudgement = false;
+                FogActionFrames();
+                StartCoroutine(FogDisable());
+                Debug.Log("Condition is true.");
+                //Instantiate(FogPrefab, this.transform.position, this.transform.rotation);
+                Fog.SetActive(true);
+                Fog.transform.position = this.transform.position;
+                Quaternion quaternion = Quaternion.Euler(this.transform.forward);
+                Fog.transform.localScale = _transform.localScale;
+                _animation.MGhFogAnima();
+
+                if (animationPlaying == true)
+                {
+                    _unityMove.enabled = false;
+                    _fogAction.enabled = false;
+                }
+                FogActionFrames();
+                StartCoroutine(FogDisable());
+                // ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã®å®Œäº†ã‚’ç¢ºèªã™ã‚‹ãƒ‡ãƒãƒƒã‚°ãƒ­ã‚°ã‚’å‡ºåŠ›
+                Debug.Log("Animation is playing: " + animationPlaying);
+
             }
-            FogActionFrames();
-            StartCoroutine(FogDisable());
-            // ƒAƒjƒ[ƒVƒ‡ƒ“‚ÌŠ®—¹‚ğŠm”F‚·‚éƒfƒoƒbƒOƒƒO‚ğo—Í
-            Debug.Log("Animation is playing: " + animationPlaying);
         }
     }
 
-
-
-    // ƒAƒjƒ[ƒVƒ‡ƒ“‚ªÀs‚³‚ê‚½‚çŠÖ”‚ğŒÄ‚Ño‚·
+    // ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ãŒå®Ÿè¡Œã•ã‚ŒãŸã‚‰é–¢æ•°ã‚’å‘¼ã³å‡ºã™
     public void FogActionFrames()
     {
         if (animationPlaying == false)
         {
             animationPlaying = true;
-            // ƒRƒ‹[ƒ`ƒ“‚ÌŒÄ‚Ño‚µ@ƒAƒjƒ[ƒVƒ‡ƒ“Ä¶’†ƒtƒ‰ƒO‚ğİ’è
+            // ã‚³ãƒ«ãƒ¼ãƒãƒ³ã®å‘¼ã³å‡ºã—ã€€ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³å†ç”Ÿä¸­ãƒ•ãƒ©ã‚°ã‚’è¨­å®š
             StartCoroutine(FogActionControl());
         }
     }
 
-    // ƒRƒ‹[ƒ`ƒ“ŠJn
+    // ã‚³ãƒ«ãƒ¼ãƒãƒ³é–‹å§‹
     IEnumerator FogActionControl()
     {
-        // ƒAƒjƒ[ƒVƒ‡ƒ“Ä¶’†ƒtƒ‰ƒO‚ğtrue
-        //animationPlaying = true;
+        // ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³å†ç”Ÿä¸­ãƒ•ãƒ©ã‚°ã‚’true
+        animationPlaying = true;
 
-        // ƒAƒjƒ[ƒVƒ‡ƒ“‚ÌÄ¶‘Ò‹@
+        // ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã®å†ç”Ÿå¾…æ©Ÿ
         yield return new WaitForSeconds(_timeanima);
 
         _inputParam.MoveX = 0;
         _inputParam.MoveZ = 0;
 
-        // ƒAƒjƒ[ƒVƒ‡ƒ“‚ªI—¹‚µ‚½‚çÄ¶’†ƒtƒ‰ƒO‚ğfalse
+        // ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ãŒçµ‚äº†ã—ãŸã‚‰å†ç”Ÿä¸­ãƒ•ãƒ©ã‚°ã‚’false
         animationPlaying = false;
-        if(animationPlaying == false)
+        if (animationPlaying == false)
         {
             _unityMove.enabled = true;
         }
@@ -119,5 +139,14 @@ public class FogAction : MonoBehaviour
     {
         yield return new WaitForSeconds(_timeLeft);
         Fog.SetActive(false);
+    }
+
+    //ã‚¹ã‚­ãƒ«ç™ºå‹•ä¸­ã¯ç§»å‹•ä¸å¯ãƒ»ã‚¹ã‚­ãƒ«ã‚’ä½¿ã£ãŸã‚‰ãã®å¾Œã¯ä½¿ãˆãªã„
+    IEnumerator FogStay()
+    {
+        yield return new WaitForSeconds(_staytime);
+        Debug.Log("ã‚¹ã‚­ãƒ«ã¯ä½¿ãˆã¾ã›ã‚“");
+        Fog.SetActive(false);
+        _stayjudgement = true;
     }
 }
