@@ -8,23 +8,23 @@ public class BackToTitle : MonoBehaviour
 {
 
 
-    public GameObject Panelfade;   //ƒtƒF[ƒhƒpƒlƒ‹‚Ìæ“¾
+    public GameObject Panelfade;   //ãƒ•ã‚§ãƒ¼ãƒ‰ãƒ‘ãƒãƒ«ã®å–å¾—
 
-    Image fadealpha;               //ƒtƒF[ƒhƒpƒlƒ‹‚ÌƒCƒ[ƒWæ“¾•Ï”
+    Image fadealpha;               //ãƒ•ã‚§ãƒ¼ãƒ‰ãƒ‘ãƒãƒ«ã®ã‚¤ãƒ¡ãƒ¼ã‚¸å–å¾—å¤‰æ•°
 
-    private float alpha;           //ƒpƒlƒ‹‚Ìalpha’læ“¾•Ï”
+    private float alpha;           //ãƒ‘ãƒãƒ«ã®alphaå€¤å–å¾—å¤‰æ•°
 
-    private bool fadeout;          //ƒtƒF[ƒhƒAƒEƒg‚Ìƒtƒ‰ƒO•Ï”
+    private bool fadeout;          //ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆã®ãƒ•ãƒ©ã‚°å¤‰æ•°
 
-    public int SceneNo;            //ƒV[ƒ“‚ÌˆÚ“®æƒiƒ“ƒo[æ“¾•Ï”
+    public int SceneNo;            //ã‚·ãƒ¼ãƒ³ã®ç§»å‹•å…ˆãƒŠãƒ³ãƒãƒ¼å–å¾—å¤‰æ•°
 
     [SerializeField] public float _speed = 0f;
 
     // Use this for initialization
     void Start()
     {
-        fadealpha = Panelfade.GetComponent<Image>(); //ƒpƒlƒ‹‚ÌƒCƒ[ƒWæ“¾
-        alpha = fadealpha.color.a;                 //ƒpƒlƒ‹‚Ìalpha’l‚ğæ“¾
+        fadealpha = Panelfade.GetComponent<Image>(); //ãƒ‘ãƒãƒ«ã®ã‚¤ãƒ¡ãƒ¼ã‚¸å–å¾—
+        alpha = fadealpha.color.a;                 //ãƒ‘ãƒãƒ«ã®alphaå€¤ã‚’å–å¾—
     }
 
     // Update is called once per frame

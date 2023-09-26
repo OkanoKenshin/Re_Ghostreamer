@@ -17,6 +17,11 @@ public class HAttack : MonoBehaviour
 
     private int count = 0;
 
+    private bool _stayjudgement = false;
+
+    [SerializeField]
+    public float _hastay;
+
     [SerializeField]
     CenterDataOfStreamer _centerDataOfStreamer;
 
@@ -29,6 +34,8 @@ public class HAttack : MonoBehaviour
     float ghAttackPower2 = 0f;
     [SerializeField]
     float ghAttackPower3 = 0f;
+
+    private bool _haAnimation = false;
 
     [SerializeField]
     bool InputOn = false;
@@ -48,29 +55,40 @@ public class HAttack : MonoBehaviour
             _centerDataOfStreamer = GetComponent<CenterDataOfStreamer>();
         }
         _inputParam = _inputManager.UnitInputParams[_unitType];
+
+        StartCoroutine(HAstay());
     }
 
     private void Update()
     {
-        if (_inputParam.Ability)
-        {
-            _animation.MGhHeavyAttackAnima();
-            if (_attackHitDetection.attackHitTheStreamer)
-            {
-                //Debug.Log("baka");
-                Damege();
-                count++;
-            }
-        }
-        else
-        {
-            count = 0;
-        }
-
-        //Debug.Log(count);
-        //Debug.Log(_attackHitDetection.attackHitTheStreamer);
+        MHAttack();
     }
 
+    private void MHAttack()
+    {
+        if (_inputParam.Select)
+        {
+            if (_stayjudgement)
+            {
+                _stayjudgement = false;
+                _animation.MGhHeavyAttackAnima();
+                if (_attackHitDetection.attackHitTheStreamer)
+                {
+                    //Debug.Log("baka");
+                    Damege();
+                    count++;
+                }
+                StartCoroutine(HAstay());
+            }
+            else
+            {
+                count = 0;
+            }
+
+            //Debug.Log(count);
+            //Debug.Log(_attackHitDetection.attackHitTheStreamer);
+        }
+    }
     void Damege()
     {
         if (count == 1)
@@ -88,5 +106,13 @@ public class HAttack : MonoBehaviour
             //Debug.Log("3");
             _centerDataOfStreamer.stHp -= _attackHitDetection.ghAttackPower * ghAttackPower3;
         }
+    }
+
+    IEnumerator HAstay()
+    {
+        yield return new WaitForSeconds(_hastay);
+        Debug.Log("stayƒJƒEƒ“ƒg‚Í"+_hastay);
+        _stayjudgement = true;
+        _haAnimation = true;
     }
 }

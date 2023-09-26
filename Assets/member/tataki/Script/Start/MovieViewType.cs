@@ -13,7 +13,6 @@ public class MovieViewType : MonoBehaviour
     {
         _movieEndCallback = movieEndCallback;
         StartCoroutine(DoMovie());
-
     }
 
     private void Update()
@@ -25,11 +24,9 @@ public class MovieViewType : MonoBehaviour
                 if(null != _movieEndCallback)
                 {
                     _movieEndCallback();
-
                 }
             }
         }
-
     }
 
     private IEnumerator DoMovie()
@@ -38,7 +35,6 @@ public class MovieViewType : MonoBehaviour
         if(null != _movieEndCallback)
         {
             _movieEndCallback();
-
         }
     }
 }

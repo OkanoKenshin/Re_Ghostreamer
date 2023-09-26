@@ -17907,18 +17907,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3934207674541570634}
     m_Modifications:
-    - target: {fileID: -1893759714637428300, guid: 8e3dd97a455c35e4ab3bf9f8e512afd8, type: 3}
-      propertyPath: m_Size.x
-      value: 2.031262
-      objectReference: {fileID: 0}
-    - target: {fileID: -1893759714637428300, guid: 8e3dd97a455c35e4ab3bf9f8e512afd8, type: 3}
-      propertyPath: m_Center.x
-      value: 0.965631
-      objectReference: {fileID: 0}
-    - target: {fileID: -1893759714637428300, guid: 8e3dd97a455c35e4ab3bf9f8e512afd8, type: 3}
-      propertyPath: m_Center.z
-      value: -2.3537597e-15
-      objectReference: {fileID: 0}
     - target: {fileID: 5162043193313585877, guid: 8e3dd97a455c35e4ab3bf9f8e512afd8, type: 3}
       propertyPath: m_Name
       value: wall_002

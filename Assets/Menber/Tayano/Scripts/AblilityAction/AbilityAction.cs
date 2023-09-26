@@ -72,8 +72,6 @@ public class AbilityAction : MonoBehaviour //アビリティの処理を呼び�
             }
             
         }
-
-   
     }
     #endregion
 }

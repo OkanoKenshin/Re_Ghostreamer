@@ -7,15 +7,10 @@ using UnityEngine.UI;
 public class StreamerFadeOut : MonoBehaviour
 {
     public GameObject Panelfade;   // フェード用のパネルオブジェクト
-
     Image fadealpha;               // パネルのImageコンポーネント
-
     private float alpha;           // パネルのアルファ値
-
     private bool fadeout;          // フェードアウト中かどうかのフラグ
-
     public int SceneNo;            // 移動先シーンの番号
-
     public float delayBeforeFade = 5f; // フェード開始までの待機時間
 
     // 初期化
