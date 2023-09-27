@@ -51,7 +51,7 @@ public class Animation : MonoBehaviour
         }
         else
         {
-            if (animationNow != 0 && animationNow != 9)
+            if (animationNow != 0 && animationNow != 5 && animationNow != 6 && animationNow != 7 && animationNow != 8 &&animationNow != 9)
             {
                 animationNow = 0;
                 animator.SetTrigger("Idol");
