@@ -62,31 +62,28 @@ public class HAttack : MonoBehaviour
     private void Update()
     {
         MHAttack();
+        Debug.Log(_stayjudgement);
     }
 
     private void MHAttack()
     {
-        if (_inputParam.Select)
+        if (_stayjudgement)
         {
-            if (_stayjudgement)
+            if (_inputParam.Select)
             {
                 _stayjudgement = false;
                 _animation.MGhHeavyAttackAnima();
                 if (_attackHitDetection.attackHitTheStreamer)
                 {
-                    //Debug.Log("baka");
                     Damege();
                     count++;
                 }
-                StartCoroutine(HAstay());
-            }
-            else
-            {
+                //StartCoroutine(HAstay());
                 count = 0;
-            }
 
-            //Debug.Log(count);
-            //Debug.Log(_attackHitDetection.attackHitTheStreamer);
+                //Debug.Log(count);
+                //Debug.Log(_attackHitDetection.attackHitTheStreamer);
+            }
         }
     }
     void Damege()
@@ -113,6 +110,6 @@ public class HAttack : MonoBehaviour
         yield return new WaitForSeconds(_hastay);
         Debug.Log("stayƒJƒEƒ“ƒg‚Í"+_hastay);
         _stayjudgement = true;
-        _haAnimation = true;
+        //_haAnimation = true;
     }
 }
