@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class FadeSystem : MonoBehaviour
 {
-    //inspector‚Å‘‚«ž‚Ý@•Ï”Ý’è
+    //inspectorã§æ›¸ãè¾¼ã¿ã€€å¤‰æ•°è¨­å®š
     [SerializeField] private CanvasGroup _canvasGroup;
     [SerializeField] private float _fadeSpeed = 2f;
-    @//•Ï”ì¬
+    ã€€//å¤‰æ•°ä½œæˆ
     private System.Action _fadeEndCallback;
 
     public void FadeOut(System.Action fadeEndCallback)
@@ -17,20 +17,20 @@ public class FadeSystem : MonoBehaviour
 
     private IEnumerator FadeOutCo()
     {
-        //ƒLƒƒƒ“ƒoƒXƒOƒ‹[ƒv‚Ìalpha’l‚ð0‚ÉÝ’è
+        //ã‚­ãƒ£ãƒ³ãƒã‚¹ã‚°ãƒ«ãƒ¼ãƒ—ã®alphaå€¤ã‚’0ã«è¨­å®š
         _canvasGroup.alpha = 0;
-        //ƒLƒƒƒ“ƒoƒXƒOƒ‹[ƒv‚Ìalpha’l‚ª1ˆÈ‰º‚Ìê‡ˆ—
+        //ã‚­ãƒ£ãƒ³ãƒã‚¹ã‚°ãƒ«ãƒ¼ãƒ—ã®alphaå€¤ãŒ1ä»¥ä¸‹ã®å ´åˆå‡¦ç†
         while (1f > _canvasGroup.alpha)
         {
-            //Time.delotaTime=‘O‰ñ‚ÌUpdate‚©‚ç‰½•bŒo‰ß‚µ‚½‚©
-            //ƒLƒƒƒ“ƒoƒXƒOƒ‹[ƒv‚Ìalpha’l‚ð‘‰Á‚³‚¹‚Ä‚¢‚­
+            //Time.delotaTime=å‰å›žã®Updateã‹ã‚‰ä½•ç§’çµŒéŽã—ãŸã‹
+            //ã‚­ãƒ£ãƒ³ãƒã‚¹ã‚°ãƒ«ãƒ¼ãƒ—ã®alphaå€¤ã‚’å¢—åŠ ã•ã›ã¦ã„ã
             _canvasGroup.alpha += Time.deltaTime * _fadeSpeed;
-            //ƒLƒƒƒ“ƒoƒXƒOƒ‹[ƒv‚Ì’l‚ª1ˆÈã‚à‚µ‚­‚ÍA1‚É‚È‚Á‚½Žž
+            //ã‚­ãƒ£ãƒ³ãƒã‚¹ã‚°ãƒ«ãƒ¼ãƒ—ã®å€¤ãŒ1ä»¥ä¸Šã‚‚ã—ãã¯ã€1ã«ãªã£ãŸæ™‚
             if (1f < _canvasGroup.alpha) _canvasGroup.alpha = 1f;
-            //ˆ—‚ªI‚í‚Á‚½‚çƒRƒ‹[ƒ`ƒ“‚©‚çŠO‚ê‚é
+            //å‡¦ç†ãŒçµ‚ã‚ã£ãŸã‚‰ã‚³ãƒ«ãƒ¼ãƒãƒ³ã‹ã‚‰å¤–ã‚Œã‚‹
             yield return null;
         }
-        //
+
         if (_fadeEndCallback != null)
             _fadeEndCallback();
     }

@@ -98,7 +98,3 @@ public class HeavyAttack : MonoBehaviour
         }
     }
 }
-
-//1:22~1:33‚ªfirst
-//1:35~1:50 second
-//2:25~2:54 third

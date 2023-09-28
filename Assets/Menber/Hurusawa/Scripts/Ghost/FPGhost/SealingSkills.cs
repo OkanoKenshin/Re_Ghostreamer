@@ -7,7 +7,7 @@ using static CommonParam;
 
 public class SealingSkills : MonoBehaviour
 {
-    [SerializeField] private HeatGaugeControl skillObject;
+    [SerializeField] private LightHitDetection skillObject;
     [SerializeField] private Image skillicon;
     [SerializeField] private LightHitDetection Light;
 

@@ -72,8 +72,6 @@ public class AbilityAction : MonoBehaviour
             }
             
         }
-
-   
     }
     #endregion
 }
