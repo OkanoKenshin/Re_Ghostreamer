@@ -61,17 +61,19 @@ public class HeatGaugeControl : MonoBehaviour
     void FixedUpdate()
     {
         #region ヒートゲージ減少処理
-        if (_centerOfLightData.heatGauge > 0 && _centerOfLightData.lightInputOn == false)
+        if (_centerOfLightData.overHeat == true)
         {
-            if (_centerOfLightData.overHeat == true)
+            if (_centerOfLightData.heatGauge > 0)
             {
                 _centerOfLightData.heatGauge -= heatGaugeDecrease / 2;
             }
-            else
+        }
+        else if (_centerOfLightData.heatGauge > 0 && _centerOfLightData.lightInputOn == false)
+        {
+            if(_centerOfLightData.overHeat == false)
             {
                 _centerOfLightData.heatGauge -= heatGaugeDecrease;
             }
-            // ヒートゲージを毎処理指定された減少量でデクリメント
         }
         #region overHeat有効化処理
         if (_centerOfLightData.heatGauge >= _centerOfLightData.maxHeatGauge)
@@ -116,7 +118,7 @@ public class HeatGaugeControl : MonoBehaviour
         }
         else
         {
-            if (_centerOfLightData.heatGauge == 0)
+            if (_centerOfLightData.heatGauge <= 0)
             // overHeatの解除処理
             {
                 // オバヒ状態は一度heatGaugeが冷め切らないと解除されない。

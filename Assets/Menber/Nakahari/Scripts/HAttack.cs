@@ -23,6 +23,9 @@ public class HAttack : MonoBehaviour
     [SerializeField]
     private AttackHitDetection _attackHitDetection;
 
+    public GameObject timecon;
+    private TimeCounterHAG timeCounterhag;
+
     [SerializeField]
     float ghAttackPower1 = 0f;
     [SerializeField]
@@ -32,9 +35,13 @@ public class HAttack : MonoBehaviour
 
     [SerializeField]
     bool InputOn = false;
+
+    int hagcount;
+
     // Start is called before the first frame update
     void Start()
     {
+        timeCounterhag = timecon.GetComponent<TimeCounterHAG>();
         if (_inputManager == null)
         {
             _inputManager = GetComponent<InputManager>();
@@ -54,19 +61,20 @@ public class HAttack : MonoBehaviour
     {
         if (_inputParam.Ability)
         {
-            _animation.MGhHeavyAttackAnima();
-            if (_attackHitDetection.attackHitTheStreamer)
+            if (hagcount == 0)
             {
-                //Debug.Log("baka");
-                Damege();
-                count++;
+                if (timeCounterhag.currentTime >= timeCounterhag.totalTime)
+                {
+                    _animation.MGhHeavyAttackAnima();
+                    if (_attackHitDetection.attackHitTheStreamer)
+                    {
+                        //Debug.Log("baka");
+                        Damege();
+                        count++;
+                    }
+                }
             }
         }
-        else
-        {
-            count = 0;
-        }
-
         //Debug.Log(count);
         //Debug.Log(_attackHitDetection.attackHitTheStreamer);
     }
@@ -87,6 +95,7 @@ public class HAttack : MonoBehaviour
         {
             //Debug.Log("3");
             _centerDataOfStreamer.stHp -= _attackHitDetection.ghAttackPower * ghAttackPower3;
+            hagcount++;
         }
     }
 }

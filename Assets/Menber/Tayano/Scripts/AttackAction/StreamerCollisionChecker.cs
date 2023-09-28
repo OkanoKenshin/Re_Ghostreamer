@@ -24,6 +24,7 @@ public class StreamerCollisionChecker : MonoBehaviour
     GameObject AttachedAttackHitDetection;
     AttackHitDetection _attackHitDetection;
 
+    int sthittime = 1;
     /*
     "IdentifyTouchedObjects"‚ÌQÆì¬
     [SerializeField]
@@ -116,10 +117,16 @@ public class StreamerCollisionChecker : MonoBehaviour
                 //ƒqƒbƒg‚µ‚½‘ÎÛ‚ªStreamer‚©”»’è
                 {
                     _attackHitDetection.attackHitTheStreamer = true;
+                    StartCoroutine(sthit());
                 }
                 break;
 
         }
     }
 
+    IEnumerator sthit()
+    {
+        yield return new WaitForSeconds(sthittime);
+        _attackHitDetection.attackHitTheStreamer = false;
+    }
 }

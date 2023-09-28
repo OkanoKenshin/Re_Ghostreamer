@@ -20,6 +20,8 @@ public class FogAction : MonoBehaviour
 
     public MonoBehaviour _unityMove;
 
+    public GameObject timecon;
+    private TimeCounter timeCounter;
 
     // アニメーションが再生中かどうかを示すフラグ
     private bool animationPlaying = false;
@@ -35,12 +37,15 @@ public class FogAction : MonoBehaviour
 
     [SerializeField]
     private float _timeanima;
+
+    int fogcount;
     //[SerializeField]
     //VolumetricFogAndMist.VolumetricFog VolumetricFog;
 
 
     private void Start()
     {
+        timeCounter = timecon.GetComponent<TimeCounter>();
         if (_inputManager == null)
         {
             _inputManager = GetComponent<InputManager>();
@@ -64,21 +69,27 @@ public class FogAction : MonoBehaviour
         //var ThisRotation = this.transform.forward;
         if (_inputParam.Ability)
         {
-            //Instantiate(FogPrefab, this.transform.position, this.transform.rotation);
-            Fog.SetActive(true);
-            Fog.transform.position = this.transform.position;
-            Quaternion quaternion = Quaternion.Euler(this.transform.forward);
-            Fog.transform.localScale = _transform.localScale;
-            _animation.MGhFogAnima();
-            
-            if (animationPlaying == true)
+            if (fogcount == 0)
             {
-                _unityMove.enabled = false;
+                if (timeCounter.currentTime >= timeCounter.totalTime)
+                    {
+                    //Instantiate(FogPrefab, this.transform.position, this.transform.rotation);
+                    Fog.SetActive(true);
+                    Fog.transform.position = this.transform.position;
+                    Quaternion quaternion = Quaternion.Euler(this.transform.forward);
+                    Fog.transform.localScale = _transform.localScale;
+                    _animation.MGhFogAnima();
+
+                    if (animationPlaying == true)
+                    {
+                        _unityMove.enabled = false;
+                    }
+                    FogActionFrames();
+                    StartCoroutine(FogDisable());
+                    // アニメーションの完了を確認するデバッグログを出力
+                    Debug.Log("Animation is playing: " + animationPlaying);
+                }
             }
-            FogActionFrames();
-            StartCoroutine(FogDisable());
-            // アニメーションの完了を確認するデバッグログを出力
-            Debug.Log("Animation is playing: " + animationPlaying);
         }
     }
 
@@ -111,6 +122,7 @@ public class FogAction : MonoBehaviour
         animationPlaying = false;
         if(animationPlaying == false)
         {
+            fogcount++;
             _unityMove.enabled = true;
         }
     }

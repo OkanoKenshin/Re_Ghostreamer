@@ -24,6 +24,8 @@ public class SealingSkills : MonoBehaviour
     private float fillAmount = 1.0f;
     private bool counting = false;
 
+    int Fpgcount;
+
     private void Start()
     {
         if (_inputManager == null)
@@ -45,24 +47,27 @@ public class SealingSkills : MonoBehaviour
 
         if (CoolTime >= 40f)
         {
-            if (_inputParam.Select)
+            if (_inputParam.Ability)
             {
-                if (skillObject != null)
+                if(Fpgcount == 0)
                 {
-                    skillObject.enabled = false;
-                    Debug.Log("押されました");
-                    StartCoroutine(StartCooldown());
-                }
-                if (!hasskillicon) // 逆に変更：hasskilliconがfalseの場合に実行
-                {
-                    skillicon.enabled = true; // 逆に変更：スキルアイコンを表示
-                    Debug.Log("スキルアイコン表示");
-                    hasskillicon = true;
+                    if (skillObject != null)
+                    {
+                        skillObject.enabled = false;
+                        Debug.Log("押されました");
+                        StartCoroutine(StartCooldown());
+                    }
+                    if (!hasskillicon) // 逆に変更：hasskilliconがfalseの場合に実行
+                    {
+                        skillicon.enabled = true; // 逆に変更：スキルアイコンを表示
+                        Debug.Log("スキルアイコン表示");
+                        hasskillicon = true;
 
-                    StartCoroutine(StartCooldown());
-                }
-                CoolTime = 0f;
+                        StartCoroutine(StartCooldown());
+                    }
+                    CoolTime = 0f;
 
+                }
             }
         }
     }
@@ -70,6 +75,7 @@ public class SealingSkills : MonoBehaviour
     private IEnumerator StartCooldown()
     {
         LightHitDetection.lightstop = false;
+        skillicon.enabled = false;
         yield return new WaitForSeconds(skillCooldownTime);
 
         if (skillObject != null)
@@ -80,7 +86,8 @@ public class SealingSkills : MonoBehaviour
         }
         if (hasskillicon)
         {
-            skillicon.enabled = false;
+            Fpgcount++;
+            skillicon.enabled = true;
             Debug.Log("スキルアイコン非表示");
             hasskillicon = false;
         }

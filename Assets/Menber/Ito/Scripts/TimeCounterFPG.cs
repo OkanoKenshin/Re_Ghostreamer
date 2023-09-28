@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
-public class TimeCounter : MonoBehaviour
+public class TimeCounterFPG : MonoBehaviour
 {
     [SerializeField]
     private CommonParam.UnitType _unitType = CommonParam.UnitType.Streamer;
