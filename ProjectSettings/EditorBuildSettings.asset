@@ -8,9 +8,15 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/member/tataki/Scenes/testStart.unity
     guid: a8b6bc73806f1984683a5cad2c58b884
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/member/tataki/Scenes/testStart 1.unity
+    guid: 227b3945438a64d429f5515211f5e25a
   - enabled: 1
     path: Assets/Menber/Tataki/Scene/explanation.unity
     guid: b1c54508e52215741834f5ccc26d52c5
@@ -23,8 +29,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Menber/Tayano/Scenes/StVictoryScene.unity
     guid: f399d75f481aaf140a5cf2a3e030c636
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 59ff41ee89f635b4cb50db9921a56705, type: 2}
