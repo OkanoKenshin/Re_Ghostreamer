@@ -16341,9 +16341,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundEffects:
-  - {fileID: 8300000, guid: 28693cdd543b971498ac431eb8b7990d, type: 3}
-  - {fileID: 8300000, guid: 6687584a09bc5a14d9c7775c660cfefc, type: 3}
-  - {fileID: 8300000, guid: dbeb6586a896efd4b8016c442eb0d6cc, type: 3}
   - {fileID: 8300000, guid: 86ca4f7f651547242bdbfb8c2bdab7dc, type: 3}
 --- !u!4 &2136825557
 Transform:

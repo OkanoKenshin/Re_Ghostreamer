@@ -8,13 +8,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 0
+  - enabled: 1
     path: Assets/member/tataki/Scenes/testStart.unity
     guid: a8b6bc73806f1984683a5cad2c58b884
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/member/tataki/Scenes/testStart 1.unity
     guid: 227b3945438a64d429f5515211f5e25a
   - enabled: 1
