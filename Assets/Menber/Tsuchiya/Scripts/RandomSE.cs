@@ -26,6 +26,7 @@ public class RandomSE : MonoBehaviour
             int randomIndex = Random.Range(0, soundEffects.Count);
             audioSource.clip = soundEffects[randomIndex];
             audioSource.Play();
+            audioSource.loop = true;
         }
     }
 }
