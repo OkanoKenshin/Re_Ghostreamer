@@ -18,7 +18,7 @@ public class Animation : MonoBehaviour
     InputManager _inputManager;
 
     [SerializeField]
-    private int animationNow = 0;
+    public int animationNow = 0;
 
     void Start()
     {
@@ -43,7 +43,7 @@ public class Animation : MonoBehaviour
         {
             animator.SetFloat("X", _inputParam.MoveX);
             animator.SetFloat("Z", _inputParam.MoveZ);
-            if (animationNow != 1)
+            if (animationNow != 1 && animationNow != 2)
             {
                 animationNow = 1;
                 animator.SetTrigger("Move");
@@ -65,31 +65,12 @@ public class Animation : MonoBehaviour
 
     public void MStSprintAnima()
     {
-        if (animationNow != 2)
+        if(animationNow != 2)
         {
             animationNow = 2;
             animator.SetTrigger("Sprint");
         }
-    }
-
-    public void MStStaminaAnima()
-    {
-        if (animationNow != 3)
-        {
-            animationNow = 3;
-            animator.SetTrigger("Stamina");
-        }
-
-    }
-
-    public void MStHoldAnima()
-    {
-        if (animationNow != 4)
-        {
-            animationNow = 4;
-            animator.SetTrigger("Hold");
-        }
-
+        
     }
 
     #endregion
@@ -150,11 +131,3 @@ public class Animation : MonoBehaviour
     }
 
 }
-
-
-
-
-
-
-
-
