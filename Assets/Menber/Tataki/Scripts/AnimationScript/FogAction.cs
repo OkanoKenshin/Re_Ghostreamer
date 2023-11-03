@@ -75,7 +75,7 @@ public class FogAction : MonoBehaviour
         _fogAction = GetComponent<FogAction>();
         //var ThisRotation = this.transform.forward;
 
-            if (_inputParam.Select)
+            if (_inputParam.Ability)
             {
             if (_stayjudgement)
             {

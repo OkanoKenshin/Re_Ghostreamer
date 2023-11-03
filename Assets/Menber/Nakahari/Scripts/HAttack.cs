@@ -69,7 +69,7 @@ public class HAttack : MonoBehaviour
     {
         if (_stayjudgement)
         {
-            if (_inputParam.Select)
+            if (_inputParam.Ability)
             {
                 _stayjudgement = false;
                 _animation.MGhHeavyAttackAnima();
