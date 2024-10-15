@@ -8,14 +8,14 @@ using UnityEngine.SceneManagement;
 public class TimeLimit : MonoBehaviour
 {
     public static float CountDownTime;
-    public static float deltaTime; // ƒJƒEƒ“ƒgƒ_ƒEƒ“ƒ^ƒCƒ€
-    public Text TextCountDown; // •\¦—pƒeƒLƒXƒgUI
+    public static float deltaTime; // ã‚«ã‚¦ãƒ³ãƒˆãƒ€ã‚¦ãƒ³ã®é€Ÿåº¦
+    public Text TextCountDown; // è¡¨ç¤ºç”¨ã®ãƒ†ã‚­ã‚¹ãƒˆUI
 
     // Use this for initialization
     void Start()
     {
         deltaTime = 0.005f;
-        CountDownTime = 180.0F; // ƒJƒEƒ“ƒgƒ_ƒEƒ“ŠJn•b”‚ğƒZƒbƒg
+        CountDownTime = 180.0F; // ã‚«ã‚¦ãƒ³ãƒˆãƒ€ã‚¦ãƒ³é–‹å§‹æ™‚é–“ã‚’è¨­å®š
     }
 
     // Update is called once per frame
@@ -24,17 +24,16 @@ public class TimeLimit : MonoBehaviour
         int minutes = Mathf.FloorToInt(CountDownTime / 60);
         int seconds = Mathf.FloorToInt(CountDownTime % 60);
 
-        // ƒJƒEƒ“ƒgƒ_ƒEƒ“ƒ^ƒCƒ€‚ğ®Œ`‚µ‚Ä•\¦
+        // ã‚«ã‚¦ãƒ³ãƒˆãƒ€ã‚¦ãƒ³ã‚¿ã‚¤ãƒ ã‚’è¨ˆç®—ã—ã¦è¡¨ç¤º
         TextCountDown.text = String.Format("{0:00}:{1:00}", minutes, seconds);
-        // Œo‰ß‚ğˆø‚¢‚Ä‚¢‚­
+        // æ®‹ã‚Šæ™‚é–“ã‚’æ¸›ã‚‰ã—ã¦ã„ã
         CountDownTime -= deltaTime;
-        // 0.0•bˆÈ‰º‚É‚È‚Á‚½‚çƒJƒEƒ“ƒgƒ_ƒEƒ“ƒ^ƒCƒ€‚ğ0.0‚ÅŒÅ’èi~‚Ü‚Á‚½‚æ‚¤‚ÉŒ©‚¹‚éj
+        // 0.0ç§’ä»¥ä¸‹ã«ãªã£ãŸã‚‰ã‚«ã‚¦ãƒ³ãƒˆãƒ€ã‚¦ãƒ³ã‚¿ã‚¤ãƒ ã‚’0.0ã§å›ºå®šï¼ˆãƒã‚¤ãƒŠã‚¹ã«ãªã‚‰ãªã„ã‚ˆã†ã«ï¼‰
         if (CountDownTime <= 0.0F)
         {
             CountDownTime = 0.0F;
-            // ƒ^ƒCƒ}[‚ª0‚É‚È‚Á‚½‚çw’è‚ÌƒV[ƒ“‚É‘JˆÚ
+            // ã‚¿ã‚¤ãƒãƒ¼ãŒ0ã«ãªã£ãŸã‚‰å‹åˆ©ã‚·ãƒ¼ãƒ³ã«ç§»è¡Œ
             SceneManager.LoadScene("GhVictoryScene");
-
         }
     }
 }

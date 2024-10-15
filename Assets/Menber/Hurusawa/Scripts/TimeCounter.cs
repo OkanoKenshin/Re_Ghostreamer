@@ -13,9 +13,9 @@ public class TimeCounter : MonoBehaviour
 
     private InputManager.InputParam _inputParam;
 
-    public Image fillImage; // “h‚è‚Â‚Ô‚µ‚ğ•\¦‚·‚éImage
+    public Image fillImage; // æ™‚é–“ã‚’è¡¨ã™å††å½¢ã®Image
     public float totalTime = 40f;
-    public float fillSpeed = 1f; // “h‚è‚Â‚Ô‚µ‚Ì‘¬‚³
+    public float fillSpeed = 1f; // æ™‚é–“ã®é€²è¡Œé€Ÿåº¦
     public float currentTime;
     private float fillAmount;
 
@@ -27,7 +27,7 @@ public class TimeCounter : MonoBehaviour
         }
         _inputParam = _inputManager.UnitInputParams[_unitType];
 
-        currentTime = 0; // ‰Šú’l‚ğ0‚Éİ’è
+        currentTime = 0; // ç¾åœ¨ã®æ™‚é–“ã‚’0ã«è¨­å®š
     }
 
     private void Update()
@@ -36,7 +36,7 @@ public class TimeCounter : MonoBehaviour
         {
             currentTime += Time.deltaTime * fillSpeed;
             fillAmount = currentTime / totalTime;
-            fillAmount = Mathf.Clamp01(fillAmount); // “h‚è‚Â‚Ô‚µ—Ê‚ğ0‚©‚ç1‚Ì”ÍˆÍ‚É§ŒÀ
+            fillAmount = Mathf.Clamp01(fillAmount); // æ™‚é–“ã®é€²è¡Œã‚’0ã‹ã‚‰1ã®ç¯„å›²ã«åˆ¶é™
             fillImage.fillAmount = fillAmount;
         }
 
@@ -44,7 +44,7 @@ public class TimeCounter : MonoBehaviour
         {
             if (_inputParam.Ability)
             {
-                Debug.Log("B‚ª‰Ÿ‚³‚ê‚Ü‚µ‚½");
+                Debug.Log("ãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚Œã¾ã—ãŸ");
                 Destroy(fillImage.gameObject);
             }
         }
