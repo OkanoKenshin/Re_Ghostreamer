@@ -24,7 +24,7 @@ public class stamina : MonoBehaviour
 
             if (_centerDataOfStreamer == null)
             {
-                Debug.LogError("CenterDataOfFGGhostƒRƒ“ƒ|[ƒlƒ“ƒg‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñB");
+                Debug.LogError("CenterDataOfStreamerã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã§ã—ãŸã€‚");
             }
         }
     }
