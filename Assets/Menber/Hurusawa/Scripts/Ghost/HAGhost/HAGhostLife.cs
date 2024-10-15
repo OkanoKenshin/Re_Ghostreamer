@@ -14,8 +14,6 @@ public class HAGhostLife : MonoBehaviour
     public float maxHP;
     private Image _image;
 
-  
-
     private void Awake()
     {
         if (CenterDataOfHAGhost != null)
@@ -24,7 +22,7 @@ public class HAGhostLife : MonoBehaviour
 
             if (_centerDataOfHAGhost == null)
             {
-                Debug.LogError("CenterDataOfFGGhostƒRƒ“ƒ|[ƒlƒ“ƒg‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñB");
+                Debug.LogError("CenterDataOfHAGhostã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã§ã—ãŸã€‚");
             }
         }
     }
