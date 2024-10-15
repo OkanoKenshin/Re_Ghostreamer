@@ -12,28 +12,29 @@ public class lightGauge : MonoBehaviour
     GameObject AttachedCenterOfLightData;
     CenterOfLightData _centerOfLightData;
     private Image _image;
+
     private void Awake()
     {
-        #region "CenterOfLightData"‚ÌNullƒ`ƒFƒbƒN
+        #region "CenterOfLightData"ã®Nullãƒã‚§ãƒƒã‚¯
         if (AttachedCenterOfLightData != null)
         {
             _centerOfLightData = AttachedCenterOfLightData.GetComponent<CenterOfLightData>();
             if (_centerOfLightData != null)
             {
-                Debug.Log("uCenterOfLightDatav‚Í³í‚Éæ“¾‚³‚ê‚Ä‚¢‚Ü‚·B");
+                Debug.Log("CenterOfLightDataã¯æ­£å¸¸ã«å–å¾—ã•ã‚Œã¾ã—ãŸã€‚");
             }
             else
             {
-                Debug.Log("uAttachedCenterOfLightDatav‚ÍƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚Ü‚·‚ªAuCenterOfLightDatav‚Ìæ“¾‚É¸”s‚µ‚Ä‚¢‚Ü‚·B");
+                Debug.Log("AttachedCenterOfLightDataã¯ã‚¢ã‚¿ãƒƒãƒã•ã‚Œã¦ã„ã¾ã™ãŒã€CenterOfLightDataã®å–å¾—ã«å¤±æ•—ã—ã¾ã—ãŸã€‚");
             }
         }
         else
         {
-            Debug.Log("uAttachedCenterOfLightDatav‚ÍƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB");
+            Debug.Log("AttachedCenterOfLightDataã¯ã‚¢ã‚¿ãƒƒãƒã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚");
         }
         #endregion
-
     }
+
     private void Start()
     {
         maxHeatGauge = _centerOfLightData.maxHeatGauge;
