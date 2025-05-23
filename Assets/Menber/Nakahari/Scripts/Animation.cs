@@ -43,19 +43,21 @@ public class Animation : MonoBehaviour
         {
             animator.SetFloat("X", _inputParam.MoveX);
             animator.SetFloat("Z", _inputParam.MoveZ);
-            if (animationNow != 1 && animationNow != 2)
+            animator.SetBool("Move", true);
+            /*if (animationNow != 1 && animationNow != 2)
             {
                 animationNow = 1;
                 animator.SetTrigger("Move");
-            }
+            }*/
         }
         else
         {
-            if (animationNow != 0 && animationNow != 5 && animationNow != 6 && animationNow != 7 && animationNow != 8 &&animationNow != 9)
+            animator.SetBool("Move", false);
+            /*if (animationNow != 0 && animationNow != 5 && animationNow != 6 && animationNow != 7 && animationNow != 8 &&animationNow != 9)
             {
                 animationNow = 0;
                 animator.SetTrigger("Idol");
-            }
+            }*/
         }
     }
 
@@ -65,11 +67,12 @@ public class Animation : MonoBehaviour
 
     public void MStSprintAnima()
     {
-        if(animationNow != 2)
+        animator.SetTrigger("Sprint");
+       /* if(animationNow != 2)
         {
             animationNow = 2;
             animator.SetTrigger("Sprint");
-        }
+        }*/
         
     }
 
@@ -79,47 +82,52 @@ public class Animation : MonoBehaviour
 
     public void MGhAttackAnima()
     {
-        if (animationNow != 5)
+        animator.SetTrigger("Attack");
+        /*if (animationNow != 5)
         {
             animator.SetTrigger("Attack");
             StartCoroutine(tarn(90));
-        }
+        }*/
     }
 
     public void MGhFogAnima()
     {
-        if (animationNow != 6)
+        animator.SetTrigger("Fog");
+        /*if (animationNow != 6)
         {
             animationNow = 6;
             animator.SetTrigger("Fog");
-        }
+        }*/
     }
 
     public void MGhSearchAnima()
     {
-        if (animationNow != 7)
+        animator.SetTrigger("Search");
+        /*if (animationNow != 7)
         {
             animationNow = 7;
             animator.SetTrigger("Search");
-        }
+        }*/
     }
 
     public void MGhHeavyAttackAnima()
     {
-        if (animationNow != 8)
+        animator.SetTrigger("HeavyAttack");
+        /*if (animationNow != 8)
         {
             animationNow = 8;
             animator.SetTrigger("HeavyAttack");
-        }
+        }*/
     }
 
     public void MGhDeathAnima()
     {
-        if (animationNow != 9)
+        animator.SetTrigger("Death");
+        /*if (animationNow != 9)
         {
             animationNow = 9;
             animator.SetTrigger("Death");
-        }
+        }*/
     }
 
     #endregion

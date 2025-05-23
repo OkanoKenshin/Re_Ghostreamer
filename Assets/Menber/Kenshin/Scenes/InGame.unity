@@ -16389,7 +16389,7 @@ MonoBehaviour:
   _unityMove: {fileID: 1926675737}
   _fogAction: {fileID: 0}
   _transform: {fileID: 1155036879}
-  _timeLeft: 750
+  _timeLeft: 30
   _staytime: 0
   _timeanima: 5
   VolumetricFog: {fileID: 0}
